@@ -200,40 +200,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===================================
-    // MODERN ANIMATION ENGINE
+    // MODERN ANIMATION ENGINE (iOS-Style)
     // ===================================
 
-    // Scroll-driven animations with IntersectionObserver
+    // Scroll-driven animations with IntersectionObserver (opt-in only)
     const scrollReveal = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                // Add visible class with stagger delay
-                setTimeout(() => {
-                    entry.target.classList.add('scroll-reveal-visible');
-                }, index * 50); // Stagger by 50ms
-
+                // Add visible class immediately (no artificial delay)
+                entry.target.classList.add('scroll-reveal-visible');
                 scrollReveal.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
 
-    // Observe all elements with scroll-reveal class
-    document.querySelectorAll('.scroll-reveal').forEach(el => {
+    // Only observe elements that explicitly opt-in
+    document.querySelectorAll('.scroll-reveal, .animate-on-scroll').forEach(el => {
         scrollReveal.observe(el);
     });
 
-    // Auto-add scroll-reveal to cards and sections
-    document.querySelectorAll('.card, .section').forEach((el, index) => {
-        el.classList.add('scroll-reveal', 'reveal-fade-up', 'stagger-item');
-    });
-
-    // Staggered card entrance animations
+    // Smart detection: Only animate cards that are below the fold
+    const viewportHeight = window.innerHeight;
     document.querySelectorAll('.card').forEach((card, index) => {
-        card.style.animationDelay = `${index * 100}ms`;
-        card.classList.add('animate-in');
+        const rect = card.getBoundingClientRect();
+
+        // If card is below viewport, add subtle scroll reveal
+        if (rect.top > viewportHeight) {
+            card.classList.add('scroll-reveal', 'reveal-fade-up');
+            scrollReveal.observe(card);
+        }
+        // If card is visible on load, show immediately with no animation
+        else {
+            card.style.opacity = '1';
+            card.style.transform = 'none';
+        }
     });
 
     // Reading progress indicator with performance optimization
@@ -385,8 +388,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // Hover effect enhancement for cards with 3D tilt
+    // Subtle 3D tilt on hover (iOS-inspired, less aggressive)
     document.querySelectorAll('.card').forEach(card => {
+        // Skip tilt if card has scroll-reveal (avoid conflicts)
+        if (card.classList.contains('scroll-reveal')) return;
+
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -395,15 +401,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
+            // Subtle rotation (iOS uses minimal 3D effects)
+            const rotateX = (y - centerY) / 40; // Reduced from /20
+            const rotateY = (centerX - x) / 40; // Reduced from /20
 
             card.style.transform = `
                 perspective(1000px)
                 rotateX(${rotateX}deg)
                 rotateY(${rotateY}deg)
-                translateY(-8px)
-                scale(1.02)
+                translate3d(0, -4px, 0)
+                scale(1.01)
             `;
         });
 
