@@ -286,14 +286,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { passive: true });
     }
 
-    // Material Design ripple effect on buttons and cards
+    // Subtle ripple effect (iOS-style, less aggressive)
     function createRipple(event) {
-        const button = event.currentTarget;
+        const element = event.currentTarget;
+
+        // Skip ripple for navbar items (causes white flicker)
+        if (element.classList.contains('navbar-item')) {
+            return;
+        }
+
         const ripple = document.createElement('span');
-        const rect = button.getBoundingClientRect();
+        const rect = element.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         const x = event.clientX - rect.left - size / 2;
         const y = event.clientY - rect.top - size / 2;
+
+        // Determine ripple color based on element background
+        const isButton = element.classList.contains('button');
+        const rippleColor = isButton ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.1)';
 
         ripple.style.cssText = `
             position: absolute;
@@ -301,21 +311,22 @@ document.addEventListener('DOMContentLoaded', function() {
             height: ${size}px;
             top: ${y}px;
             left: ${x}px;
-            background: rgba(255, 255, 255, 0.5);
+            background: ${rippleColor};
             border-radius: 50%;
             transform: scale(0);
-            animation: ripple-animation 0.6s ease-out;
+            animation: ripple-animation 0.5s ease-out;
             pointer-events: none;
+            will-change: transform, opacity;
         `;
 
-        // Add ripple animation
-        const style = document.createElement('style');
+        // Add ripple animation once
         if (!document.querySelector('#ripple-animation-style')) {
+            const style = document.createElement('style');
             style.id = 'ripple-animation-style';
             style.textContent = `
                 @keyframes ripple-animation {
                     to {
-                        transform: scale(4);
+                        transform: scale(3);
                         opacity: 0;
                     }
                 }
@@ -323,15 +334,20 @@ document.addEventListener('DOMContentLoaded', function() {
             document.head.appendChild(style);
         }
 
-        button.style.position = 'relative';
-        button.style.overflow = 'hidden';
-        button.appendChild(ripple);
+        // Ensure element has proper positioning (only once)
+        if (getComputedStyle(element).position === 'static') {
+            element.style.position = 'relative';
+        }
+        if (getComputedStyle(element).overflow === 'visible') {
+            element.style.overflow = 'hidden';
+        }
 
-        setTimeout(() => ripple.remove(), 600);
+        element.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 500);
     }
 
-    // Add ripple to buttons and cards
-    document.querySelectorAll('.button, .card, .navbar-item').forEach(el => {
+    // Add ripple only to buttons and cards (not navbar items)
+    document.querySelectorAll('.button, .card').forEach(el => {
         el.addEventListener('click', createRipple);
     });
 

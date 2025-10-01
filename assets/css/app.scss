@@ -266,9 +266,11 @@ img, picture img {
   .navbar-item {
     position: relative;
     transition:
-      color var(--duration-fast) var(--ease-ios),
+      background-color var(--duration-fast) var(--ease-ios),
       transform var(--duration-fast) var(--ease-ios);
+    border-radius: 4px;
 
+    /* Subtle underline indicator */
     &::after {
       content: '';
       position: absolute;
@@ -279,9 +281,12 @@ img, picture img {
       background: currentColor;
       transform: translateX(-50%);
       transition: width var(--duration-medium) var(--ease-ios-out);
+      border-radius: 2px;
     }
 
+    /* Hover state - subtle highlight */
     &:hover {
+      background-color: rgba(255, 255, 255, 0.08);
       transform: translate3d(0, -1px, 0);
 
       &::after {
@@ -289,9 +294,18 @@ img, picture img {
       }
     }
 
+    /* Active/click state - iOS-style press feedback */
     &:active {
-      transform: translate3d(0, 0, 0) scale(0.97);
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translate3d(0, 0, 0) scale(0.96);
       transition-duration: var(--duration-instant);
+    }
+
+    /* Focus state for keyboard navigation */
+    &:focus {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 2px;
+      background-color: rgba(255, 255, 255, 0.1);
     }
   }
 }
