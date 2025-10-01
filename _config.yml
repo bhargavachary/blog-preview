@@ -8,7 +8,7 @@ description: >
 baseurl: "/blog-preview"
 url: "https://bhargavachary.github.io"
 permalink: /:year/:month/:day/:title.html
-favicon: /images/favicon.png
+# favicon: /images/favicon.png
 
 paginate: 4
 paginate_path: /page:num/
