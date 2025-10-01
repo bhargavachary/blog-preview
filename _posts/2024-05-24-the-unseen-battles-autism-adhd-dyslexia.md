@@ -1,5 +1,6 @@
 ---
 title: "Unseen Battles: Embracing Neurodiversity in India"
+image: /images/posts/neurodiversity.jpg
 categories: 
   - Society
   - Awareness

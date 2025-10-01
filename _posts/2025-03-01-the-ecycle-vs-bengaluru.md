@@ -1,5 +1,6 @@
 ---
 title: "Traffic Hack: Can E-Cycles Outrun Cars, EVs & Metro?"
+image: /images/posts/ecycle-traffic.jpg
 categories:  
   - Commuting  
   - Sustainability  

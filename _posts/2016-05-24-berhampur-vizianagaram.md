@@ -1,5 +1,6 @@
 ---
 title: "Berhampur to Vizianagaram - A Special Trip!"
+image: /images/posts/train-journey.jpg
 categories: 
   - Society
   - Personal

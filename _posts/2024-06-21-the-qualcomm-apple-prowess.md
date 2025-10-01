@@ -1,5 +1,6 @@
 ---
 title: "Snapdragon X Elite vs. Apple M3: The Ultimate Computing Prowess"
+image: /images/posts/snapdragon-apple.jpg
 categories: 
   - Technology
   - Innovation

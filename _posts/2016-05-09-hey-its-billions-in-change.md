@@ -1,5 +1,6 @@
 ---
 title: "Hey, its Billions in Change!"
+image: /images/posts/billions-change.jpg
 categories: 
   - Technology
   - Society

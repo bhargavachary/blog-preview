@@ -1,5 +1,6 @@
 ---
 title: "A Tribute to Nana: A Legacy of Love, Sacrifice, & Inspiration"
+image: /images/posts/father-tribute.jpg
 categories:
   - Personal
   - Family

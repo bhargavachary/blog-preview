@@ -1,5 +1,6 @@
 ---
 title: "Let us save our Mother Earth!"
+image: /images/posts/mother-earth.jpg
 categories: 
   - Society
   - Nature

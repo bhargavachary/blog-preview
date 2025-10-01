@@ -1,5 +1,6 @@
 ---
 title: "The One and Only"
+image: /images/posts/personal-reflection.jpg
 categories: 
   - Society
   - Personal

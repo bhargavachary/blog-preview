@@ -1,5 +1,6 @@
 ---
 title: "The Tapestry of Professional Journeys"
+image: /images/posts/professional-life.jpg
 categories: 
   - Professional Growth
   - Personal Development

@@ -1,5 +1,6 @@
 ---
 title: "Survive and Succeed in IITs in the 1st semester of post-graduate studies."
+image: /images/posts/iit-student.jpg
 categories: 
   - Society
   - Motivation

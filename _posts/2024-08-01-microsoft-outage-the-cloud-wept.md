@@ -1,5 +1,6 @@
 ---
 title: "Microsoft's Outage: The Day the Cloud Wept"
+image: /images/posts/cloud-outage.jpg
 categories:
   - Technology
   - Cloud Computing

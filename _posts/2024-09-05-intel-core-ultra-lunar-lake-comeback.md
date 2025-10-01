@@ -1,5 +1,6 @@
 ---
 title: "The Rise of Intel Core Ultra 200V: The Era of AI PCs"
+image: /images/posts/intel-ai-pc.jpg
 categories: 
   - Technology
   - Hardware

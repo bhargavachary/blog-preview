@@ -1,5 +1,6 @@
 ---
 title: "Winds of The Dark!"
+image: /images/posts/dark-night.jpg
 categories: 
   - Society
   - Nature

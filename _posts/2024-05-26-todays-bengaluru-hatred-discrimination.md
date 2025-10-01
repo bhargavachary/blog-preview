@@ -1,5 +1,6 @@
 ---
 title: "Bengaluru - from C++ to Discrimination++"
+image: /images/posts/bengaluru-discrimination.jpg
 categories: 
   - Society
   - Culture

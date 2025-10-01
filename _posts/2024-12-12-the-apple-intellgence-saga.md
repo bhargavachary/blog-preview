@@ -1,5 +1,6 @@
 ---
 title: "The Apple Intelligence Saga: From Hype to Disappointment"
+image: /images/posts/apple-disappointment.jpg
 categories: 
   - Technology
   - AI

@@ -1,5 +1,6 @@
 ---
 title: "A Deserving Recap"
+image: /images/posts/year-recap.jpg
 categories: 
   - Personal
   - Motivation

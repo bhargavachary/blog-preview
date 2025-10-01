@@ -1,5 +1,6 @@
 ---
 title: "Trump’s 2025 Tariffs: Tech Disrupted, Trade Rewired"
+image: /images/posts/trump-tariffs.jpg
 categories:  
   - Geopolitics  
   - Economics  

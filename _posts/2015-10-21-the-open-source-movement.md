@@ -1,5 +1,6 @@
 ---
 title: "The Open Source Movement: The Collaborative Future"
+image: /images/posts/open-source.jpg
 categories: 
   - Technology
 tags:

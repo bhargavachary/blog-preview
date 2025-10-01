@@ -1,5 +1,6 @@
 ---
 title: "Apple Intelligence: The Seamless AI in Apple's Ecosystem"
+image: /images/posts/apple-intelligence.jpg
 categories: 
   - Technology
   - Innovation

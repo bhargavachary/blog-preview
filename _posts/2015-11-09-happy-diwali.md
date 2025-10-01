@@ -1,5 +1,6 @@
 ---
 title: "Happy Diwali!"
+image: /images/posts/diwali.jpg
 categories: 
   - Society
   - Personal

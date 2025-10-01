@@ -1,5 +1,6 @@
 ---
 title: "The Social Network Outage"
+image: /images/posts/social-network.jpg
 categories:
   - Society
   - Personal

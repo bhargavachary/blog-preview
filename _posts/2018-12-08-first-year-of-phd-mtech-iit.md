@@ -1,5 +1,6 @@
 ---
 title: "First year of my PG (MS / MTech / PhD) at IIT is ~over!"
+image: /images/posts/phd-research.jpg
 categories: 
   - Society
   - Motivation

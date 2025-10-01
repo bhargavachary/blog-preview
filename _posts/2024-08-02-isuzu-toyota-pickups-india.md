@@ -1,5 +1,6 @@
 ---
 title: "The Rise of Pickup Trucks in India: V-Cross and Hilux"
+image: /images/posts/pickup-trucks.jpg
 author: Bhargav
 date: 2024-08-02
 categories: [Automobile, Pickup Trucks, Lifestyle]

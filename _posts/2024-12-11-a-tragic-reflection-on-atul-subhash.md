@@ -1,5 +1,6 @@
 ---
 title: "The Story of Atul Subhash and the Crisis of Our Times"
+image: /images/posts/crisis-reflection.jpg
 categories: 
   - Society
   - Mental Health

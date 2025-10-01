@@ -1,5 +1,6 @@
 ---
 title: "A Traveler in Me - The Inception"
+image: /images/posts/travel.jpg
 categories: 
   - Society
   - Personal

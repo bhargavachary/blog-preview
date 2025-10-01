@@ -1,5 +1,6 @@
 ---
 title: "The CASS of Joy - A Research Fellow's Perspective"
+image: /images/posts/research-iit.jpg
 categories: 
   - Technology
   - Society

@@ -1,5 +1,6 @@
 ---
 title: "Odisha - The Land of Jagannatha Sanskruti"
+image: /images/posts/odisha-culture.jpg
 categories: 
   - Culture
   - Travel

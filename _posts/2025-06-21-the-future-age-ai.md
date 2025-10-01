@@ -1,5 +1,6 @@
 ---
 title: "The Future of Life, Work, and Wealth in the Age of AI"
+image: /images/posts/ai-future.jpg
 categories:  
   - Society  
   - Technology  

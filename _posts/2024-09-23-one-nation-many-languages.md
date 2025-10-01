@@ -1,5 +1,6 @@
 ---
 title: "One Nation, Many Languages: Can Tech and a Three-Language Policy Bridge India’s Divide?"
+image: /images/posts/language-diversity.jpg
 categories: 
   - Language
   - Technology

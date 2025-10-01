@@ -1,5 +1,6 @@
 ---
 title: "GitHub, Jekyll, and Me!"
+image: /images/posts/github-jekyll.jpg
 categories: 
   - Technology
   - Personal

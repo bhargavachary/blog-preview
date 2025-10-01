@@ -1,5 +1,6 @@
 ---
 title: "Rethinking Education: A Journey into Homeschooling"
+image: /images/posts/homeschooling.jpg
 date: "2024-08-29"
 tags: ["Education", "Homeschooling", "Parenting", "Learning"]
 excerpt: "Exploring the decision to homeschool my daughter and how it aligns with my own educational journey and the evolving demands of the modern world."

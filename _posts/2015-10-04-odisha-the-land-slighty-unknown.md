@@ -1,5 +1,6 @@
 ---
 title: "Odisha - The Land Slightly Unknown!"
+image: /images/posts/odisha-temple.jpg
 categories: 
   - Society
   - Personal

@@ -1,5 +1,6 @@
 ---
 title: "OpenAI o1: The AI That Thinks Before It Speaks"
+image: /images/posts/openai-thinking.jpg
 categories: 
   - Artificial Intelligence
   - Technology
