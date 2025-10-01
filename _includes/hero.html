@@ -1,8 +1,18 @@
+{% comment %}
+    Prefer explicit hero_image; if absent, fall back to page.image (commonly set on posts)
+{% endcomment %}
+{% assign bg_image = nil %}
+{% if page.hero_image %}
+    {% assign bg_image = page.hero_image %}
+{% elsif page.image %}
+    {% assign bg_image = page.image %}
+{% endif %}
+
 <section
-    class="hero {% if page.hero_height %} {{ page.hero_height }} {% else %} is-medium {% endif %} is-bold is-primary"
-    {% if page.hero_image %}
-        style="background: url('{{ page.hero_image | relative_url }}') no-repeat center center; background-size: cover; background-position: center 40%;"
-    {% endif %}
+        class="hero {% if page.hero_height %} {{ page.hero_height }} {% else %} is-medium {% endif %} is-bold is-primary"
+        {% if bg_image %}
+                style="background: url('{{ bg_image | relative_url }}') no-repeat center center; background-size: cover; background-position: center 40%;"
+        {% endif %}
 >
     <div class="hero-body {% if page.hero_darken %} hero-darken {% endif %}">
         <div class="container">

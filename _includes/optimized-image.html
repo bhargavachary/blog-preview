@@ -3,7 +3,13 @@
   Usage: {% include optimized-image.html src="/path/to/image.jpg" alt="Alt text" %}
 {% endcomment %}
 
-{% assign image_src = include.src %}
+{% comment %} Determine if the src is local (starts with /) or absolute/data {% endcomment %}
+{% assign is_local = include.src | slice: 0, 1 %}
+{% if is_local == '/' %}
+  {% assign image_src = include.src | relative_url %}
+{% else %}
+  {% assign image_src = include.src %}
+{% endif %}
 {% assign image_alt = include.alt | default: "" %}
 {% assign image_class = include.class | default: "" %}
 {% assign loading = include.loading | default: "lazy" %}
@@ -11,26 +17,25 @@
 {% assign height = include.height %}
 
 <picture class="{{ image_class }}">
-  {% comment %} WebP version for modern browsers {% endcomment %}
-  {% if image_src contains '.jpg' or image_src contains '.jpeg' or image_src contains '.png' %}
-    {% assign webp_src = image_src | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' | replace: '.png', '.webp' %}
-    <source srcset="{{ webp_src }}" type="image/webp">
-  {% endif %}
-  
-  {% comment %} Original format as fallback {% endcomment %}
-  <img 
-    {% if loading == 'lazy' %}
-      data-src="{{ image_src }}"
-      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ width | default: 400 }} {{ height | default: 300 }}'%3E%3Crect width='100%25' height='100%25' fill='%23f5f5f5'/%3E%3C/svg%3E"
-      class="lazy-image {{ image_class }}"
-    {% else %}
-      src="{{ image_src }}"
-      class="{{ image_class }}"
+  {% comment %}
+    WebP version for modern browsers.
+    Only attempt simple extension swap for local assets; skip for absolute/data URLs.
+  {% endcomment %}
+  {% if is_local == '/' %}
+    {% if image_src contains '.jpg' or image_src contains '.jpeg' or image_src contains '.png' %}
+      {% assign webp_src = image_src | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' | replace: '.png', '.webp' %}
+      <source srcset="{{ webp_src }}" type="image/webp">
     {% endif %}
+  {% endif %}
+
+  {% comment %} Original format as fallback - use immediate src, not lazy loading {% endcomment %}
+  <img
+    src="{{ image_src }}"
     alt="{{ image_alt }}"
     loading="{{ loading }}"
     {% if width %}width="{{ width }}"{% endif %}
     {% if height %}height="{{ height }}"{% endif %}
+    class="{{ image_class }}"
     decoding="async"
   >
 </picture>
