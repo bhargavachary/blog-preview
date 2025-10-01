@@ -40,34 +40,28 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // ===================================
-    // iOS-STYLE NAVBAR ENHANCEMENTS
+    // iOS-STYLE NAVBAR - SIMPLE ZOOM ON CLICK
     // ===================================
 
-    // Add haptic-like feedback with pure zoom animation
     document.querySelectorAll('.navbar-item, .navbar-link').forEach(el => {
-        // Pure zoom on mousedown (no translate)
+        // Click: Zoom in quickly
         el.addEventListener('mousedown', function(e) {
-            this.style.transition = 'transform 80ms cubic-bezier(0.4, 0, 0.2, 1)';
-            this.style.transform = 'scale(0.92)';
+            // Fast zoom in
+            this.style.transition = 'transform 50ms cubic-bezier(0.4, 0, 1, 1)';
+            this.style.transform = 'scale(0.88)';
         });
 
-        // Bounce back to hover state on mouseup
+        // Release: Zoom back with slight bounce
         el.addEventListener('mouseup', function() {
-            this.style.transform = 'scale(1.05)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
+            // Quick bounce back
+            this.style.transition = 'transform 200ms cubic-bezier(0.34, 1.2, 0.64, 1)';
+            this.style.transform = 'scale(1)';
         });
 
-        // Reset on mouse leave
+        // If mouse leaves while pressed, reset
         el.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-            this.style.transition = '';
-        });
-
-        // Smooth hover transition
-        el.addEventListener('mouseenter', function() {
-            this.style.transition = 'all 200ms cubic-bezier(0.25, 0.1, 0.25, 1)';
+            this.style.transition = 'transform 150ms ease-out';
+            this.style.transform = 'scale(1)';
         });
     });
 
