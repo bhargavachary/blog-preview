@@ -2,7 +2,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="{{ site.theme_color | default: '#ffffff' }}">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/app.css">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//unpkg.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    
+    <!-- Preconnect to critical external domains -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
+    <!-- Critical CSS (main theme styles) -->
+    <link rel="preload" href="{{ site.baseurl }}/assets/css/app.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ site.baseurl }}/assets/css/app.css"></noscript>
+    
+    <!-- Favicon with multiple formats -->
     <link
         rel="shortcut icon"
         type="image/png"
@@ -12,21 +27,54 @@
             href="{{ site.baseurl }}/favicon.png"
         {% endif %}
     >
-    <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"
-    ></script>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="{{ site.baseurl }}/manifest.json">
+    
+    <!-- Apple PWA support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="BhargavAchary">
+    <link rel="apple-touch-icon" href="{{ site.baseurl }}/images/avatar.jpg">
+    
+    <!-- Optimized Font Awesome loading -->
     <link
-        rel="stylesheet"
+        rel="preload"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     >
+    <noscript>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        >
+    </noscript>
+    
+    <!-- Optimized social styles loading -->
     {% unless site.hide_share_buttons %}
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">
+        <link 
+            rel="preload" 
+            href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css" 
+            as="style" 
+            onload="this.onload=null;this.rel='stylesheet'"
+        >
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css"></noscript>
     {% endunless %}
+    
+    <!-- Defer non-critical JavaScript -->
+    <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    
     {% seo %}
+    {% include enhanced-meta.html %}
+    {% include structured-data.html %}
     {% if site.feed %}
         {% feed_meta %}
     {% endif %}

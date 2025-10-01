@@ -7,6 +7,38 @@ $primary: #3273dc !default;
 // Import Main CSS file from theme
 @import "main";
 
+/* Critical CSS optimizations */
+/* Above-the-fold content styling */
+.hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Performance and UX enhancements */
+.lazy-image {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  background-color: #f5f5f5;
+  
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+/* Font optimization */
+html {
+  font-display: swap;
+}
+
+/* Optimize font loading */
+@supports (font-display: swap) {
+  * {
+    font-display: swap;
+  }
+}
+
 /* Additional custom styles */
 .post-card {
   .card-content {
@@ -14,22 +46,35 @@ $primary: #3273dc !default;
   }
   
   .card-image {
-    img {
+    img, picture {
       height: 200px;
+      width: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
     
-    &:hover img {
+    &:hover img,
+    &:hover picture img {
       transform: scale(1.05);
     }
   }
 }
 
+/* Enhanced card interactions */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
 /* Image optimization and responsiveness */
-img {
+img, picture img {
   height: auto;
   max-width: 100%;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .image img {
@@ -38,15 +83,81 @@ img {
 
 /* Responsive images */
 .card-image img,
+.card-image picture img,
 .media-left img {
   width: 100%;
   height: auto;
+}
+
+/* Aspect ratio containers to prevent layout shift */
+.aspect-ratio-container {
+  position: relative;
+  width: 100%;
+  
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: 75%; /* 4:3 aspect ratio */
+  }
+  
+  img, picture img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 /* Professional page terminal styling enhancements */
 .terminal {
   font-family: 'Courier New', 'Monaco', monospace;
   line-height: 1.4;
+}
+
+/* Reading progress enhancement */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #3273dc, #209cee);
+  z-index: 1000;
+  transition: width 0.3s ease;
+}
+
+/* Critical CSS for above-the-fold content */
+.navbar {
+  background-color: #3273dc;
+  min-height: 3.25rem;
+}
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+}
+
+/* Optimize critical rendering path */
+.section {
+  padding: 3rem 1.5rem;
+}
+
+.columns {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  margin-top: -0.75rem;
+}
+
+.column {
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 0.75rem;
 }
 
 /* Responsive improvements */
@@ -57,7 +168,8 @@ img {
     h3 { font-size: 1.25rem; }
   }
   
-  .post-card .card-image img {
+  .post-card .card-image img,
+  .post-card .card-image picture img {
     height: 150px;
   }
 }
@@ -88,4 +200,26 @@ img {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+
+/* Performance optimizations */
+.content {
+  contain: layout style;
+}
+
+/* GPU acceleration for animations */
+.card:hover,
+.lazy-image.loaded {
+  will-change: transform;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
