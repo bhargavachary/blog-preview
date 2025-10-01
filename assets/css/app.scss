@@ -476,13 +476,15 @@ img, picture img {
     @extend .navbar-item;
   }
 
-  /* Navbar burger menu - iOS style */
+  /* Navbar burger menu - iOS style with animated transformation */
   .navbar-burger {
     margin: 0.25rem;
     border-radius: 12px !important;
     background: rgba(255, 255, 255, 0.08) !important;
     transition: all var(--duration-fast) var(--ease-ios) !important;
     -webkit-tap-highlight-color: transparent !important;
+    width: 3.25rem;
+    height: 3.25rem;
 
     &:hover {
       background: rgba(255, 255, 255, 0.15) !important;
@@ -497,7 +499,26 @@ img, picture img {
     span {
       /* Burger lines with smooth transitions */
       background-color: white !important;
-      transition: all var(--duration-medium) var(--ease-ios);
+      height: 2px !important;
+      left: calc(50% - 8px);
+      width: 16px;
+      transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Hamburger to X animation */
+    &.is-active {
+      span:nth-child(1) {
+        transform: translateY(5px) rotate(45deg);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      span:nth-child(3) {
+        transform: translateY(-5px) rotate(-45deg);
+      }
     }
   }
 
@@ -507,7 +528,7 @@ img, picture img {
     box-shadow: none !important;
   }
 
-  /* Mobile menu adjustments */
+  /* Mobile menu adjustments with beautiful reveal animation */
   @media screen and (max-width: 1023px) {
     .navbar-menu {
       background: rgba(50, 115, 220, 0.95) !important;
@@ -517,7 +538,59 @@ img, picture img {
       border-radius: 12px;
       margin-top: 0.5rem;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+      /* Hidden state - iOS-style slide and fade */
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+      transform-origin: top center;
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden;
+
+      /* Smooth reveal animation */
+      transition:
+        opacity 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+        transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+        max-height 350ms cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0ms 350ms;
+
+      /* Active state - visible and animated */
+      &.is-active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        max-height: 500px;
+        visibility: visible;
+        transition:
+          opacity 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+          transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+          max-height 500ms cubic-bezier(0.4, 0, 0.2, 1),
+          visibility 0ms 0ms;
+      }
     }
+
+    /* Staggered menu items animation */
+    .navbar-menu.is-active .navbar-item {
+      animation: menuItemSlideIn 300ms cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+
+      &:nth-child(1) { animation-delay: 50ms; }
+      &:nth-child(2) { animation-delay: 100ms; }
+      &:nth-child(3) { animation-delay: 150ms; }
+      &:nth-child(4) { animation-delay: 200ms; }
+      &:nth-child(5) { animation-delay: 250ms; }
+      &:nth-child(6) { animation-delay: 300ms; }
+    }
+  }
+}
+
+/* Mobile menu item reveal animation */
+@keyframes menuItemSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
