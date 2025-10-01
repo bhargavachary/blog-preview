@@ -364,24 +364,30 @@ img, picture img {
   }
 }
 
-/* CRITICAL: Override Bulma's is-primary navbar default white backgrounds */
-.navbar.is-primary {
-  a.navbar-item,
-  .navbar-item,
-  .navbar-link {
-    /* Override Bulma's default white background on hover */
-    &:hover,
-    &:focus {
-      background-color: rgba(255, 255, 255, 0.08) !important;
-      color: white !important;
-    }
+/* CRITICAL: Override Bulma theme's navbar.is-primary white backgrounds
+   Using maximum specificity and !important to override remote theme */
+.navbar.is-primary a.navbar-item:hover,
+.navbar.is-primary a.navbar-item:focus,
+.navbar.is-primary .navbar-item:hover,
+.navbar.is-primary .navbar-item:focus,
+.navbar.is-primary .navbar-link:hover,
+.navbar.is-primary .navbar-link:focus {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+}
 
-    /* Override Bulma's default white background on click */
-    &:active {
-      background-color: rgba(255, 255, 255, 0.15) !important;
-      color: white !important;
-    }
-  }
+.navbar.is-primary a.navbar-item:active,
+.navbar.is-primary .navbar-item:active,
+.navbar.is-primary .navbar-link:active {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+/* Also override any .is-active state */
+.navbar.is-primary a.navbar-item.is-active,
+.navbar.is-primary .navbar-item.is-active {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
 }
 
 /* Button animations (iOS-style subtle) */
