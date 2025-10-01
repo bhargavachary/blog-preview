@@ -1,7 +1,7 @@
 <div x-data="{ open: false }" markdown="0">
     <a x-on:click="open = true" title="View large image">
         <figure class="image {{ include.ratio | default: is-16by9 }}">
-            <img src="{{ include.link | absolute_url }}" alt="{{ include.alt }}">
+            <img src="{{ include.link | absolute_url }}" alt="{{ include.alt }}" loading="lazy">
         </figure>
     </a>
     <div class="modal" x-bind:class="open ? 'is-active' : ''" x-cloak>
@@ -9,9 +9,9 @@
         <div class="modal-content">
             <p class="image {{ include.ratio | default: is-16by9 }}">
                 {% if include.large_link %}
-                    <img src="{{ include.large_link | absolute_url }}" alt="{{ include.alt }}">
+                    <img src="{{ include.large_link | absolute_url }}" alt="{{ include.alt }}" loading="lazy">
                 {% else %}
-                    <img src="{{ include.link | absolute_url }}" alt="{{ include.alt }}">
+                    <img src="{{ include.link | absolute_url }}" alt="{{ include.alt }}" loading="lazy">
                 {% endif %}
             </p>
         </div>

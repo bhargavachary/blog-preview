@@ -8,7 +8,7 @@ description: >
 baseurl: "/blog-preview"
 url: "https://bhargavachary.github.io"
 permalink: /:year/:month/:day/:title.html
-# favicon: /images/favicon.png
+favicon: /images/avatar.jpg
 
 paginate: 4
 paginate_path: /page:num/
@@ -52,6 +52,11 @@ exclude:
   - docs/products
 
 # Sass configuration handled by remote theme
+
+# Sass processing configuration
+sass:
+  sass_dir: _sass
+  style: compressed
 
 markdown: kramdown
 highlighter: rouge

@@ -1,0 +1,117 @@
+---
+# Bulma Clean Theme CSS
+---
+
+/* Import Bulma framework (handled by remote theme) */
+/* This file ensures the app.css is generated correctly for the Bulma Clean Theme */
+
+/* Custom overrides for BhargavAchary.in */
+:root {
+  --primary-color: #3273dc;
+  --link-color: #3273dc;
+  --text-color: #363636;
+  --background-color: #ffffff;
+}
+
+/* Custom styles for better readability */
+.content {
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  
+  code {
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    padding: 0.25rem;
+  }
+}
+
+/* Enhanced post styling */
+.post-card {
+  .card-content {
+    padding: 1.5rem;
+  }
+  
+  .card-image {
+    img {
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+/* Image optimization and responsiveness */
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.image img {
+  object-fit: cover;
+}
+
+/* Responsive images */
+.card-image img,
+.media-left img {
+  width: 100%;
+  height: auto;
+}
+
+/* Professional page terminal styling enhancements */
+.terminal {
+  font-family: 'Courier New', 'Monaco', monospace;
+  line-height: 1.4;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .content {
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+  }
+  
+  .post-card .card-image img {
+    height: 150px;
+  }
+}
+
+/* Accessibility improvements */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+  
+  &:focus {
+    top: 6px;
+  }
+}
+
+.is-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
