@@ -1,39 +1,13 @@
 ---
-# Bulma Clean Theme CSS
 ---
 
-/* Import Bulma framework (handled by remote theme) */
-/* This file ensures the app.css is generated correctly for the Bulma Clean Theme */
+// Custom overrides for BhargavAchary.in
+$primary: #3273dc !default;
 
-/* Custom overrides for BhargavAchary.in */
-:root {
-  --primary-color: #3273dc;
-  --link-color: #3273dc;
-  --text-color: #363636;
-  --background-color: #ffffff;
-}
+// Import Main CSS file from theme
+@import "main";
 
-/* Custom styles for better readability */
-.content {
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--text-color);
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-  
-  p {
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-  }
-  
-  code {
-    background-color: #f5f5f5;
-    border-radius: 3px;
-    padding: 0.25rem;
-  }
-}
-
-/* Enhanced post styling */
+/* Additional custom styles */
 .post-card {
   .card-content {
     padding: 1.5rem;
