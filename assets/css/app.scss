@@ -364,6 +364,26 @@ img, picture img {
   }
 }
 
+/* CRITICAL: Override Bulma's is-primary navbar default white backgrounds */
+.navbar.is-primary {
+  a.navbar-item,
+  .navbar-item,
+  .navbar-link {
+    /* Override Bulma's default white background on hover */
+    &:hover,
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.08) !important;
+      color: white !important;
+    }
+
+    /* Override Bulma's default white background on click */
+    &:active {
+      background-color: rgba(255, 255, 255, 0.15) !important;
+      color: white !important;
+    }
+  }
+}
+
 /* Button animations (iOS-style subtle) */
 .button {
   position: relative;
