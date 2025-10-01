@@ -1,5 +1,66 @@
 // Performance optimizations for BhargavAchary.in
+// CRITICAL: Force override navbar styles immediately (before DOMContentLoaded)
+(function() {
+    // Inject critical inline styles that will override EVERYTHING
+    const style = document.createElement('style');
+    style.id = 'navbar-flicker-fix-critical';
+    style.textContent = `
+        /* Maximum priority override for navbar white flicker */
+        .navbar.is-primary a.navbar-item:hover,
+        .navbar.is-primary a.navbar-item:focus,
+        .navbar.is-primary a.navbar-item:active,
+        .navbar.is-primary .navbar-item:hover,
+        .navbar.is-primary .navbar-item:focus,
+        .navbar.is-primary .navbar-item:active,
+        .navbar.is-primary .navbar-link:hover,
+        .navbar.is-primary .navbar-link:focus,
+        .navbar.is-primary .navbar-link:active {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            transition: background-color 200ms ease !important;
+        }
+
+        /* Disable tap highlight globally */
+        .navbar-item, .navbar-link {
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            user-select: none !important;
+        }
+    `;
+
+    // Insert as first style tag in head (highest priority)
+    const firstStyle = document.querySelector('style, link[rel="stylesheet"]');
+    if (firstStyle) {
+        document.head.insertBefore(style, firstStyle);
+    } else {
+        document.head.appendChild(style);
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Force apply styles directly via JavaScript (nuclear option)
+    document.querySelectorAll('.navbar.is-primary .navbar-item, .navbar.is-primary .navbar-link').forEach(el => {
+        el.style.setProperty('background-color', 'transparent', 'important');
+        el.style.setProperty('-webkit-tap-highlight-color', 'transparent', 'important');
+
+        // Override hover/active with inline event handlers
+        el.addEventListener('mouseenter', function() {
+            this.style.setProperty('background-color', 'rgba(255, 255, 255, 0.08)', 'important');
+        });
+
+        el.addEventListener('mouseleave', function() {
+            this.style.setProperty('background-color', 'transparent', 'important');
+        });
+
+        el.addEventListener('mousedown', function() {
+            this.style.setProperty('background-color', 'rgba(255, 255, 255, 0.15)', 'important');
+        });
+
+        el.addEventListener('mouseup', function() {
+            this.style.setProperty('background-color', 'rgba(255, 255, 255, 0.08)', 'important');
+        });
+    });
     // Enhanced performance monitoring
     const performanceMonitor = {
         metrics: {},

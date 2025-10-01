@@ -13,15 +13,22 @@ $primary: #3273dc !default;
 
 /* Disable default tap highlight on ALL interactive elements (prevent white flicker) */
 * {
-  -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent !important;
+  tap-highlight-color: transparent !important;
 }
 
 /* Specifically target links and buttons */
 a, button, input, textarea, select {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  tap-highlight-color: transparent !important;
+}
+
+/* Nuclear option: Set CSS custom properties that JavaScript can also use */
+:root {
+  --navbar-hover-bg: rgba(255, 255, 255, 0.08);
+  --navbar-active-bg: rgba(255, 255, 255, 0.15);
+  --navbar-text-color: #fff;
 }
 
 /* Critical CSS optimizations */
@@ -815,4 +822,42 @@ a:not(.button):not(.navbar-item) {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* ============================================================================
+   FINAL NUCLEAR OVERRIDE - LOADED LAST TO BEAT EVERYTHING
+   This must be the absolute last CSS rule to ensure maximum specificity
+   ============================================================================ */
+
+/* Force override ALL possible navbar states - using attribute selectors for maximum reach */
+nav.navbar.is-primary a[class*="navbar-item"]:hover,
+nav.navbar.is-primary a[class*="navbar-item"]:focus,
+nav.navbar.is-primary a[class*="navbar-item"]:active,
+nav.navbar.is-primary a[class*="navbar-item"]:focus-visible,
+nav.navbar.is-primary [class*="navbar-item"]:hover,
+nav.navbar.is-primary [class*="navbar-item"]:focus,
+nav.navbar.is-primary [class*="navbar-item"]:active,
+nav.navbar.is-primary [class*="navbar-item"]:focus-visible,
+nav.navbar.is-primary [class*="navbar-link"]:hover,
+nav.navbar.is-primary [class*="navbar-link"]:focus,
+nav.navbar.is-primary [class*="navbar-link"]:active,
+nav.navbar.is-primary [class*="navbar-link"]:focus-visible {
+  background-color: var(--navbar-hover-bg, rgba(255, 255, 255, 0.08)) !important;
+  background: var(--navbar-hover-bg, rgba(255, 255, 255, 0.08)) !important;
+  color: var(--navbar-text-color, #fff) !important;
+  transition: background-color 200ms ease !important;
+}
+
+/* Even more specific - with ID wildcards if needed */
+nav[class*="navbar"].is-primary a:hover,
+nav[class*="navbar"].is-primary a:focus,
+nav[class*="navbar"].is-primary a:active {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+/* Override any inline styles or computed styles */
+.navbar.is-primary * {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
