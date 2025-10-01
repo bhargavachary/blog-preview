@@ -76,7 +76,7 @@ defaults:
     values:
       author: "Bhargav Achary"
       layout: post
-      show_sidebar: false
+      show_sidebar: true
       comments: true
 
 # Author information
