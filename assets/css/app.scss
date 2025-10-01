@@ -38,6 +38,43 @@ a, button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Hero image zoom and crop effect */
+  background-attachment: fixed !important;
+
+  /* Ensure background is centered and zoomed */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    background-size: 110% auto !important;
+    background-position: center 40% !important;
+    z-index: -1;
+  }
+
+  /* Darken overlay for better text readability */
+  &.hero-darken::after,
+  .hero-body.hero-darken::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    z-index: 0;
+  }
+
+  .hero-body {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 /* Performance and UX enhancements */
