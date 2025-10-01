@@ -51,6 +51,6 @@ Trivia:
 
 Collage and Video:
 
-<img class="img-responsive" src="/images/posts/life/bam-vzm.jpg" alt="" title="A collage of this beautiful trip!">
+<img class="img-responsive" src="image: /images/posts/life/bam-vzm.jpg" alt="" title="A collage of this beautiful trip!">
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/mZbHO3iWc8I"  frameborder="0"> </iframe>

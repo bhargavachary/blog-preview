@@ -1,6 +1,6 @@
 ---
 title: "A tale of Jeerango in the Eastern Ghats"
-image: /images/posts/eastern-ghats.jpg
+image: /images/posts/life/a-traveler-one.jpg
 categories: 
   - Nature
   - Personal

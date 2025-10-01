@@ -6,6 +6,8 @@
     {% assign bg_image = page.hero_image %}
 {% elsif page.image %}
     {% assign bg_image = page.image %}
+{% else %}
+    {% assign bg_image = '/images/posts/default-hero.jpg' %}
 {% endif %}
 
 <section
