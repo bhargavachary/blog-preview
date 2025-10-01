@@ -3,6 +3,8 @@ layout: page
 title: "Categories"
 subtitle: "Posts organized by category"
 permalink: /categories/
+hero_image: /images/hero/computer-science.jpg
+hero_darken: true
 ---
 
 <div class="content">

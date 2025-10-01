@@ -3,6 +3,8 @@ permalink: /professional/
 title: "init.d"
 subtitle: "System initialization for tech insights and professional development"
 layout: page
+hero_image: /images/hero/technology-modern.jpg
+hero_darken: true
 ---
 
 

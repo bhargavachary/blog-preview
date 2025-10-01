@@ -3,6 +3,8 @@ layout: page
 title: "Tags"
 subtitle: "Posts organized by tags"
 permalink: /tags/
+hero_image: /images/hero/tech-workspace.jpg
+hero_darken: true
 ---
 
 <div class="content">

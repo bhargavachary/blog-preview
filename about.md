@@ -3,6 +3,8 @@ layout: page
 permalink: /about/
 title: "About"
 subtitle: "Just another not so ordinary, time travelling, computer engineer."
+hero_image: /images/hero/about-village.jpg
+hero_darken: true
 ---
 
 Hello there! I’m D K Bhargav Achary, but you can call me "Bhargav." Hailing from Berhampur, a bustling business hub in the southern part of Odisha, I proudly wear my identity as a Telugu by birth, an Odia by heart, and an Indian by spirit.  
