@@ -20,8 +20,8 @@ disqus:
 # Analytics
 google_analytics: G-445636200
 
-# Theme
-remote_theme: chrisrhymes/bulma-clean-theme
+# Theme - GitHub Pages compatible version
+remote_theme: chrisrhymes/bulma-clean-theme@v0.14.0
 
 # Plugins
 plugins:
@@ -29,7 +29,6 @@ plugins:
   - jekyll-paginate
   - jekyll-feed
   - jekyll-seo-tag
-  - kramdown-parser-gfm
   - jekyll-redirect-from
   - jekyll-remote-theme
 
