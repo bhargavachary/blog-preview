@@ -34,7 +34,8 @@ a, button, input, textarea, select {
 /* Critical CSS optimizations */
 /* Above-the-fold content styling */
 .hero {
-  min-height: 50vh;
+  /* Adaptive height - grows with content, no fixed minimum */
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +43,7 @@ a, button, input, textarea, select {
   overflow: hidden;
 
   /* Hero image zoom and crop effect */
-  background-attachment: fixed !important;
+  background-attachment: scroll !important; /* Fixed background doesn't work well on mobile */
 
   /* Ensure background is centered and zoomed */
   &::before {
@@ -58,7 +59,7 @@ a, button, input, textarea, select {
     z-index: -1;
   }
 
-  /* Darken overlay for better text readability */
+  /* Adaptive darken overlay - adjusts to content and device */
   &.hero-darken::after,
   .hero-body.hero-darken::before {
     content: '';
@@ -67,13 +68,65 @@ a, button, input, textarea, select {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    /* Adaptive gradient overlay - lighter at bottom for natural fade */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.25)
+    );
     z-index: 0;
   }
 
   .hero-body {
     position: relative;
     z-index: 1;
+    /* Adaptive padding based on viewport */
+    padding: clamp(2rem, 5vw, 4rem) 1.5rem;
+    width: 100%;
+  }
+
+  /* Responsive height adjustments */
+  @media screen and (min-width: 769px) {
+    min-height: 40vh; /* Tablets and up */
+
+    .hero-body {
+      padding: clamp(3rem, 8vw, 6rem) 3rem;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    min-height: 45vh; /* Desktop */
+  }
+
+  @media screen and (min-width: 1440px) {
+    min-height: 50vh; /* Large screens */
+  }
+
+  /* Mobile optimization */
+  @media screen and (max-width: 768px) {
+    min-height: 30vh;
+
+    /* Disable parallax on mobile for better performance */
+    background-attachment: scroll !important;
+
+    &::before {
+      background-attachment: scroll !important;
+    }
+
+    .hero-body {
+      padding: 2rem 1rem;
+    }
+
+    /* Darker overlay on mobile for better text readability on smaller screens */
+    &.hero-darken::after,
+    .hero-body.hero-darken::before {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.65),
+        rgba(0, 0, 0, 0.45)
+      );
+    }
   }
 }
 
