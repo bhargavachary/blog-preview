@@ -272,102 +272,168 @@ img, picture img {
   animation: gradientShift 3s ease infinite;
 }
 
-/* Frosted glass navbar (iOS style) */
+/* ============================================================================
+   iOS-STYLE GLASSMORPHIC NAVBAR
+   Apple-inspired design with pill-shaped menu items
+   ============================================================================ */
+
 .navbar {
-  background-color: rgba(50, 115, 220, 0.95);
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  /* Ultra-light glassmorphism background */
+  background: linear-gradient(
+    to bottom,
+    rgba(50, 115, 220, 0.85),
+    rgba(50, 115, 220, 0.75)
+  );
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+
+  /* Subtle border like iOS */
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+
   transition:
-    background-color var(--duration-medium) var(--ease-ios),
+    background var(--duration-medium) var(--ease-ios),
+    backdrop-filter var(--duration-medium) var(--ease-ios),
     box-shadow var(--duration-medium) var(--ease-ios);
 
   &.navbar-scrolled {
-    background-color: rgba(50, 115, 220, 0.98);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(
+      to bottom,
+      rgba(50, 115, 220, 0.95),
+      rgba(50, 115, 220, 0.90)
+    );
+    backdrop-filter: blur(25px) saturate(200%) brightness(1.15);
+    -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(1.15);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
   }
 
-  /* Navbar items with subtle micro-interactions */
+  /* Navbar items - iOS pill design */
   .navbar-item {
     position: relative;
+    margin: 0.25rem 0.35rem;
+    padding: 0.5rem 1rem !important;
+
+    /* iOS pill shape */
+    border-radius: 20px !important;
+
+    /* Glassmorphic pill background */
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* Subtle inner shadow for depth */
+    box-shadow:
+      inset 0 0 0 0.5px rgba(255, 255, 255, 0.15),
+      0 2px 8px rgba(0, 0, 0, 0.08);
+
+    /* Smooth transitions */
     transition:
-      background-color var(--duration-fast) var(--ease-ios),
-      transform var(--duration-fast) var(--ease-ios);
-    border-radius: 4px;
+      all var(--duration-fast) var(--ease-ios),
+      transform var(--duration-instant) var(--ease-ios) !important;
 
-    /* CRITICAL: Disable browser default tap highlight (fixes white flicker) */
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    tap-highlight-color: transparent;
+    /* Disable tap highlight */
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    user-select: none !important;
 
-    /* Prevent default link styles that cause flicker */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    /* GPU acceleration for smooth interactions */
-    transform: translate3d(0, 0, 0);
+    /* GPU acceleration */
+    transform: translate3d(0, 0, 0) scale(1);
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    will-change: transform, background;
 
-    /* Subtle underline indicator */
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: currentColor;
-      transform: translateX(-50%);
-      transition: width var(--duration-medium) var(--ease-ios-out);
-      border-radius: 2px;
-    }
-
-    /* Hover state - subtle highlight */
+    /* iOS-style hover - slight zoom and glow */
     &:hover {
-      background-color: rgba(255, 255, 255, 0.08);
-      transform: translate3d(0, -1px, 0);
-
-      &::after {
-        width: 70%;
-      }
+      background: rgba(255, 255, 255, 0.12) !important;
+      transform: translate3d(0, -1px, 0) scale(1.05) !important;
+      box-shadow:
+        inset 0 0 0 0.5px rgba(255, 255, 255, 0.25),
+        0 4px 16px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(255, 255, 255, 0.1);
+      color: white !important;
     }
 
-    /* Active/click state - iOS-style press feedback */
+    /* iOS-style click - depress effect */
     &:active {
-      background-color: rgba(255, 255, 255, 0.15);
-      transform: translate3d(0, 0, 0) scale(0.96);
-      transition-duration: var(--duration-instant);
+      background: rgba(255, 255, 255, 0.18) !important;
+      transform: translate3d(0, 1px, 0) scale(0.95) !important;
+      box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.15),
+        inset 0 0 0 0.5px rgba(255, 255, 255, 0.2),
+        0 1px 4px rgba(0, 0, 0, 0.1);
+      transition-duration: var(--duration-instant) !important;
+      color: white !important;
+    }
+
+    /* Active page indicator - filled pill */
+    &.is-active {
+      background: rgba(255, 255, 255, 0.22) !important;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+        inset 0 2px 12px rgba(255, 255, 255, 0.1),
+        0 4px 12px rgba(0, 0, 0, 0.12);
+      color: white !important;
+      font-weight: 600;
     }
 
     /* Focus state for keyboard navigation */
     &:focus {
-      outline: 2px solid rgba(255, 255, 255, 0.5);
-      outline-offset: 2px;
-      background-color: rgba(255, 255, 255, 0.1);
+      outline: 2px solid rgba(255, 255, 255, 0.6);
+      outline-offset: 3px;
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* Remove any underlines */
+    &::after {
+      display: none;
     }
   }
 
-  /* Also apply to navbar-link (dropdown triggers) */
+  /* Navbar link (dropdown triggers) - also pill style */
   .navbar-link {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    tap-highlight-color: transparent;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
+    @extend .navbar-item;
   }
 
-  /* Navbar burger menu */
+  /* Navbar burger menu - iOS style */
   .navbar-burger {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    tap-highlight-color: transparent;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
+    margin: 0.25rem;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    transition: all var(--duration-fast) var(--ease-ios) !important;
+    -webkit-tap-highlight-color: transparent !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.2) !important;
+      transform: scale(0.95);
+    }
+
+    span {
+      /* Burger lines with smooth transitions */
+      background-color: white !important;
+      transition: all var(--duration-medium) var(--ease-ios);
+    }
+  }
+
+  /* Navbar menu container */
+  .navbar-menu {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Mobile menu adjustments */
+  @media screen and (max-width: 1023px) {
+    .navbar-menu {
+      background: rgba(50, 115, 220, 0.95) !important;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0.5rem;
+      border-radius: 12px;
+      margin-top: 0.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
   }
 }
 

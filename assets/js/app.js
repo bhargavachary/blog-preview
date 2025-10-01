@@ -39,28 +39,46 @@
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Force apply styles directly via JavaScript (nuclear option)
-    document.querySelectorAll('.navbar.is-primary .navbar-item, .navbar.is-primary .navbar-link').forEach(el => {
-        el.style.setProperty('background-color', 'transparent', 'important');
-        el.style.setProperty('-webkit-tap-highlight-color', 'transparent', 'important');
+    // ===================================
+    // iOS-STYLE NAVBAR ENHANCEMENTS
+    // ===================================
 
-        // Override hover/active with inline event handlers
-        el.addEventListener('mouseenter', function() {
-            this.style.setProperty('background-color', 'rgba(255, 255, 255, 0.08)', 'important');
+    // Add haptic-like feedback with scale animation
+    document.querySelectorAll('.navbar-item, .navbar-link').forEach(el => {
+        // Smooth scale on mousedown
+        el.addEventListener('mousedown', function(e) {
+            this.style.transition = 'transform 100ms cubic-bezier(0.4, 0, 0.2, 1)';
+            this.style.transform = 'translate3d(0, 1px, 0) scale(0.95)';
         });
 
-        el.addEventListener('mouseleave', function() {
-            this.style.setProperty('background-color', 'transparent', 'important');
-        });
-
-        el.addEventListener('mousedown', function() {
-            this.style.setProperty('background-color', 'rgba(255, 255, 255, 0.15)', 'important');
-        });
-
+        // Return to hover state on mouseup
         el.addEventListener('mouseup', function() {
-            this.style.setProperty('background-color', 'rgba(255, 255, 255, 0.08)', 'important');
+            this.style.transform = 'translate3d(0, -1px, 0) scale(1.05)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+
+        // Reset on mouse leave
+        el.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+
+        // Add smooth glow effect on hover
+        el.addEventListener('mouseenter', function() {
+            this.style.transition = 'all 200ms cubic-bezier(0.25, 0.1, 0.25, 1)';
         });
     });
+
+    // Enhance burger menu with smooth rotation
+    const burger = document.querySelector('.navbar-burger');
+    if (burger) {
+        burger.addEventListener('click', function() {
+            this.style.transform = this.classList.contains('is-active')
+                ? 'scale(0.95) rotate(90deg)'
+                : 'scale(1)';
+        });
+    }
     // Enhanced performance monitoring
     const performanceMonitor = {
         metrics: {},
