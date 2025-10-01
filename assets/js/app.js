@@ -199,16 +199,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // ===================================
+    // MODERN ANIMATION ENGINE
+    // ===================================
+
+    // Scroll-driven animations with IntersectionObserver
+    const scrollReveal = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add visible class with stagger delay
+                setTimeout(() => {
+                    entry.target.classList.add('scroll-reveal-visible');
+                }, index * 50); // Stagger by 50ms
+
+                scrollReveal.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    // Observe all elements with scroll-reveal class
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+        scrollReveal.observe(el);
+    });
+
+    // Auto-add scroll-reveal to cards and sections
+    document.querySelectorAll('.card, .section').forEach((el, index) => {
+        el.classList.add('scroll-reveal', 'reveal-fade-up', 'stagger-item');
+    });
+
+    // Staggered card entrance animations
+    document.querySelectorAll('.card').forEach((card, index) => {
+        card.style.animationDelay = `${index * 100}ms`;
+        card.classList.add('animate-in');
+    });
+
     // Reading progress indicator with performance optimization
     const progressBar = document.createElement('div');
     progressBar.className = 'reading-progress';
     document.body.appendChild(progressBar);
 
+    // Navbar scroll effect (frosted glass)
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+
     // Throttled scroll handler for better performance
     let ticking = false;
     function updateProgress() {
-        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        const scrollY = window.scrollY;
+        const scrollPercent = (scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
         progressBar.style.width = Math.min(100, Math.max(0, scrollPercent)) + '%';
+
+        // Add scrolled class to navbar
+        if (navbar) {
+            if (scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        }
+
         ticking = false;
     }
 
@@ -218,6 +270,163 @@ document.addEventListener('DOMContentLoaded', function() {
             ticking = true;
         }
     }, { passive: true });
+
+    // Parallax effect for hero sections
+    const parallaxHero = document.querySelector('.hero.parallax-enabled');
+    if (parallaxHero) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBody = parallaxHero.querySelector('.hero-body');
+            if (heroBody) {
+                heroBody.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        }, { passive: true });
+    }
+
+    // Material Design ripple effect on buttons and cards
+    function createRipple(event) {
+        const button = event.currentTarget;
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = event.clientX - rect.left - size / 2;
+        const y = event.clientY - rect.top - size / 2;
+
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            top: ${y}px;
+            left: ${x}px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        `;
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        if (!document.querySelector('#ripple-animation-style')) {
+            style.id = 'ripple-animation-style';
+            style.textContent = `
+                @keyframes ripple-animation {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        button.style.position = 'relative';
+        button.style.overflow = 'hidden';
+        button.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 600);
+    }
+
+    // Add ripple to buttons and cards
+    document.querySelectorAll('.button, .card, .navbar-item').forEach(el => {
+        el.addEventListener('click', createRipple);
+    });
+
+    // Touch gesture support for mobile
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    document.addEventListener('touchstart', (e) => {
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+        touchEndY = e.changedTouches[0].screenY;
+        handleGesture();
+    }, { passive: true });
+
+    function handleGesture() {
+        const swipeThreshold = 50;
+        const diff = touchStartY - touchEndY;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swiped up
+                console.log('Swipe up detected');
+            } else {
+                // Swiped down
+                console.log('Swipe down detected');
+
+                // Pull to refresh effect (when at top of page)
+                if (window.scrollY === 0) {
+                    showPullToRefresh();
+                }
+            }
+        }
+    }
+
+    // Pull to refresh visual feedback
+    function showPullToRefresh() {
+        const pullIndicator = document.createElement('div');
+        pullIndicator.className = 'pull-refresh pull-refresh-active';
+        pullIndicator.innerHTML = '↻';
+        pullIndicator.style.cssText = `
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #3273dc;
+        `;
+        document.body.appendChild(pullIndicator);
+
+        setTimeout(() => {
+            pullIndicator.classList.remove('pull-refresh-active');
+            setTimeout(() => pullIndicator.remove(), 300);
+        }, 1000);
+    }
+
+    // Hover effect enhancement for cards with 3D tilt
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            card.style.transform = `
+                perspective(1000px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                translateY(-8px)
+                scale(1.02)
+            `;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+
+    // Keyboard navigation enhancements
+    let focusableElements = 'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])';
+    let firstFocusable = document.querySelectorAll(focusableElements)[0];
+    let lastFocusable = document.querySelectorAll(focusableElements)[document.querySelectorAll(focusableElements).length - 1];
+
+    // Add focus visible styles dynamically
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-navigation');
+        }
+    });
+
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-navigation');
+    });
 
     // Enhance form accessibility and track interactions
     document.querySelectorAll('input, textarea, select').forEach(field => {
