@@ -1,0 +1,14 @@
+- name: About
+  link: /about/
+- name: Favorites
+  link: /favorites/
+- name: Blog
+  link: /
+- name: Categories
+  link: /categories/
+- name: Tags
+  link: /tags/
+- name: Policy
+  link: /terms/
+- name: init.d
+  link: /professional/
