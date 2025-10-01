@@ -343,7 +343,7 @@ img, picture img {
     /* iOS-style hover - slight zoom and glow */
     &:hover {
       background: rgba(255, 255, 255, 0.12) !important;
-      transform: translate3d(0, -1px, 0) scale(1.05) !important;
+      transform: scale(1.05) !important;
       box-shadow:
         inset 0 0 0 0.5px rgba(255, 255, 255, 0.25),
         0 4px 16px rgba(0, 0, 0, 0.15),
@@ -351,14 +351,14 @@ img, picture img {
       color: white !important;
     }
 
-    /* iOS-style click - depress effect */
+    /* iOS-style click - zoom in effect (pure scale, no slide) */
     &:active {
-      background: rgba(255, 255, 255, 0.18) !important;
-      transform: translate3d(0, 1px, 0) scale(0.95) !important;
+      background: rgba(255, 255, 255, 0.2) !important;
+      transform: scale(0.92) !important;
       box-shadow:
-        inset 0 2px 8px rgba(0, 0, 0, 0.15),
-        inset 0 0 0 0.5px rgba(255, 255, 255, 0.2),
-        0 1px 4px rgba(0, 0, 0, 0.1);
+        inset 0 0 12px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+        0 2px 6px rgba(0, 0, 0, 0.15);
       transition-duration: var(--duration-instant) !important;
       color: white !important;
     }

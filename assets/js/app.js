@@ -43,17 +43,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // iOS-STYLE NAVBAR ENHANCEMENTS
     // ===================================
 
-    // Add haptic-like feedback with scale animation
+    // Add haptic-like feedback with pure zoom animation
     document.querySelectorAll('.navbar-item, .navbar-link').forEach(el => {
-        // Smooth scale on mousedown
+        // Pure zoom on mousedown (no translate)
         el.addEventListener('mousedown', function(e) {
-            this.style.transition = 'transform 100ms cubic-bezier(0.4, 0, 0.2, 1)';
-            this.style.transform = 'translate3d(0, 1px, 0) scale(0.95)';
+            this.style.transition = 'transform 80ms cubic-bezier(0.4, 0, 0.2, 1)';
+            this.style.transform = 'scale(0.92)';
         });
 
-        // Return to hover state on mouseup
+        // Bounce back to hover state on mouseup
         el.addEventListener('mouseup', function() {
-            this.style.transform = 'translate3d(0, -1px, 0) scale(1.05)';
+            this.style.transform = 'scale(1.05)';
             setTimeout(() => {
                 this.style.transform = '';
             }, 150);
@@ -62,9 +62,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset on mouse leave
         el.addEventListener('mouseleave', function() {
             this.style.transform = '';
+            this.style.transition = '';
         });
 
-        // Add smooth glow effect on hover
+        // Smooth hover transition
         el.addEventListener('mouseenter', function() {
             this.style.transition = 'all 200ms cubic-bezier(0.25, 0.1, 0.25, 1)';
         });
