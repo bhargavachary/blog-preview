@@ -534,37 +534,43 @@ img, picture img {
       background: rgba(50, 115, 220, 0.95) !important;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      padding: 0.5rem;
+      padding: 0 0.5rem;
       border-radius: 12px;
       margin-top: 0.5rem;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 
-      /* Hidden state - iOS-style slide and fade */
-      opacity: 0;
-      transform: translateY(-20px) scale(0.95);
-      transform-origin: top center;
+      /* Change from absolute to relative positioning to push content */
+      position: relative !important;
+      display: block !important;
+
+      /* Hidden state - collapsed smoothly */
       max-height: 0;
+      opacity: 0;
       overflow: hidden;
-      visibility: hidden;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 0;
 
-      /* Smooth reveal animation */
+      /* Smooth reveal animation - graceful expansion */
       transition:
-        opacity 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
-        transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
-        max-height 350ms cubic-bezier(0.4, 0, 0.2, 1),
-        visibility 0ms 350ms;
+        max-height 400ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 300ms cubic-bezier(0.34, 1.56, 0.64, 1) 50ms,
+        padding 400ms cubic-bezier(0.4, 0, 0.2, 1),
+        margin 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
-      /* Active state - visible and animated */
+      /* Active state - expanded smoothly */
       &.is-active {
+        max-height: 600px; /* Large enough for all menu items */
         opacity: 1;
-        transform: translateY(0) scale(1);
-        max-height: 500px;
-        visibility: visible;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+
         transition:
-          opacity 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
-          transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
           max-height 500ms cubic-bezier(0.4, 0, 0.2, 1),
-          visibility 0ms 0ms;
+          opacity 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+          padding 500ms cubic-bezier(0.4, 0, 0.2, 1),
+          margin 500ms cubic-bezier(0.4, 0, 0.2, 1);
       }
     }
 
@@ -572,12 +578,12 @@ img, picture img {
     .navbar-menu.is-active .navbar-item {
       animation: menuItemSlideIn 300ms cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
 
-      &:nth-child(1) { animation-delay: 50ms; }
-      &:nth-child(2) { animation-delay: 100ms; }
-      &:nth-child(3) { animation-delay: 150ms; }
-      &:nth-child(4) { animation-delay: 200ms; }
-      &:nth-child(5) { animation-delay: 250ms; }
-      &:nth-child(6) { animation-delay: 300ms; }
+      &:nth-child(1) { animation-delay: 100ms; }
+      &:nth-child(2) { animation-delay: 150ms; }
+      &:nth-child(3) { animation-delay: 200ms; }
+      &:nth-child(4) { animation-delay: 250ms; }
+      &:nth-child(5) { animation-delay: 300ms; }
+      &:nth-child(6) { animation-delay: 350ms; }
     }
   }
 }
@@ -591,6 +597,20 @@ img, picture img {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* Smooth content push-down on mobile when menu opens */
+@media screen and (max-width: 1023px) {
+  /* Hero section and content below navbar smoothly transition */
+  .hero,
+  .section {
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* When navbar is fixed, ensure smooth body transition */
+  body {
+    transition: padding-top 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
