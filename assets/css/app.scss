@@ -7,6 +7,23 @@ $primary: #3273dc !default;
 // Import Main CSS file from theme
 @import "main";
 
+/* ===================================
+   CRITICAL BROWSER FIXES
+   =================================== */
+
+/* Disable default tap highlight on ALL interactive elements (prevent white flicker) */
+* {
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+}
+
+/* Specifically target links and buttons */
+a, button, input, textarea, select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  tap-highlight-color: transparent;
+}
+
 /* Critical CSS optimizations */
 /* Above-the-fold content styling */
 .hero {
@@ -270,6 +287,25 @@ img, picture img {
       transform var(--duration-fast) var(--ease-ios);
     border-radius: 4px;
 
+    /* CRITICAL: Disable browser default tap highlight (fixes white flicker) */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    tap-highlight-color: transparent;
+
+    /* Prevent default link styles that cause flicker */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* GPU acceleration for smooth interactions */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
     /* Subtle underline indicator */
     &::after {
       content: '';
@@ -307,6 +343,24 @@ img, picture img {
       outline-offset: 2px;
       background-color: rgba(255, 255, 255, 0.1);
     }
+  }
+
+  /* Also apply to navbar-link (dropdown triggers) */
+  .navbar-link {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+
+  /* Navbar burger menu */
+  .navbar-burger {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
   }
 }
 
