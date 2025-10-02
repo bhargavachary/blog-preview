@@ -50,27 +50,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     html.setAttribute('data-theme', savedTheme);
 
-    // Toggle theme
+    // Function to toggle theme
+    function toggleTheme(e) {
+        // Prevent default link behavior
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        // Update meta theme-color for mobile browser chrome
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', newTheme === 'dark' ? '#000000' : '#ffffff');
+        }
+
+        // Track theme change
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'theme_change', {
+                'event_category': 'UI',
+                'event_label': newTheme
+            });
+        }
+
+        console.log('Theme toggled to:', newTheme);
+    }
+
+    // Attach toggle to button with multiple event handlers for reliability
     if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggle.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            toggleTheme(e);
+        });
 
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-
-            // Update meta theme-color for mobile browser chrome
-            const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-            if (metaThemeColor) {
-                metaThemeColor.setAttribute('content', newTheme === 'dark' ? '#000000' : '#ffffff');
-            }
-
-            // Track theme change
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'theme_change', {
-                    'event_category': 'UI',
-                    'event_label': newTheme
-                });
+        // Keyboard support
+        themeToggle.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleTheme(e);
             }
         });
     }
@@ -79,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // iOS-STYLE NAVBAR - SIMPLE ZOOM ON CLICK
     // ===================================
 
-    document.querySelectorAll('.navbar-item, .navbar-link').forEach(el => {
+    document.querySelectorAll('.navbar-item:not(.theme-toggle-item), .navbar-link').forEach(el => {
         // Click: Subtle zoom in
         el.addEventListener('mousedown', function(e) {
             // Subtle zoom in - reduced from 0.88 to 0.96 for less dramatic effect
