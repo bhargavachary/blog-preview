@@ -160,11 +160,12 @@ html {
 
 /* iOS-inspired easing curves (more natural) */
 :root {
-  --ease-ios: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-ios: ease-out;
   --ease-ios-in: cubic-bezier(0.42, 0, 1, 1);
   --ease-ios-out: cubic-bezier(0, 0, 0.58, 1);
   --ease-spring-subtle: cubic-bezier(0.34, 1.2, 0.64, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: ease-out;
 
   /* iOS-style animation durations (faster, more responsive) */
   --duration-instant: 100ms;
@@ -211,14 +212,17 @@ html {
 /* Enhanced card with subtle iOS-style animations */
 .card {
   position: relative;
-  transform: translate3d(0, 0, 0);
   transition:
     transform 500ms var(--ease-ios),
     box-shadow 500ms var(--ease-ios),
     background-color var(--duration-fast) var(--ease-smooth);
   box-shadow: var(--shadow-sm);
-  backface-visibility: hidden;
-  will-change: transform;
+
+  /* Card images need transitions */
+  .card-image img,
+  .card-image picture img {
+    transition: transform 600ms var(--ease-ios);
+  }
 
   /* Shimmer effect on load */
   &.card-loading {
@@ -304,6 +308,15 @@ html {
 
 /* Compact sidebar card hover effects - matching main cards */
 .compact-card {
+  transition:
+    transform 500ms var(--ease-ios),
+    box-shadow 500ms var(--ease-ios);
+
+  .compact-card-image img,
+  .compact-card-image picture img {
+    transition: transform 600ms var(--ease-ios);
+  }
+
   &:hover {
     transform: scale(1.02);
     box-shadow: var(--shadow-lg);
