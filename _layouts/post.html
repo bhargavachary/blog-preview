@@ -14,3 +14,10 @@ layout: default
     {% endfor %}
 </div>
 {% endif %}
+
+{% if site.disqus.shortname %}
+<div class="content mt-6">
+    <h4 class="title is-4">Comments</h4>
+    {% include disqus.html %}
+</div>
+{% endif %}
