@@ -16,64 +16,70 @@
     <hr>
 
     <div class="social-links">
-        <h4 class="title is-6 has-text-centered">Follow Me</h4>
-        <div class="buttons are-small is-centered">
-            {% if site.social.twitter %}
-            <a href="{{ site.social.twitter }}" target="_blank" class="button is-twitter" title="Twitter">
-                <span class="icon">
-                    <i class="fab fa-twitter"></i>
-                </span>
-            </a>
-            {% endif %}
+        <h4 class="title is-6">Follow Me</h4>
 
-            {% if site.social.facebook %}
-            <a href="{{ site.social.facebook }}" target="_blank" class="button is-facebook" title="Facebook">
-                <span class="icon">
-                    <i class="fab fa-facebook"></i>
-                </span>
-            </a>
-            {% endif %}
+        {% if site.social.twitter %}
+        <a href="{{ site.social.twitter }}" target="_blank" class="social-link is-twitter">
+            <span class="icon">
+                <i class="fab fa-twitter"></i>
+            </span>
+            <span>@bhargav_achary</span>
+        </a>
+        {% endif %}
 
-            {% if site.social.linkedin %}
-            <a href="{{ site.social.linkedin }}" target="_blank" class="button is-linkedin" title="LinkedIn">
-                <span class="icon">
-                    <i class="fab fa-linkedin"></i>
-                </span>
-            </a>
-            {% endif %}
+        {% if site.social.facebook %}
+        <a href="{{ site.social.facebook }}" target="_blank" class="social-link is-facebook">
+            <span class="icon">
+                <i class="fab fa-facebook"></i>
+            </span>
+            <span>BhargavAchary.github.io</span>
+        </a>
+        {% endif %}
 
-            {% if site.social.instagram %}
-            <a href="{{ site.social.instagram }}" target="_blank" class="button is-instagram" title="Instagram">
-                <span class="icon">
-                    <i class="fab fa-instagram"></i>
-                </span>
-            </a>
-            {% endif %}
+        {% if site.social.linkedin %}
+        <a href="{{ site.social.linkedin }}" target="_blank" class="social-link is-linkedin">
+            <span class="icon">
+                <i class="fab fa-linkedin"></i>
+            </span>
+            <span>bhargavachary</span>
+        </a>
+        {% endif %}
 
-            {% if site.social.youtube %}
-            <a href="{{ site.social.youtube }}" target="_blank" class="button is-youtube" title="YouTube">
-                <span class="icon">
-                    <i class="fab fa-youtube"></i>
-                </span>
-            </a>
-            {% endif %}
+        {% if site.social.instagram %}
+        <a href="{{ site.social.instagram }}" target="_blank" class="social-link is-instagram">
+            <span class="icon">
+                <i class="fab fa-instagram"></i>
+            </span>
+            <span>@bhargav_achary</span>
+        </a>
+        {% endif %}
 
-            {% if site.social.soundcloud %}
-            <a href="{{ site.social.soundcloud }}" target="_blank" class="button is-soundcloud" title="Soundcloud">
-                <span class="icon">
-                    <i class="fab fa-soundcloud"></i>
-                </span>
-            </a>
-            {% endif %}
+        {% if site.social.youtube %}
+        <a href="{{ site.social.youtube }}" target="_blank" class="social-link is-youtube">
+            <span class="icon">
+                <i class="fab fa-youtube"></i>
+            </span>
+            <span>bhargavachary</span>
+        </a>
+        {% endif %}
 
-            {% if site.social.flickr %}
-            <a href="{{ site.social.flickr }}" target="_blank" class="button is-flickr" title="Flickr">
-                <span class="icon">
-                    <i class="fab fa-flickr"></i>
-                </span>
-            </a>
-            {% endif %}
-        </div>
+        {% if site.social.soundcloud %}
+        <a href="{{ site.social.soundcloud }}" target="_blank" class="social-link is-soundcloud">
+            <span class="icon">
+                <i class="fab fa-soundcloud"></i>
+            </span>
+            <span>bhargav-achary</span>
+        </a>
+        {% endif %}
+
+        {% if site.social.flickr %}
+        <a href="{{ site.social.flickr }}" target="_blank" class="social-link is-flickr">
+            <span class="icon">
+                <i class="fab fa-flickr"></i>
+            </span>
+            <span>bhargav_achary</span>
+        </a>
+        {% endif %}
     </div>
 </div>
 
@@ -91,72 +97,82 @@
     margin-top: 1rem;
 }
 
-.author-profile .buttons {
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Social button colors */
-.button.is-twitter {
-    background-color: #1DA1F2;
+.author-profile .social-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem 0;
+    border-radius: 6px;
+    text-decoration: none;
     color: white;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
 }
 
-.button.is-twitter:hover {
+.author-profile .social-link .icon {
+    margin-right: 0.75rem;
+    font-size: 1.1em;
+}
+
+.author-profile .social-link:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Social link colors */
+.social-link.is-twitter {
+    background-color: #1DA1F2;
+}
+
+.social-link.is-twitter:hover {
     background-color: #1a8cd8;
 }
 
-.button.is-facebook {
+.social-link.is-facebook {
     background-color: #1877F2;
-    color: white;
 }
 
-.button.is-facebook:hover {
+.social-link.is-facebook:hover {
     background-color: #166fe5;
 }
 
-.button.is-linkedin {
+.social-link.is-linkedin {
     background-color: #0A66C2;
-    color: white;
 }
 
-.button.is-linkedin:hover {
+.social-link.is-linkedin:hover {
     background-color: #004182;
 }
 
-.button.is-instagram {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    color: white;
+.social-link.is-instagram {
+    background: linear-gradient(90deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
 
-.button.is-instagram:hover {
+.social-link.is-instagram:hover {
     opacity: 0.9;
 }
 
-.button.is-youtube {
+.social-link.is-youtube {
     background-color: #FF0000;
-    color: white;
 }
 
-.button.is-youtube:hover {
+.social-link.is-youtube:hover {
     background-color: #cc0000;
 }
 
-.button.is-soundcloud {
+.social-link.is-soundcloud {
     background-color: #FF5500;
-    color: white;
 }
 
-.button.is-soundcloud:hover {
+.social-link.is-soundcloud:hover {
     background-color: #e64d00;
 }
 
-.button.is-flickr {
+.social-link.is-flickr {
     background-color: #0063DC;
-    color: white;
 }
 
-.button.is-flickr:hover {
+.social-link.is-flickr:hover {
     background-color: #0054b8;
 }
 </style>
