@@ -1,54 +1,20 @@
 ---
 layout: default
 ---
-
-{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-
 <div class="content">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-8">
-                <div class="content">
-                    <h1 class="title">{{ page.title }}</h1>
-                    <p class="subtitle is-6">
-                        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
-                        {% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}
-                    </p>
-                    
-                    {% if page.tags %}
-                    <div class="tags">
-                        {% for tag in page.tags %}
-                            <span class="tag">{{ tag }}</span>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
+    <p>Published: {{ page.date | date: '%b %-d, %Y' }} by {{ page.author }}</p>
 
-                    {% if page.image and page.layout != 'default' %}
-                    <!-- Only show post-hero-image if page doesn't have hero_image (to avoid duplication) -->
-                    {% unless page.hero_image %}
-                    <div class="post-hero-image mb-5">
-                        {% include optimized-image.html src=page.image alt=page.title width=800 height=400 class="image is-fullwidth" %}
-                    </div>
-                    {% endunless %}
-                    {% endif %}
+    {% if page.series %}
+        {% include series.html %}
+    {% endif %}
 
-                    {{ content }}
+    {{ content }}
+</div>
 
-                    {% if page.series %}
-                        {% include series.html %}
-                    {% endif %}
-                </div>
-            </div>
-            <div class="column is-4">
-                {% if site.posts.size > 0 %}
-                    {% include latest-posts.html %}
-                {% endif %}
-                {% if site.data.sponsors %}
-                    {% include sponsors.html %}
-                {% endif %}
-            </div>
-        </div>
-    </div>
+<div class="tags my-4">
+    {% for tag in page.tags %}
+        {% include tag.html tag=tag %}
+    {% endfor %}
 </div>
 
 {% unless site.hide_share_buttons %}
