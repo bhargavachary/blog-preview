@@ -105,7 +105,7 @@
     border-radius: 6px;
     text-decoration: none;
     color: white;
-    transition: all 0.3s ease;
+    transition: all 500ms ease-out;
     font-size: 0.9rem;
 }
 
@@ -115,64 +115,64 @@
 }
 
 .author-profile .social-link:hover {
-    transform: translateX(5px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Social link colors */
+/* Social link colors - desaturated */
 .social-link.is-twitter {
-    background-color: #1DA1F2;
+    background-color: rgba(29, 161, 242, 0.7);
 }
 
 .social-link.is-twitter:hover {
-    background-color: #1a8cd8;
+    background-color: rgba(29, 161, 242, 0.9);
 }
 
 .social-link.is-facebook {
-    background-color: #1877F2;
+    background-color: rgba(24, 119, 242, 0.7);
 }
 
 .social-link.is-facebook:hover {
-    background-color: #166fe5;
+    background-color: rgba(24, 119, 242, 0.9);
 }
 
 .social-link.is-linkedin {
-    background-color: #0A66C2;
+    background-color: rgba(10, 102, 194, 0.7);
 }
 
 .social-link.is-linkedin:hover {
-    background-color: #004182;
+    background-color: rgba(10, 102, 194, 0.9);
 }
 
 .social-link.is-instagram {
-    background: linear-gradient(90deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(90deg, rgba(240, 148, 51, 0.7) 0%, rgba(230, 104, 60, 0.7) 25%, rgba(220, 39, 67, 0.7) 50%, rgba(204, 35, 102, 0.7) 75%, rgba(188, 24, 136, 0.7) 100%);
 }
 
 .social-link.is-instagram:hover {
-    opacity: 0.9;
+    background: linear-gradient(90deg, rgba(240, 148, 51, 0.9) 0%, rgba(230, 104, 60, 0.9) 25%, rgba(220, 39, 67, 0.9) 50%, rgba(204, 35, 102, 0.9) 75%, rgba(188, 24, 136, 0.9) 100%);
 }
 
 .social-link.is-youtube {
-    background-color: #FF0000;
+    background-color: rgba(255, 0, 0, 0.7);
 }
 
 .social-link.is-youtube:hover {
-    background-color: #cc0000;
+    background-color: rgba(255, 0, 0, 0.9);
 }
 
 .social-link.is-soundcloud {
-    background-color: #FF5500;
+    background-color: rgba(255, 85, 0, 0.7);
 }
 
 .social-link.is-soundcloud:hover {
-    background-color: #e64d00;
+    background-color: rgba(255, 85, 0, 0.9);
 }
 
 .social-link.is-flickr {
-    background-color: #0063DC;
+    background-color: rgba(0, 99, 220, 0.7);
 }
 
 .social-link.is-flickr:hover {
-    background-color: #0054b8;
+    background-color: rgba(0, 99, 220, 0.9);
 }
 </style>
