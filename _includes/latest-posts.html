@@ -1,5 +1,23 @@
-<p class="title is-4">Latest Posts</p>
+<p class="title is-4">More Posts</p>
 
-{% for post in site.posts limit: 3 %}
+{% comment %}
+  If we're on a paginated blog page, show posts NOT on current page
+  Otherwise, show latest posts
+{% endcomment %}
+{% if paginator %}
+  {% assign offset = paginator.posts.size %}
+  {% assign shown_urls = paginator.posts | map: "url" %}
+  {% assign count = 0 %}
+  {% for post in site.posts %}
+    {% unless shown_urls contains post.url %}
+      {% if count < 3 %}
+        {% include compact-post-card.html %}
+        {% assign count = count | plus: 1 %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+{% else %}
+  {% for post in site.posts limit: 3 %}
     {% include compact-post-card.html %}
-{% endfor %}
+  {% endfor %}
+{% endif %}
