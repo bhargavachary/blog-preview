@@ -2,7 +2,7 @@
 ---
 
 // Custom overrides for BhargavAchary.in
-$primary: #3273dc !default;
+$primary: #14b8a6 !default;
 
 // Import Main CSS file from theme
 @import "main";
@@ -392,11 +392,11 @@ img, picture img {
   left: 0;
   width: 0%;
   height: 4px;
-  background: linear-gradient(90deg, #3273dc, #209cee, #00d1b2);
+  background: linear-gradient(90deg, #14b8a6, #0d9488, #0f766e);
   background-size: 200% 100%;
   z-index: 1000;
   transition: width var(--duration-medium) var(--ease-emphasized);
-  box-shadow: 0 2px 8px rgba(50, 115, 220, 0.4);
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.4);
   animation: gradientShift 3s ease infinite;
 }
 
@@ -409,8 +409,8 @@ img, picture img {
   /* Ultra-light glassmorphism background */
   background: linear-gradient(
     to bottom,
-    rgba(50, 115, 220, 0.85),
-    rgba(50, 115, 220, 0.75)
+    rgba(20, 184, 166, 0.85),
+    rgba(20, 184, 166, 0.75)
   );
   backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
   -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
@@ -426,8 +426,8 @@ img, picture img {
   &.navbar-scrolled {
     background: linear-gradient(
       to bottom,
-      rgba(50, 115, 220, 0.95),
-      rgba(50, 115, 220, 0.90)
+      rgba(20, 184, 166, 0.95),
+      rgba(20, 184, 166, 0.90)
     );
     backdrop-filter: blur(25px) saturate(200%) brightness(1.15);
     -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(1.15);
@@ -566,7 +566,7 @@ img, picture img {
   /* Mobile menu adjustments with beautiful reveal animation */
   @media screen and (max-width: 1023px) {
     .navbar-menu {
-      background: rgba(50, 115, 220, 0.95) !important;
+      background: rgba(20, 184, 166, 0.95) !important;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       padding: 0 0.5rem;
