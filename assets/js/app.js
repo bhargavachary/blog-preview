@@ -478,36 +478,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // Subtle 3D tilt on hover (iOS-inspired, less aggressive)
-    document.querySelectorAll('.card').forEach(card => {
-        // Skip tilt if card has scroll-reveal (avoid conflicts)
-        if (card.classList.contains('scroll-reveal')) return;
-
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            // Subtle rotation (iOS uses minimal 3D effects)
-            const rotateX = (y - centerY) / 40; // Reduced from /20
-            const rotateY = (centerX - x) / 40; // Reduced from /20
-
-            card.style.transform = `
-                perspective(1000px)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-                translate3d(0, -4px, 0)
-                scale(1.01)
-            `;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
+    // 3D tilt effect disabled - using simple CSS zoom instead
+    // The tilt effect has been removed in favor of cleaner centered zoom (handled by CSS)
 
     // Keyboard navigation enhancements
     let focusableElements = 'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])';
