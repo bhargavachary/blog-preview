@@ -1139,3 +1139,37 @@ nav[class*="navbar"].is-primary a:active {
 .navbar.is-primary * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
+/* ===================================
+   PAGINATION COLOR OVERRIDES
+   =================================== */
+
+/* Pagination links - use teal instead of blue */
+.pagination-previous,
+.pagination-next,
+.pagination-link {
+  color: #14b8a6 !important;
+  border-color: #14b8a6 !important;
+}
+
+.pagination-link:hover,
+.pagination-previous:hover,
+.pagination-next:hover {
+  background-color: rgba(20, 184, 166, 0.1) !important;
+  border-color: #14b8a6 !important;
+  color: #14b8a6 !important;
+}
+
+.pagination-link.is-current {
+  background-color: #14b8a6 !important;
+  border-color: #14b8a6 !important;
+  color: white !important;
+}
+
+/* Disabled pagination buttons */
+.pagination-previous[disabled],
+.pagination-next[disabled] {
+  background-color: transparent !important;
+  border-color: #dbdbdb !important;
+  color: #7a7a7a !important;
+  opacity: 0.5;
+}
