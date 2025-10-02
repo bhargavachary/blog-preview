@@ -649,16 +649,45 @@ img, picture img {
       }
     }
 
-    /* Staggered menu items animation */
-    .navbar-menu.is-active .navbar-item {
+    /* Staggered menu items animation - only for visible items */
+    .navbar-menu.is-active .navbar-start > .navbar-item,
+    .navbar-menu.is-active .navbar-start > .greedy-nav > .visible-links > .navbar-item-wrapper > .navbar-item {
       animation: menuItemSlideIn 300ms cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+    }
 
-      &:nth-child(1) { animation-delay: 100ms; }
-      &:nth-child(2) { animation-delay: 150ms; }
-      &:nth-child(3) { animation-delay: 200ms; }
-      &:nth-child(4) { animation-delay: 250ms; }
-      &:nth-child(5) { animation-delay: 300ms; }
-      &:nth-child(6) { animation-delay: 350ms; }
+    .navbar-menu.is-active .navbar-start > .navbar-item:nth-child(1),
+    .navbar-menu.is-active .navbar-start > .greedy-nav > .visible-links > .navbar-item-wrapper:nth-child(1) > .navbar-item {
+      animation-delay: 100ms;
+    }
+
+    .navbar-menu.is-active .navbar-start > .navbar-item:nth-child(2),
+    .navbar-menu.is-active .navbar-start > .greedy-nav > .visible-links > .navbar-item-wrapper:nth-child(2) > .navbar-item {
+      animation-delay: 150ms;
+    }
+
+    .navbar-menu.is-active .navbar-start > .navbar-item:nth-child(3),
+    .navbar-menu.is-active .navbar-start > .greedy-nav > .visible-links > .navbar-item-wrapper:nth-child(3) > .navbar-item {
+      animation-delay: 200ms;
+    }
+
+    .navbar-menu.is-active .navbar-start > .navbar-item:nth-child(4),
+    .navbar-menu.is-active .navbar-start > .greedy-nav > .visible-links > .navbar-item-wrapper:nth-child(4) > .navbar-item {
+      animation-delay: 250ms;
+    }
+
+    .navbar-menu.is-active .navbar-start > .navbar-item:nth-child(5),
+    .navbar-menu.is-active .navbar-start > .greedy-nav > .visible-links > .navbar-item-wrapper:nth-child(5) > .navbar-item {
+      animation-delay: 300ms;
+    }
+
+    .navbar-menu.is-active .navbar-start > .navbar-item:nth-child(6),
+    .navbar-menu.is-active .navbar-start > .greedy-nav > .visible-links > .navbar-item-wrapper:nth-child(6) > .navbar-item {
+      animation-delay: 350ms;
+    }
+
+    /* Ensure hidden-links items never animate */
+    .navbar-menu.is-active .hidden-links .navbar-item {
+      animation: none !important;
     }
   }
 }
@@ -1367,14 +1396,26 @@ nav[class*="navbar"].is-primary a:active {
     width: 100%;
   }
 
-  /* Hide greedy nav button on mobile */
+  /* Hide greedy nav button on mobile - no transition to prevent flash */
   .greedy-nav-btn {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
-  /* Hide hidden-links on mobile */
+  /* Hide hidden-links on mobile - no transition to prevent flash */
   .greedy-nav .hidden-links {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* Prevent any animations on hidden elements */
+  .greedy-nav-btn *,
+  .greedy-nav .hidden-links * {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
