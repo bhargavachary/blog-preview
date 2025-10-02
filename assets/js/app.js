@@ -599,105 +599,86 @@ if ('serviceWorker' in navigator) {
 }
 
 /* =========================================================================
-   PRIORITY+ ADAPTIVE NAVIGATION
+   GREEDY NAVIGATION (Priority+)
+   Based on working implementation from bhargavachary.github.io
    Intelligently moves menu items to overflow dropdown based on space
    ========================================================================= */
 
 (function() {
     'use strict';
 
-    function initPriorityNav() {
-        const navbarMenu = document.querySelector('.navbar-menu');
-        const navbar = document.querySelector('.navbar-start');
-        if (!navbar || !navbarMenu) return;
+    function initGreedyNav() {
+        const nav = document.querySelector('.greedy-nav');
+        if (!nav) return;
 
-        // Only run on desktop/tablet (above 1023px where Bulma keeps navbar visible)
-        if (window.innerWidth <= 1023) return;
+        const vlinks = nav.querySelector('.visible-links');
+        const hlinks = nav.querySelector('.hidden-links');
+        const btn = nav.querySelector('.greedy-nav-btn');
 
-        const navItems = Array.from(navbar.querySelectorAll('.navbar-item:not(.more-dropdown)'));
-        if (navItems.length === 0) return;
+        if (!vlinks || !hlinks || !btn) return;
 
-        // Create "More" dropdown if it doesn't exist
-        let moreDropdown = navbar.querySelector('.more-dropdown');
-        if (!moreDropdown) {
-            moreDropdown = document.createElement('div');
-            moreDropdown.className = 'navbar-item has-dropdown is-hoverable more-dropdown';
-            moreDropdown.style.display = 'none';
-            moreDropdown.innerHTML = `
-                <a class="navbar-link">
-                    More
-                </a>
-                <div class="navbar-dropdown more-dropdown-menu"></div>
-            `;
-            navbar.appendChild(moreDropdown);
-        }
-
-        const moreMenu = moreDropdown.querySelector('.more-dropdown-menu');
+        let breaks = [];
 
         function updateNav() {
-            // Only run on desktop/tablet
+            // Only run on desktop (above 1023px where Bulma keeps navbar visible)
             if (window.innerWidth <= 1023) {
-                // Hide Priority+ on mobile/small tablets
-                moreDropdown.style.display = 'none';
-                navItems.forEach(item => {
-                    item.style.display = '';
-                });
+                btn.classList.add('hidden');
+                // Move all hidden items back to visible
+                while (hlinks.children.length > 0) {
+                    vlinks.appendChild(hlinks.children[0]);
+                }
+                breaks = [];
                 return;
             }
 
-            // Get available width (navbar container minus some padding)
-            const navbarContainer = document.querySelector('.navbar .container');
-            const navbarBrand = document.querySelector('.navbar-brand');
-            const navbarEnd = document.querySelector('.navbar-end');
+            // Calculate available space
+            const availableSpace = btn.classList.contains('hidden')
+                ? nav.offsetWidth
+                : nav.offsetWidth - btn.offsetWidth - 30;
 
-            const totalWidth = navbarContainer ? navbarContainer.offsetWidth : window.innerWidth;
-            const brandWidth = navbarBrand ? navbarBrand.offsetWidth : 0;
-            const endWidth = navbarEnd ? navbarEnd.offsetWidth : 0;
-            const availableWidth = totalWidth - brandWidth - endWidth - 40; // 40px padding
-
-            const moreWidth = 80; // Approximate width of "More" button
-            let usedWidth = 0;
-            let hiddenItems = [];
-
-            // Reset all items first
-            navItems.forEach(item => {
-                item.style.display = '';
-            });
-
-            // Calculate after short delay to let layout settle
-            requestAnimationFrame(() => {
-                // Calculate which items fit
-                for (let i = 0; i < navItems.length; i++) {
-                    const item = navItems[i];
-                    const itemWidth = item.offsetWidth;
-
-                    // Check if this item plus "More" button fits
-                    if (usedWidth + itemWidth + moreWidth < availableWidth) {
-                        usedWidth += itemWidth;
-                    } else {
-                        // This item and all remaining items go to dropdown
-                        hiddenItems = navItems.slice(i);
-                        break;
-                    }
+            // If visible links overflow available space, move last item to hidden
+            if (vlinks.offsetWidth > availableSpace) {
+                breaks.push(vlinks.offsetWidth);
+                const lastItem = vlinks.children[vlinks.children.length - 1];
+                if (lastItem) {
+                    // Prepend to hidden links (so order is maintained when moved back)
+                    hlinks.insertBefore(lastItem, hlinks.children[0]);
+                    btn.classList.remove('hidden');
+                }
+            }
+            // If space is available and there are hidden items, move first hidden back to visible
+            else if (breaks.length > 0 && availableSpace > breaks[breaks.length - 1]) {
+                const firstHidden = hlinks.children[0];
+                if (firstHidden) {
+                    vlinks.appendChild(firstHidden);
+                    breaks.pop();
                 }
 
-                // Update dropdown
-                if (hiddenItems.length > 0) {
-                    moreMenu.innerHTML = '';
-                    hiddenItems.forEach(item => {
-                        const clone = item.cloneNode(true);
-                        clone.classList.add('in-dropdown');
-                        moreMenu.appendChild(clone);
-                        item.style.display = 'none';
-                    });
-                    moreDropdown.style.display = '';
-                } else {
-                    moreDropdown.style.display = 'none';
+                // Hide button if no more hidden items
+                if (breaks.length === 0) {
+                    btn.classList.add('hidden');
                 }
-            });
+            }
+
+            // Recursively update if still overflowing
+            if (vlinks.offsetWidth > availableSpace) {
+                updateNav();
+            }
         }
 
-        // Initial update with delay
+        // Toggle dropdown on button click
+        btn.addEventListener('click', function() {
+            hlinks.classList.toggle('is-active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target)) {
+                hlinks.classList.remove('is-active');
+            }
+        });
+
+        // Initial update with delay to let DOM settle
         setTimeout(updateNav, 100);
 
         // Update on resize with debounce
@@ -709,14 +690,14 @@ if ('serviceWorker' in navigator) {
 
         // Update when fonts load
         if (document.fonts) {
-            document.fonts.ready.then(() => setTimeout(updateNav, 50));
+            document.fonts.ready.then(() => setTimeout(updateNav, 100));
         }
     }
 
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPriorityNav);
+        document.addEventListener('DOMContentLoaded', initGreedyNav);
     } else {
-        initPriorityNav();
+        initGreedyNav();
     }
 })();
