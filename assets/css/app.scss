@@ -477,16 +477,26 @@ img, picture img {
   /* Navbar brand (site title) - enhanced visibility */
   .navbar-brand .navbar-item {
     color: #FFFEF5 !important;
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.3px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 0 25px rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    /* Modern, elegant font stack */
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 0 20px rgba(255, 255, 255, 0.1);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: all 0.3s ease;
 
     &:hover {
       color: #FFFEF5 !important;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 0 35px rgba(255, 255, 255, 0.25);
+      /* Glowing text effect on hover */
+      text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 254, 245, 0.4),
+        0 2px 6px rgba(0, 0, 0, 0.3);
+      transform: translateY(-1px);
     }
   }
 
@@ -501,13 +511,14 @@ img, picture img {
 
     /* Enhanced typography for maximum readability */
     color: #FFFEF5 !important; /* Warm cream - better contrast than pure white */
-    font-weight: 600; /* Semi-bold for clarity */
+    font-weight: 500; /* Medium weight for elegance */
     font-size: 0.95rem; /* Slightly larger for readability */
     letter-spacing: 0.5px; /* More spacing for clarity */
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    /* Modern, elegant font - smooth and fun */
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
                  Roboto, "Helvetica Neue", Arial, sans-serif;
     /* Subtle text shadow for depth and legibility */
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     /* Smooth font rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -530,7 +541,7 @@ img, picture img {
     -webkit-touch-callout: none !important;
     user-select: none !important;
 
-    /* iOS-style hover - warm glow effect */
+    /* iOS-style hover - glowing text effect */
     &:hover {
       background: rgba(255, 255, 255, 0.15) !important;
       box-shadow:
@@ -538,8 +549,13 @@ img, picture img {
         0 4px 20px rgba(0, 0, 0, 0.2),
         0 0 30px rgba(255, 254, 245, 0.15); /* Warm glow */
       color: #FFFEF5 !important;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.3);
-      transform: scale(1.05) !important;
+      /* Multi-layer glow effect on text */
+      text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 16px rgba(255, 255, 255, 0.6),
+        0 0 24px rgba(255, 254, 245, 0.4),
+        0 1px 4px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05) translateY(-1px) !important;
     }
 
     /* iOS-style click */
