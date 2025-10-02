@@ -1342,10 +1342,10 @@ nav[class*="navbar"].is-primary a:active {
    Classy fade-in effect when pages load
    ========================================================================= */
 
-@keyframes fadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -1353,30 +1353,55 @@ nav[class*="navbar"].is-primary a:active {
   }
 }
 
-body {
-  animation: fadeIn 0.6s ease-out;
+/* Initial state - hidden before JS triggers animation */
+body.page-loading {
+  opacity: 0;
 }
 
-/* Fade in main content sections */
-.section,
-.hero,
-.container > .columns,
-.content {
-  animation: fadeIn 0.8s ease-out;
+/* Animate when page-loaded class is added via JS */
+body.page-loaded {
+  animation: fadeInUp 0.8s ease-out forwards !important;
+}
+
+/* Fade in main content sections with stagger */
+body.page-loaded .hero {
+  animation: fadeInUp 1s ease-out 0.1s forwards !important;
+  opacity: 0;
+}
+
+body.page-loaded .section {
+  animation: fadeInUp 1s ease-out 0.2s forwards !important;
+  opacity: 0;
+}
+
+body.page-loaded .columns {
+  animation: fadeInUp 1.2s ease-out 0.3s forwards !important;
+  opacity: 0;
 }
 
 /* Stagger animation for cards */
-.card {
-  animation: fadeIn 1s ease-out;
+body.page-loaded .card {
+  animation: fadeInUp 1.2s ease-out forwards !important;
+  opacity: 0;
 }
+
+body.page-loaded .card:nth-child(1) { animation-delay: 0.4s !important; }
+body.page-loaded .card:nth-child(2) { animation-delay: 0.5s !important; }
+body.page-loaded .card:nth-child(3) { animation-delay: 0.6s !important; }
+body.page-loaded .card:nth-child(4) { animation-delay: 0.7s !important; }
+body.page-loaded .card:nth-child(5) { animation-delay: 0.8s !important; }
+body.page-loaded .card:nth-child(6) { animation-delay: 0.9s !important; }
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-  *,
+  body.page-loading,
+  body.page-loaded,
+  body.page-loaded *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
     transition-duration: 0.01ms !important;
+    opacity: 1 !important;
   }
 }

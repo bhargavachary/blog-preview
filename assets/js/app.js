@@ -599,6 +599,34 @@ if ('serviceWorker' in navigator) {
 }
 
 /* =========================================================================
+   PAGE LOAD FADE-IN ANIMATION
+   Triggers classy fade-in effect after page loads
+   ========================================================================= */
+
+(function() {
+    'use strict';
+
+    // Add loading class immediately
+    document.documentElement.classList.add('page-loading');
+    document.body.classList.add('page-loading');
+
+    // Trigger fade-in animation when page is fully loaded
+    window.addEventListener('load', function() {
+        // Small delay to ensure everything is rendered
+        setTimeout(function() {
+            document.body.classList.remove('page-loading');
+            document.body.classList.add('page-loaded');
+        }, 50);
+    });
+
+    // Fallback: trigger after DOM ready if load event takes too long
+    if (document.readyState === 'complete') {
+        document.body.classList.remove('page-loading');
+        document.body.classList.add('page-loaded');
+    }
+})();
+
+/* =========================================================================
    GREEDY NAVIGATION (Priority+)
    Based on working implementation from bhargavachary.github.io
    Intelligently moves menu items to overflow dropdown based on space
