@@ -218,6 +218,7 @@ html {
     background-color var(--duration-fast) var(--ease-smooth);
   box-shadow: var(--shadow-sm);
   backface-visibility: hidden;
+  will-change: transform;
 
   /* Shimmer effect on load */
   &.card-loading {
