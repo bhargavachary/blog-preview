@@ -1246,9 +1246,35 @@ nav[class*="navbar"].is-primary a:active {
   padding: 0.5rem 1rem;
 }
 
-/* Mobile: hide priority nav logic, use burger */
-@media screen and (max-width: 1023px) {
+/* Override Bulma's navbar collapse - keep navbar-menu visible for Priority+ */
+@media screen and (min-width: 769px) {
+  .navbar-menu {
+    display: flex !important;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  .navbar-burger {
+    display: none !important;
+  }
+}
+
+/* On mobile (below 769px), use traditional burger menu */
+@media screen and (max-width: 768px) {
   .more-dropdown {
     display: none !important;
+  }
+
+  /* Keep Bulma's default mobile behavior */
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-menu.is-active {
+    display: block !important;
+  }
+
+  .navbar-burger {
+    display: block !important;
   }
 }

@@ -638,50 +638,56 @@ if ('serviceWorker' in navigator) {
         });
         
         function updateNav() {
+            // Don't run on mobile
+            if (window.innerWidth <= 768) {
+                moreDropdown.style.display = 'none';
+                navItems.forEach(item => {
+                    item.style.display = '';
+                });
+                return;
+            }
+            
             const containerWidth = navbar.offsetWidth;
             const moreWidth = 100; // Approximate width of "More" button
             let usedWidth = 0;
             let visibleItems = [];
             let hiddenItems = [];
             
-            // Reset all items to navbar
+            // Reset all items to navbar first
+            moreDropdown.style.display = 'none';
             navItems.forEach(item => {
-                if (item.parentElement !== navbar) {
-                    navbar.appendChild(item);
-                }
+                item.style.display = '';
                 item.classList.remove('in-dropdown');
             });
             
-            // Calculate which items fit
-            navItems.forEach((item, index) => {
-                const itemWidth = item.offsetWidth + 10; // Add margin
+            // Wait for layout to settle
+            setTimeout(() => {
+                // Calculate which items fit
+                navItems.forEach((item, index) => {
+                    const itemWidth = item.offsetWidth + 10; // Add margin
+                    
+                    if (usedWidth + itemWidth + moreWidth < containerWidth) {
+                        usedWidth += itemWidth;
+                        visibleItems.push(item);
+                    } else {
+                        hiddenItems.push(item);
+                    }
+                });
                 
-                if (usedWidth + itemWidth + moreWidth < containerWidth || hiddenItems.length === 0) {
-                    usedWidth += itemWidth;
-                    visibleItems.push(item);
+                // Move overflow items to dropdown
+                if (hiddenItems.length > 0) {
+                    moreMenu.innerHTML = '';
+                    hiddenItems.forEach(item => {
+                        const clone = item.cloneNode(true);
+                        clone.classList.add('in-dropdown');
+                        moreMenu.appendChild(clone);
+                        item.style.display = 'none';
+                    });
+                    moreDropdown.style.display = '';
                 } else {
-                    hiddenItems.push(item);
+                    moreDropdown.style.display = 'none';
                 }
-            });
-            
-            // Move overflow items to dropdown
-            if (hiddenItems.length > 0) {
-                moreMenu.innerHTML = '';
-                hiddenItems.forEach(item => {
-                    const clone = item.cloneNode(true);
-                    clone.classList.add('in-dropdown');
-                    clone.classList.remove('navbar-item');
-                    clone.classList.add('navbar-item');
-                    moreMenu.appendChild(clone);
-                    item.style.display = 'none';
-                });
-                moreDropdown.style.display = '';
-            } else {
-                moreDropdown.style.display = 'none';
-                navItems.forEach(item => {
-                    item.style.display = '';
-                });
-            }
+            }, 10);
         }
         
         // Initial update
