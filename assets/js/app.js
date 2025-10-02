@@ -80,17 +80,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===================================
 
     document.querySelectorAll('.navbar-item, .navbar-link').forEach(el => {
-        // Click: Zoom in quickly
+        // Click: Subtle zoom in
         el.addEventListener('mousedown', function(e) {
-            // Fast zoom in
+            // Subtle zoom in - reduced from 0.88 to 0.96 for less dramatic effect
             this.style.transition = 'transform 50ms cubic-bezier(0.4, 0, 1, 1)';
-            this.style.transform = 'scale(0.88)';
+            this.style.transform = 'scale(0.96)';
         });
 
-        // Release: Zoom back with slight bounce
+        // Release: Zoom back smoothly
         el.addEventListener('mouseup', function() {
-            // Quick bounce back
-            this.style.transition = 'transform 200ms cubic-bezier(0.34, 1.2, 0.64, 1)';
+            // Smooth return without excessive bounce
+            this.style.transition = 'transform 150ms cubic-bezier(0.4, 0, 0.2, 1)';
             this.style.transform = 'scale(1)';
         });
 
