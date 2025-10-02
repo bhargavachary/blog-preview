@@ -38,17 +38,19 @@
     }
 })();
 
-document.addEventListener('DOMContentLoaded', function() {
-    // ===================================
-    // DARK MODE TOGGLE
-    // ===================================
-
-    const themeToggle = document.getElementById('theme-toggle');
+// ===================================
+// DARK MODE TOGGLE - Initialize theme early
+// ===================================
+(function() {
     const html = document.documentElement;
-
-    // Check for saved theme preference or default to 'dark'
     const savedTheme = localStorage.getItem('theme') || 'dark';
     html.setAttribute('data-theme', savedTheme);
+})();
+
+// Function to initialize theme toggle - can be called multiple times
+function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
 
     // Function to toggle theme
     function toggleTheme(e) {
@@ -86,10 +88,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Attach toggle handlers - Simple and direct
     if (themeToggle) {
-        console.log('Theme toggle button found');
+        console.log('Theme toggle button found, attaching listeners');
+
+        // Remove any existing listeners by cloning the element
+        const newToggle = themeToggle.cloneNode(true);
+        themeToggle.parentNode.replaceChild(newToggle, themeToggle);
 
         // Direct onclick for maximum reliability
-        themeToggle.onclick = function(e) {
+        newToggle.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
             toggleTheme(e);
@@ -97,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         // Keyboard support
-        themeToggle.addEventListener('keydown', function(e) {
+        newToggle.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 toggleTheme(e);
@@ -105,13 +111,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Touch support for mobile
-        themeToggle.addEventListener('touchend', function(e) {
+        newToggle.addEventListener('touchend', function(e) {
             e.preventDefault();
             toggleTheme(e);
         }, { passive: false });
     } else {
         console.error('Theme toggle button NOT found!');
     }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ===================================
+    // Initialize theme toggle on page load
+    // ===================================
+    initThemeToggle();
 
     // ===================================
     // iOS-STYLE NAVBAR - SIMPLE ZOOM ON CLICK
@@ -688,6 +701,13 @@ if ('serviceWorker' in navigator) {
         // Fade in when arriving from another page
         document.body.classList.add('page-arrived');
         sessionStorage.removeItem('pageTransition');
+
+        // Re-initialize theme toggle after page transition
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initThemeToggle);
+        } else {
+            initThemeToggle();
+        }
 
         // Remove class after animation completes
         setTimeout(function() {
