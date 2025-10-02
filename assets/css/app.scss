@@ -302,6 +302,11 @@ html {
 }
 
 /* Image optimization and responsiveness */
+picture {
+  display: block;
+  width: 100%;
+}
+
 img, picture img {
   height: auto;
   max-width: 100%;
