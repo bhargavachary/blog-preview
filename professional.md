@@ -1,7 +1,7 @@
 ---
 permalink: /professional/
 title: "init.d"
-subtitle: "System initialization for tech insights and professional development"
+subtitle: "Where systems meet curiosity, and code meets coffee ☕"
 layout: page
 hero_image: /images/hero/technology-modern.jpg
 hero_darken: true
@@ -205,7 +205,7 @@ hero_darken: true
       ● Uptime: ∞ (we don't do downtime here)
     </div>
     <p style="color: #999; font-size: 14px;">
-      🤖 Where neural networks meet coffee-fueled curiosity. Exploring LLMs, transformers, and why my model thinks cats are dogs. Papers read: 1,247. Papers understood: 3.
+      🤖 LLMs, transformers, and the occasional cat-dog confusion
     </p>
   </div>
 
@@ -220,7 +220,7 @@ hero_darken: true
       ● Warning: Wallet.balance critically low
     </div>
     <p style="color: #999; font-size: 14px;">
-      📱 From smartwatches that judge my fitness to keyboards that click just right. If it beeps, blinks, or needs charging, I've probably reviewed it. Tech enthusiast? More like tech hoarder (with receipts).
+      📱 If it beeps, blinks, or needs charging...
     </p>
   </div>
 
@@ -235,7 +235,7 @@ hero_darken: true
       ● Status: Imposter syndrome patched ✓
     </div>
     <p style="color: #999; font-size: 14px;">
-      📈 Climbing the corporate ladder while debugging life. Career advice, skill trees, and why "do what you love" is terrible financial advice. Side quests include mentoring, public speaking, and pretending to understand blockchain.
+      📈 Career growth, skill trees, and debugging life.exe
     </p>
   </div>
 
@@ -250,7 +250,7 @@ hero_darken: true
       ● Error: Work-life balance not found
     </div>
     <p style="color: #999; font-size: 14px;">
-      🧬 Where biology meets biography. From quantum physics rabbit holes to why I can't digest lactose but won't stop eating ice cream. Science, health hacks, life lessons, and philosophical rants at 2 AM.
+      🧬 Where biology meets biography, and curiosity meets chaos
     </p>
   </div>
 </div>
