@@ -199,12 +199,13 @@ hero_darken: true
       <span class="status-indicator status-ok"></span>ai-research.service
     </h3>
     <div style="color: #ccc; font-family: 'Courier New', monospace; font-size: 12px; margin-bottom: 15px;">
-      ● Active: <span style="color: #00ff00;">running</span> (since boot)<br>
-      ● Process: AI/ML research and development<br>
-      ● Memory: High-performance neural networks
+      ● Active: <span style="color: #00ff00;">running</span> (GPUs go brrrr)<br>
+      ● Process: Training models while dreaming of AGI<br>
+      ● Memory: 99 problems but RAM ain't one<br>
+      ● Uptime: ∞ (we don't do downtime here)
     </div>
     <p style="color: #999; font-size: 14px;">
-      🤖 AI/ML research, algorithms, and cutting-edge papers.
+      🤖 Where neural networks meet coffee-fueled curiosity. Exploring LLMs, transformers, and why my model thinks cats are dogs. Papers read: 1,247. Papers understood: 3.
     </p>
   </div>
 
@@ -213,12 +214,13 @@ hero_darken: true
       <span class="status-indicator status-info"></span>tech-gadgets.service
     </h3>
     <div style="color: #ccc; font-family: 'Courier New', monospace; font-size: 12px; margin-bottom: 15px;">
-      ● Active: <span style="color: #0088ff;">monitoring</span> (scanning hardware)<br>
-      ● Process: Technology trend analysis<br>
-      ● I/O: Consumer electronics evaluation
+      ● Active: <span style="color: #0088ff;">monitoring</span> (gadget radar ON)<br>
+      ● Process: Unboxing therapy in progress<br>
+      ● I/O: Credit card → gadgets → happiness<br>
+      ● Warning: Wallet.balance critically low
     </div>
     <p style="color: #999; font-size: 14px;">
-      📱 Tech reviews, gadget analysis, and hardware innovations.
+      📱 From smartwatches that judge my fitness to keyboards that click just right. If it beeps, blinks, or needs charging, I've probably reviewed it. Tech enthusiast? More like tech hoarder (with receipts).
     </p>
   </div>
 
@@ -227,12 +229,13 @@ hero_darken: true
       <span class="status-indicator status-warning"></span>professional-growth.service
     </h3>
     <div style="color: #ccc; font-family: 'Courier New', monospace; font-size: 12px; margin-bottom: 15px;">
-      ● Active: <span style="color: #ffaa00;">optimizing</span> (continuous improvement)<br>
-      ● Process: Career development pipeline<br>
-      ● Network: Industry connections established
+      ● Active: <span style="color: #ffaa00;">optimizing</span> (git push career)<br>
+      ● Process: Learning > Earning (sometimes)<br>
+      ● Network: LinkedIn connections++<br>
+      ● Status: Imposter syndrome patched ✓
     </div>
     <p style="color: #999; font-size: 14px;">
-      📈 Career guidance, skill development, and industry insights.
+      📈 Climbing the corporate ladder while debugging life. Career advice, skill trees, and why "do what you love" is terrible financial advice. Side quests include mentoring, public speaking, and pretending to understand blockchain.
     </p>
   </div>
 
@@ -241,12 +244,13 @@ hero_darken: true
       <span class="status-indicator status-critical"></span>science-life.service
     </h3>
     <div style="color: #ccc; font-family: 'Courier New', monospace; font-size: 12px; margin-bottom: 15px;">
-      ● Active: <span style="color: #ff4444;">experimental</span> (high priority)<br>
-      ● Process: Life sciences integration<br>
-      ● Data: Health and wellness metrics
+      ● Active: <span style="color: #ff4444;">experimental</span> (caffeine-powered)<br>
+      ● Process: Optimizing human.exe daily<br>
+      ● Data: 10K steps, 8hrs sleep (aspirational)<br>
+      ● Error: Work-life balance not found
     </div>
     <p style="color: #999; font-size: 14px;">
-      🧬 Scientific discoveries, health insights, and life experiences.
+      🧬 Where biology meets biography. From quantum physics rabbit holes to why I can't digest lactose but won't stop eating ice cream. Science, health hacks, life lessons, and philosophical rants at 2 AM.
     </p>
   </div>
 </div>
