@@ -453,17 +453,13 @@ img, picture img {
       inset 0 0 0 0.5px rgba(255, 255, 255, 0.15),
       0 2px 8px rgba(0, 0, 0, 0.08);
 
-    /* Smooth transitions - ONLY for background changes */
-    transition: background 200ms var(--ease-ios), box-shadow 200ms var(--ease-ios);
+    /* Smooth transitions - background and subtle zoom */
+    transition: background 200ms var(--ease-ios), box-shadow 200ms var(--ease-ios), transform 200ms var(--ease-ios);
 
     /* Disable tap highlight */
     -webkit-tap-highlight-color: transparent !important;
     -webkit-touch-callout: none !important;
     user-select: none !important;
-
-    /* GPU acceleration */
-    transform: scale(1);
-    backface-visibility: hidden;
 
     /* iOS-style hover - slight zoom and glow */
     &:hover {
@@ -473,6 +469,7 @@ img, picture img {
         0 4px 16px rgba(0, 0, 0, 0.15),
         0 0 20px rgba(255, 255, 255, 0.1);
       color: white !important;
+      transform: scale(1.05) !important;
     }
 
     /* iOS-style click - ONLY zoom (handled by JavaScript for precision) */
