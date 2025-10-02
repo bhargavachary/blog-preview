@@ -1336,3 +1336,47 @@ nav[class*="navbar"].is-primary a:active {
     }
   }
 }
+
+/* =========================================================================
+   PAGE LOAD FADE-IN ANIMATION
+   Classy fade-in effect when pages load
+   ========================================================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Fade in main content sections */
+.section,
+.hero,
+.container > .columns,
+.content {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Stagger animation for cards */
+.card {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
