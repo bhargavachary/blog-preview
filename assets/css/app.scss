@@ -301,6 +301,25 @@ html {
   }
 }
 
+/* Compact sidebar card hover effects - matching main cards */
+.compact-card {
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+
+    .compact-card-image img,
+    .compact-card-image picture img {
+      transform: scale(1.05);
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-sm);
+    transition-duration: var(--duration-instant);
+  }
+}
+
 /* Image optimization and responsiveness */
 picture {
   display: block;
