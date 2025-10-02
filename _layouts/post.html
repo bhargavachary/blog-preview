@@ -14,11 +14,3 @@ layout: default
     {% endfor %}
 </div>
 {% endif %}
-
-{% if page.comments %}
-<div class="content mt-6">
-    <h4 class="title is-4">Comments</h4>
-    <section id="disqus_thread"></section>
-    {% include disqus.html %}
-</div>
-{% endif %}
