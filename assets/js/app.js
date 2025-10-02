@@ -40,6 +40,42 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // ===================================
+    // DARK MODE TOGGLE
+    // ===================================
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check for saved theme preference or default to 'light'
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+
+    // Toggle theme
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Update meta theme-color for mobile browser chrome
+            const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+            if (metaThemeColor) {
+                metaThemeColor.setAttribute('content', newTheme === 'dark' ? '#000000' : '#ffffff');
+            }
+
+            // Track theme change
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'theme_change', {
+                    'event_category': 'UI',
+                    'event_label': newTheme
+                });
+            }
+        });
+    }
+
+    // ===================================
     // iOS-STYLE NAVBAR - SIMPLE ZOOM ON CLICK
     // ===================================
 

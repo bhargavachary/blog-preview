@@ -68,6 +68,16 @@
             </div>
 
             <div class="navbar-end">
+                <div class="navbar-item">
+                    <button id="theme-toggle" class="button is-ghost theme-toggle-btn" aria-label="Toggle dark mode">
+                        <span class="icon theme-icon-light">
+                            <i class="fas fa-sun"></i>
+                        </span>
+                        <span class="icon theme-icon-dark">
+                            <i class="fas fa-moon"></i>
+                        </span>
+                    </button>
+                </div>
                 {% if site.gh_sponsor %}
                     <a class="navbar-item" href="https://github.com/sponsors/{{ site.gh_sponsor }}">
                         <span class="icon gh-sponsor"><i class="fas fa-heart"></i></span>

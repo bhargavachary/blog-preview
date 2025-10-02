@@ -1,7 +1,19 @@
 <head>
+    <!-- CRITICAL: Load theme immediately to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            // Update meta theme-color immediately
+            const themeColor = savedTheme === 'dark' ? '#000000' : '#ffffff';
+            document.documentElement.style.setProperty('--meta-theme-color', themeColor);
+        })();
+    </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="{{ site.theme_color | default: '#ffffff' }}">
+    <meta name="theme-color" content="{{ site.theme_color | default: '#ffffff' }}" id="theme-color-meta">
     
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
