@@ -337,10 +337,31 @@ hero_darken: true
 </style>
 
 <div style="text-align: center; margin-top: 60px; margin-bottom: 40px;">
-  <a href="https://dkbachary.github.io" target="_blank" class="retro-button">
+  <a href="https://dkbachary.github.io" target="_blank" class="retro-button" id="launch-button">
     <span class="retro-arrow">►►►</span> Launch Main Hub <span class="retro-arrow">◄◄◄</span>
   </a>
   <p style="font-family: 'VT323', monospace; color: #666; font-size: 1.5em; margin-top: 20px;">
-    // Press ENTER to continue...
+    // Press <kbd style="background: #333; padding: 2px 8px; border-radius: 4px; color: #00ff00; border: 1px solid #555;">ENTER</kbd> to continue...
   </p>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const launchButton = document.getElementById('launch-button');
+      if (launchButton) {
+        // Visual feedback: flash the button
+        launchButton.style.transform = 'scale(0.95)';
+        setTimeout(function() {
+          launchButton.style.transform = 'scale(1.05)';
+          setTimeout(function() {
+            window.open(launchButton.href, '_blank');
+          }, 100);
+        }, 100);
+      }
+    }
+  });
+});
+</script>
