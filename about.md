@@ -37,6 +37,15 @@ hero_darken: true
                 <span style="opacity: 0.9;">More details about my work and projects at</span>
                 <a href="/init.d/" style="font-weight: 600; color: #00d1b2;">init.d</a> ✨
             </p>
+
+            <div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">
+                <a href="https://dkbachary.github.io" target="_blank" class="retro-launch-button" id="launch-button-about">
+                    <span class="retro-arrow">►►►</span> Launch Main Hub <span class="retro-arrow">◄◄◄</span>
+                </a>
+                <p style="font-family: 'Courier New', monospace; color: #666; font-size: 1.2em; margin-top: 15px;">
+                    // Press <kbd style="background: #333; padding: 2px 8px; border-radius: 4px; color: #00d1b2; border: 1px solid #555;">ENTER</kbd> to continue...
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -53,5 +62,63 @@ hero_darken: true
         margin-top: 2rem;
     }
 }
+
+/* Retro Launch Button */
+.retro-launch-button {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00d1b2;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px 35px;
+    background: transparent;
+    border: 3px solid #00d1b2;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 209, 178, 0.3);
+    transition: all 0.3s ease;
+}
+
+.retro-launch-button:hover {
+    transform: scale(1.05);
+    background: rgba(0, 209, 178, 0.1);
+    box-shadow: 0 0 20px rgba(0, 209, 178, 0.5);
+}
+
+.retro-launch-button .retro-arrow {
+    display: inline-block;
+}
+
+@keyframes arrow-bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
+.retro-launch-button:hover .retro-arrow {
+    animation: arrow-bounce 1s infinite;
+}
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const launchButton = document.getElementById('launch-button-about');
+      if (launchButton) {
+        // Visual feedback: flash the button
+        launchButton.style.transform = 'scale(0.95)';
+        setTimeout(function() {
+          launchButton.style.transform = 'scale(1.05)';
+          setTimeout(function() {
+            window.open(launchButton.href, '_blank');
+          }, 100);
+        }, 100);
+      }
+    }
+  });
+});
+</script>
 
