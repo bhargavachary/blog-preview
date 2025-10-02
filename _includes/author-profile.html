@@ -4,7 +4,7 @@
             <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="squircle-avatar">
         </figure>
         <h3 class="title is-4">{{ site.author.name }}</h3>
-        <p class="subtitle is-6">{{ site.author.bio }}</p>
+        <p class="subtitle is-6 bio-text">{{ site.author.bio }}</p>
         <p class="has-text-grey location-text">
             <span class="icon">
                 <i class="fas fa-map-marker-alt"></i>
@@ -98,6 +98,14 @@
 .author-profile .squircle-avatar:hover {
     transform: scale(1.05);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.author-profile .bio-text {
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.9;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
 }
 
 .author-profile .location-text {
