@@ -4,9 +4,11 @@
 <div class="box mb-3" style="padding: 0.75rem;">
   <article class="media">
     {% if post.image %}
-    <figure class="media-left" style="margin: 0;">
+    <figure class="media-left" style="margin: 0; width: 80px; min-width: 80px;">
       <a href="{{ site.baseurl }}{{ post.url }}">
-        {% include optimized-image.html src=post.image alt=post.title width=80 height=80 class="image is-80x80" style="border-radius: 4px; object-fit: cover;" %}
+        <picture style="display: block; width: 80px; height: 80px; border-radius: 4px; overflow: hidden;">
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" width="80" height="80" style="width: 80px; height: 80px; object-fit: cover; display: block;" loading="lazy">
+        </picture>
       </a>
     </figure>
     {% endif %}
