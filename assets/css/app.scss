@@ -1337,6 +1337,39 @@ nav[class*="navbar"].is-primary a:active {
   }
 }
 
+/* Mobile menu: disable greedy nav, use standard Bulma vertical menu */
+@media screen and (max-width: 1023px) {
+  .greedy-nav {
+    display: block !important;
+    width: 100%;
+  }
+
+  .greedy-nav .visible-links {
+    display: block !important;
+    flex-direction: column;
+  }
+
+  .greedy-nav .navbar-item-wrapper {
+    display: block !important;
+    width: 100%;
+  }
+
+  .greedy-nav .navbar-item {
+    display: block !important;
+    width: 100%;
+  }
+
+  /* Hide greedy nav button on mobile */
+  .greedy-nav-btn {
+    display: none !important;
+  }
+
+  /* Hide hidden-links on mobile */
+  .greedy-nav .hidden-links {
+    display: none !important;
+  }
+}
+
 /* =========================================================================
    PAGE FADE IN/OUT ANIMATION
    Quick fade effect when pages load/unload
