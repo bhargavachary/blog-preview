@@ -231,9 +231,9 @@ html {
     animation: shimmer 1.5s infinite;
   }
 
-  /* Subtle hover state (iOS-like) */
+  /* Subtle hover state - simple centered zoom */
   &:hover {
-    transform: translate3d(0, -4px, 0) scale(1.01);
+    transform: scale(1.02);
     box-shadow: var(--shadow-lg);
 
     .card-image img,
@@ -244,7 +244,7 @@ html {
 
   /* Active/pressed state */
   &:active {
-    transform: translate3d(0, -2px, 0) scale(0.99);
+    transform: scale(0.98);
     box-shadow: var(--shadow-sm);
     transition-duration: var(--duration-instant);
   }
