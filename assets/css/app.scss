@@ -218,6 +218,13 @@ html[data-theme="dark"] .navbar {
   }
 }
 
+/* Make navbar-brand use flexbox for proper alignment */
+.navbar-brand {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+}
+
 /* Persistent theme toggle in navbar-brand (always visible) */
 .theme-toggle-persistent {
   /* Shorter text labels for navbar-brand */

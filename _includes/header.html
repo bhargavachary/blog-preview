@@ -7,7 +7,8 @@
             <a href="{{ site.baseurl }}/" class="navbar-item">
                 {{ site.title }}
             </a>
-            <a id="theme-toggle" class="navbar-item theme-toggle-item theme-toggle-persistent" role="button" tabindex="0">
+            <!-- Theme toggle moved to right side, persistent across all views -->
+            <a id="theme-toggle" class="navbar-item theme-toggle-item theme-toggle-persistent" role="button" tabindex="0" style="margin-left: auto; order: 2;">
                 <span class="icon theme-icon-light">
                     <i class="fas fa-sun"></i>
                 </span>
@@ -25,6 +26,7 @@
                 data-target="navMenu"
                 :class="{ 'is-active': openNav }"
                 x-on:click="openNav = !openNav"
+                style="order: 3;"
             >
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>

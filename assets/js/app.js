@@ -52,14 +52,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to toggle theme
     function toggleTheme(e) {
-        // Prevent default link behavior
+        // Prevent default link behavior and stop propagation
         if (e) {
             e.preventDefault();
             e.stopPropagation();
+            e.stopImmediatePropagation();
         }
 
         const currentTheme = html.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        console.log('Toggle clicked! Switching from', currentTheme, 'to', newTheme);
 
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
@@ -78,16 +81,21 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        console.log('Theme toggled to:', newTheme);
+        console.log('Theme toggled successfully to:', newTheme);
+        return false;
     }
 
     // Attach toggle to button with multiple event handlers for reliability
     if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-        themeToggle.addEventListener('touchend', function(e) {
+        console.log('Theme toggle button found:', themeToggle);
+
+        // Use capture phase to catch event before other handlers
+        themeToggle.addEventListener('click', toggleTheme, true);
+        themeToggle.addEventListener('touchstart', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             toggleTheme(e);
-        });
+        }, true);
 
         // Keyboard support
         themeToggle.addEventListener('keydown', function(e) {
@@ -96,6 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 toggleTheme(e);
             }
         });
+    } else {
+        console.error('Theme toggle button NOT found!');
     }
 
     // ===================================
