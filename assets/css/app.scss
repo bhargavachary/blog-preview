@@ -1213,3 +1213,42 @@ nav[class*="navbar"].is-primary a:active {
   color: #7a7a7a !important;
   opacity: 0.5;
 }
+
+/* ===================================
+   PRIORITY+ NAVIGATION STYLES
+   =================================== */
+
+/* More dropdown styling */
+.more-dropdown {
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.more-dropdown .navbar-link {
+  font-weight: 600;
+}
+
+/* Smooth transitions for items moving in/out */
+.navbar-item {
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.navbar-item.in-dropdown {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Ensure dropdown menu matches navbar style */
+.more-dropdown-menu {
+  min-width: 200px;
+}
+
+.more-dropdown-menu .navbar-item {
+  padding: 0.5rem 1rem;
+}
+
+/* Mobile: hide priority nav logic, use burger */
+@media screen and (max-width: 1023px) {
+  .more-dropdown {
+    display: none !important;
+  }
+}

@@ -597,3 +597,113 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+/* =========================================================================
+   PRIORITY+ ADAPTIVE NAVIGATION
+   Intelligently moves menu items to overflow dropdown based on space
+   ========================================================================= */
+
+(function() {
+    'use strict';
+    
+    function initPriorityNav() {
+        const navbar = document.querySelector('.navbar-start');
+        if (!navbar) return;
+        
+        const navItems = Array.from(navbar.querySelectorAll('.navbar-item:not(.more-dropdown)'));
+        if (navItems.length === 0) return;
+        
+        // Create "More" dropdown if it doesn't exist
+        let moreDropdown = navbar.querySelector('.more-dropdown');
+        if (!moreDropdown) {
+            moreDropdown = document.createElement('div');
+            moreDropdown.className = 'navbar-item has-dropdown is-hoverable more-dropdown';
+            moreDropdown.style.display = 'none';
+            moreDropdown.innerHTML = `
+                <a class="navbar-link">
+                    More
+                </a>
+                <div class="navbar-dropdown more-dropdown-menu"></div>
+            `;
+            navbar.appendChild(moreDropdown);
+        }
+        
+        const moreMenu = moreDropdown.querySelector('.more-dropdown-menu');
+        
+        // Store original parent for each item
+        navItems.forEach(item => {
+            if (!item.dataset.originalIndex) {
+                item.dataset.originalIndex = Array.from(navbar.children).indexOf(item);
+            }
+        });
+        
+        function updateNav() {
+            const containerWidth = navbar.offsetWidth;
+            const moreWidth = 100; // Approximate width of "More" button
+            let usedWidth = 0;
+            let visibleItems = [];
+            let hiddenItems = [];
+            
+            // Reset all items to navbar
+            navItems.forEach(item => {
+                if (item.parentElement !== navbar) {
+                    navbar.appendChild(item);
+                }
+                item.classList.remove('in-dropdown');
+            });
+            
+            // Calculate which items fit
+            navItems.forEach((item, index) => {
+                const itemWidth = item.offsetWidth + 10; // Add margin
+                
+                if (usedWidth + itemWidth + moreWidth < containerWidth || hiddenItems.length === 0) {
+                    usedWidth += itemWidth;
+                    visibleItems.push(item);
+                } else {
+                    hiddenItems.push(item);
+                }
+            });
+            
+            // Move overflow items to dropdown
+            if (hiddenItems.length > 0) {
+                moreMenu.innerHTML = '';
+                hiddenItems.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    clone.classList.add('in-dropdown');
+                    clone.classList.remove('navbar-item');
+                    clone.classList.add('navbar-item');
+                    moreMenu.appendChild(clone);
+                    item.style.display = 'none';
+                });
+                moreDropdown.style.display = '';
+            } else {
+                moreDropdown.style.display = 'none';
+                navItems.forEach(item => {
+                    item.style.display = '';
+                });
+            }
+        }
+        
+        // Initial update
+        updateNav();
+        
+        // Update on resize with debounce
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(updateNav, 150);
+        });
+        
+        // Update when fonts load
+        if (document.fonts) {
+            document.fonts.ready.then(updateNav);
+        }
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPriorityNav);
+    } else {
+        initPriorityNav();
+    }
+})();
