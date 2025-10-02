@@ -238,15 +238,25 @@ html[data-theme="dark"] .navbar {
   width: 100%;
 }
 
-/* Persistent theme toggle in navbar-brand (always visible) */
-.theme-toggle-persistent {
-  /* Shorter text labels for navbar-brand */
+/* Theme toggle visibility control */
+.theme-toggle-mobile {
+  /* Show only on mobile (max-width: 1023px) */
+  display: flex !important;
+  align-items: center;
   font-size: 0.9rem;
   padding: 0.5rem 0.75rem !important;
   margin-right: 0.5rem;
 
-  /* Show on all screen sizes */
-  @media screen and (max-width: 1023px) {
+  @media screen and (min-width: 1024px) {
+    display: none !important;
+  }
+}
+
+.theme-toggle-desktop {
+  /* Show only on desktop/tablet (min-width: 1024px) */
+  display: none !important;
+
+  @media screen and (min-width: 1024px) {
     display: flex !important;
     align-items: center;
   }

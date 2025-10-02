@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // DARK MODE TOGGLE
     // ===================================
 
-    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
     const html = document.documentElement;
 
     // Check for saved theme preference or default to 'dark'
@@ -85,27 +86,42 @@ document.addEventListener('DOMContentLoaded', function() {
         return false;
     }
 
-    // Attach toggle to button with multiple event handlers for reliability
-    if (themeToggle) {
-        console.log('Theme toggle button found:', themeToggle);
-
-        // Use capture phase to catch event before other handlers
-        themeToggle.addEventListener('click', toggleTheme, true);
-        themeToggle.addEventListener('touchstart', function(e) {
+    // Attach toggle to mobile button
+    if (themeToggleMobile) {
+        console.log('Theme toggle mobile button found');
+        themeToggleMobile.addEventListener('click', toggleTheme, true);
+        themeToggleMobile.addEventListener('touchstart', function(e) {
             e.preventDefault();
             e.stopPropagation();
             toggleTheme(e);
         }, true);
-
-        // Keyboard support
-        themeToggle.addEventListener('keydown', function(e) {
+        themeToggleMobile.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 toggleTheme(e);
             }
         });
-    } else {
-        console.error('Theme toggle button NOT found!');
+    }
+
+    // Attach toggle to desktop button
+    if (themeToggleDesktop) {
+        console.log('Theme toggle desktop button found');
+        themeToggleDesktop.addEventListener('click', toggleTheme, true);
+        themeToggleDesktop.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleTheme(e);
+        }, true);
+        themeToggleDesktop.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleTheme(e);
+            }
+        });
+    }
+
+    if (!themeToggleMobile && !themeToggleDesktop) {
+        console.error('No theme toggle buttons found!');
     }
 
     // ===================================
