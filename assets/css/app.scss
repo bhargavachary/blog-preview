@@ -213,15 +213,15 @@ html {
 .card {
   position: relative;
   transition:
-    transform 500ms var(--ease-ios),
-    box-shadow 500ms var(--ease-ios),
+    transform var(--duration-slow) var(--ease-smooth),
+    box-shadow var(--duration-slow) var(--ease-smooth),
     background-color var(--duration-fast) var(--ease-smooth);
   box-shadow: var(--shadow-sm);
 
   /* Card images need transitions */
   .card-image img,
   .card-image picture img {
-    transition: transform 600ms var(--ease-ios);
+    transition: transform var(--duration-slow) var(--ease-smooth);
   }
 
   /* Shimmer effect on load */
@@ -1269,7 +1269,9 @@ nav[class*="navbar"].is-primary a:active {
     background: transparent;
     cursor: pointer;
     color: inherit;
-    transition: all 0.3s ease;
+    transition: all var(--duration-normal) var(--ease-smooth);
+    opacity: 1;
+    transform: scale(1);
 
     &:hover {
       transform: scale(1.05) !important;
@@ -1277,7 +1279,13 @@ nav[class*="navbar"].is-primary a:active {
     }
 
     &.hidden {
-      display: none;
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+      width: 0;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
     }
 
     .greedy-nav-label {
@@ -1371,18 +1379,23 @@ nav[class*="navbar"].is-primary a:active {
 }
 
 /* =========================================================================
-   PAGE FADE IN/OUT ANIMATION
-   Quick fade effect when pages load/unload
+   UNIFIED ANIMATION SYSTEM
+   Consistent timing and easing across the site
    ========================================================================= */
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+:root {
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.6s;
+  --ease-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+
+/* =========================================================================
+   PAGE TRANSITION FADE
+   Smooth fade between pages (no initial fade)
+   ========================================================================= */
 
 @keyframes fadeOut {
   from {
@@ -1393,27 +1406,29 @@ nav[class*="navbar"].is-primary a:active {
   }
 }
 
-/* Initial state - hidden before JS triggers animation */
-body.page-loading {
-  opacity: 0;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Quick fade in when page loads */
-body.page-loaded {
-  animation: fadeIn 0.3s ease-out forwards !important;
+/* Page transition fade out when leaving */
+body.page-transitioning {
+  animation: fadeOut var(--duration-fast) var(--ease-smooth) forwards !important;
 }
 
-/* Quick fade out when leaving page */
-body.page-unloading {
-  animation: fadeOut 0.2s ease-out forwards !important;
+/* Page transition fade in when arriving (only if coming from another page) */
+body.page-arrived {
+  animation: fadeIn var(--duration-fast) var(--ease-smooth) forwards !important;
 }
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-  body.page-loading,
-  body.page-loaded,
-  body.page-unloading {
+  body.page-transitioning,
+  body.page-arrived {
     animation: none !important;
-    opacity: 1 !important;
   }
 }
