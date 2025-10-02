@@ -599,31 +599,51 @@ if ('serviceWorker' in navigator) {
 }
 
 /* =========================================================================
-   PAGE LOAD FADE-IN ANIMATION
-   Triggers classy fade-in effect after page loads
+   PAGE FADE IN/OUT ANIMATION
+   Quick fade effect when pages load/unload
    ========================================================================= */
 
 (function() {
     'use strict';
 
     // Add loading class immediately
-    document.documentElement.classList.add('page-loading');
     document.body.classList.add('page-loading');
 
-    // Trigger fade-in animation when page is fully loaded
-    window.addEventListener('load', function() {
-        // Small delay to ensure everything is rendered
-        setTimeout(function() {
-            document.body.classList.remove('page-loading');
-            document.body.classList.add('page-loaded');
-        }, 50);
-    });
-
-    // Fallback: trigger after DOM ready if load event takes too long
-    if (document.readyState === 'complete') {
+    // Trigger fade-in animation when page is ready
+    function fadeInPage() {
         document.body.classList.remove('page-loading');
         document.body.classList.add('page-loaded');
     }
+
+    // Fade in when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fadeInPage);
+    } else {
+        fadeInPage();
+    }
+
+    // Fade out when clicking internal links
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+
+        if (link && link.href && !link.target && !link.hasAttribute('download')) {
+            const url = new URL(link.href);
+            const currentUrl = new URL(window.location.href);
+
+            // Only fade out for internal navigation (same origin)
+            if (url.origin === currentUrl.origin && url.pathname !== currentUrl.pathname) {
+                e.preventDefault();
+
+                document.body.classList.remove('page-loaded');
+                document.body.classList.add('page-unloading');
+
+                // Navigate after fade out
+                setTimeout(function() {
+                    window.location.href = link.href;
+                }, 200);
+            }
+        }
+    });
 })();
 
 /* =========================================================================

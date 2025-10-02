@@ -1338,18 +1338,25 @@ nav[class*="navbar"].is-primary a:active {
 }
 
 /* =========================================================================
-   PAGE LOAD FADE-IN ANIMATION
-   Classy fade-in effect when pages load
+   PAGE FADE IN/OUT ANIMATION
+   Quick fade effect when pages load/unload
    ========================================================================= */
 
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
@@ -1358,50 +1365,22 @@ body.page-loading {
   opacity: 0;
 }
 
-/* Animate when page-loaded class is added via JS */
+/* Quick fade in when page loads */
 body.page-loaded {
-  animation: fadeInUp 0.8s ease-out forwards !important;
+  animation: fadeIn 0.3s ease-out forwards !important;
 }
 
-/* Fade in main content sections with stagger */
-body.page-loaded .hero {
-  animation: fadeInUp 1s ease-out 0.1s forwards !important;
-  opacity: 0;
+/* Quick fade out when leaving page */
+body.page-unloading {
+  animation: fadeOut 0.2s ease-out forwards !important;
 }
-
-body.page-loaded .section {
-  animation: fadeInUp 1s ease-out 0.2s forwards !important;
-  opacity: 0;
-}
-
-body.page-loaded .columns {
-  animation: fadeInUp 1.2s ease-out 0.3s forwards !important;
-  opacity: 0;
-}
-
-/* Stagger animation for cards */
-body.page-loaded .card {
-  animation: fadeInUp 1.2s ease-out forwards !important;
-  opacity: 0;
-}
-
-body.page-loaded .card:nth-child(1) { animation-delay: 0.4s !important; }
-body.page-loaded .card:nth-child(2) { animation-delay: 0.5s !important; }
-body.page-loaded .card:nth-child(3) { animation-delay: 0.6s !important; }
-body.page-loaded .card:nth-child(4) { animation-delay: 0.7s !important; }
-body.page-loaded .card:nth-child(5) { animation-delay: 0.8s !important; }
-body.page-loaded .card:nth-child(6) { animation-delay: 0.9s !important; }
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   body.page-loading,
   body.page-loaded,
-  body.page-loaded *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-delay: 0s !important;
-    transition-duration: 0.01ms !important;
+  body.page-unloading {
+    animation: none !important;
     opacity: 1 !important;
   }
 }
