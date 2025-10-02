@@ -29,6 +29,14 @@ hero_darken: true
 
             <p>Feel free to share your opinions, feedback, and comments through <a href="https://disqus.com/home/forums/bhargavacharyin/" target="_blank">disqus</a>.<br>
             Let's make this journey of learning and interaction a memorable one!</p>
+
+            <hr>
+
+            <p class="has-text-centered" style="margin-top: 2rem;">
+                <strong>Looking for my professional portfolio?</strong><br>
+                <span style="opacity: 0.9;">More details about my work and projects at</span>
+                <a href="/init.d/" style="font-weight: 600; color: #00d1b2;">init.d</a> ✨
+            </p>
         </div>
     </div>
 </div>
