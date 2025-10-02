@@ -605,14 +605,18 @@ if ('serviceWorker' in navigator) {
 
 (function() {
     'use strict';
-    
+
     function initPriorityNav() {
+        const navbarMenu = document.querySelector('.navbar-menu');
         const navbar = document.querySelector('.navbar-start');
-        if (!navbar) return;
-        
+        if (!navbar || !navbarMenu) return;
+
+        // Only run on desktop/tablet (above 1023px where Bulma keeps navbar visible)
+        if (window.innerWidth <= 1023) return;
+
         const navItems = Array.from(navbar.querySelectorAll('.navbar-item:not(.more-dropdown)'));
         if (navItems.length === 0) return;
-        
+
         // Create "More" dropdown if it doesn't exist
         let moreDropdown = navbar.querySelector('.more-dropdown');
         if (!moreDropdown) {
@@ -627,54 +631,57 @@ if ('serviceWorker' in navigator) {
             `;
             navbar.appendChild(moreDropdown);
         }
-        
+
         const moreMenu = moreDropdown.querySelector('.more-dropdown-menu');
-        
-        // Store original parent for each item
-        navItems.forEach(item => {
-            if (!item.dataset.originalIndex) {
-                item.dataset.originalIndex = Array.from(navbar.children).indexOf(item);
-            }
-        });
-        
+
         function updateNav() {
-            // Don't run on mobile
-            if (window.innerWidth <= 768) {
+            // Only run on desktop/tablet
+            if (window.innerWidth <= 1023) {
+                // Hide Priority+ on mobile/small tablets
                 moreDropdown.style.display = 'none';
                 navItems.forEach(item => {
                     item.style.display = '';
                 });
                 return;
             }
-            
-            const containerWidth = navbar.offsetWidth;
-            const moreWidth = 100; // Approximate width of "More" button
+
+            // Get available width (navbar container minus some padding)
+            const navbarContainer = document.querySelector('.navbar .container');
+            const navbarBrand = document.querySelector('.navbar-brand');
+            const navbarEnd = document.querySelector('.navbar-end');
+
+            const totalWidth = navbarContainer ? navbarContainer.offsetWidth : window.innerWidth;
+            const brandWidth = navbarBrand ? navbarBrand.offsetWidth : 0;
+            const endWidth = navbarEnd ? navbarEnd.offsetWidth : 0;
+            const availableWidth = totalWidth - brandWidth - endWidth - 40; // 40px padding
+
+            const moreWidth = 80; // Approximate width of "More" button
             let usedWidth = 0;
-            let visibleItems = [];
             let hiddenItems = [];
-            
-            // Reset all items to navbar first
-            moreDropdown.style.display = 'none';
+
+            // Reset all items first
             navItems.forEach(item => {
                 item.style.display = '';
-                item.classList.remove('in-dropdown');
             });
-            
-            // Wait for layout to settle
-            setTimeout(() => {
+
+            // Calculate after short delay to let layout settle
+            requestAnimationFrame(() => {
                 // Calculate which items fit
-                navItems.forEach((item, index) => {
-                    const itemWidth = item.offsetWidth + 10; // Add margin
-                    
-                    if (usedWidth + itemWidth + moreWidth < containerWidth) {
+                for (let i = 0; i < navItems.length; i++) {
+                    const item = navItems[i];
+                    const itemWidth = item.offsetWidth;
+
+                    // Check if this item plus "More" button fits
+                    if (usedWidth + itemWidth + moreWidth < availableWidth) {
                         usedWidth += itemWidth;
-                        visibleItems.push(item);
                     } else {
-                        hiddenItems.push(item);
+                        // This item and all remaining items go to dropdown
+                        hiddenItems = navItems.slice(i);
+                        break;
                     }
-                });
-                
-                // Move overflow items to dropdown
+                }
+
+                // Update dropdown
                 if (hiddenItems.length > 0) {
                     moreMenu.innerHTML = '';
                     hiddenItems.forEach(item => {
@@ -687,25 +694,25 @@ if ('serviceWorker' in navigator) {
                 } else {
                     moreDropdown.style.display = 'none';
                 }
-            }, 10);
+            });
         }
-        
-        // Initial update
-        updateNav();
-        
+
+        // Initial update with delay
+        setTimeout(updateNav, 100);
+
         // Update on resize with debounce
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(updateNav, 150);
         });
-        
+
         // Update when fonts load
         if (document.fonts) {
-            document.fonts.ready.then(updateNav);
+            document.fonts.ready.then(() => setTimeout(updateNav, 50));
         }
     }
-    
+
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initPriorityNav);
