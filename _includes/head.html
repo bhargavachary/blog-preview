@@ -2,7 +2,7 @@
     <!-- CRITICAL: Load theme immediately to prevent flash -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark mode
             document.documentElement.setAttribute('data-theme', savedTheme);
 
             // Update meta theme-color immediately

@@ -154,51 +154,84 @@ html[data-theme="dark"] .navbar {
   }
 }
 
-/* Theme toggle button styling */
+/* Theme toggle button styling - Fun & Quirky */
 .theme-toggle-btn {
   background: transparent !important;
   border: none !important;
   padding: 0.5rem !important;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   position: relative;
   width: 2.5rem;
   height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50% !important;
 
   .icon {
     position: absolute;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1rem;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .theme-icon-light {
     opacity: 1;
     transform: rotate(0deg) scale(1);
+    color: #fbbf24;
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
   }
 
   .theme-icon-dark {
     opacity: 0;
-    transform: rotate(-180deg) scale(0);
+    transform: rotate(-90deg) scale(0);
+    color: #818cf8;
+    filter: drop-shadow(0 0 8px rgba(129, 140, 248, 0.6));
   }
 
   &:hover {
-    transform: scale(1.1) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.15) rotate(15deg) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+
+    .theme-icon-light {
+      animation: spin-wobble 0.6s ease-in-out;
+    }
+
+    .theme-icon-dark {
+      animation: moon-wiggle 0.6s ease-in-out;
+    }
+  }
+
+  &:active {
+    transform: scale(0.9) rotate(-15deg) !important;
   }
 }
 
 html[data-theme="dark"] .theme-toggle-btn {
   .theme-icon-light {
     opacity: 0;
-    transform: rotate(180deg) scale(0);
+    transform: rotate(90deg) scale(0);
   }
 
   .theme-icon-dark {
     opacity: 1;
     transform: rotate(0deg) scale(1);
   }
+}
+
+/* Fun animations for theme toggle */
+@keyframes spin-wobble {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-10deg) scale(1.1); }
+  50% { transform: rotate(10deg) scale(1.15); }
+  75% { transform: rotate(-5deg) scale(1.1); }
+}
+
+@keyframes moon-wiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(10deg) translateX(-2px); }
+  50% { transform: rotate(-10deg) translateX(2px); }
+  75% { transform: rotate(5deg) translateX(-1px); }
 }
 
 /* Critical CSS optimizations */
