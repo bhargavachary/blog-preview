@@ -7,17 +7,6 @@
             <a href="{{ site.baseurl }}/" class="navbar-item">
                 {{ site.title }}
             </a>
-            <!-- Theme toggle for mobile (always visible on right) -->
-            <a id="theme-toggle-mobile" class="navbar-item theme-toggle-item theme-toggle-mobile" role="button" tabindex="0" style="margin-left: auto; order: 2;">
-                <span class="icon theme-icon-light">
-                    <i class="fas fa-sun"></i>
-                </span>
-                <span class="icon theme-icon-dark">
-                    <i class="fas fa-moon"></i>
-                </span>
-                <span class="theme-toggle-text-light">Light</span>
-                <span class="theme-toggle-text-dark">Dark</span>
-            </a>
             <a
                 role="button"
                 class="navbar-burger burger"
@@ -26,7 +15,6 @@
                 data-target="navMenu"
                 :class="{ 'is-active': openNav }"
                 x-on:click="openNav = !openNav"
-                style="order: 3;"
             >
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -80,16 +68,12 @@
             </div>
 
             <div class="navbar-end">
-                <!-- Theme toggle for desktop/tablet (right side of menu) -->
-                <a id="theme-toggle-desktop" class="navbar-item theme-toggle-item theme-toggle-desktop" role="button" tabindex="0">
-                    <span class="icon theme-icon-light">
-                        <i class="fas fa-sun"></i>
+                <!-- Theme toggle - Clean placement like Sponsor button -->
+                <a id="theme-toggle" class="navbar-item theme-toggle-item" role="button" tabindex="0">
+                    <span class="icon">
+                        <i class="fas fa-sun theme-icon-light"></i>
+                        <i class="fas fa-moon theme-icon-dark"></i>
                     </span>
-                    <span class="icon theme-icon-dark">
-                        <i class="fas fa-moon"></i>
-                    </span>
-                    <span class="theme-toggle-text-light">Light</span>
-                    <span class="theme-toggle-text-dark">Dark</span>
                 </a>
                 {% if site.gh_sponsor %}
                     <a class="navbar-item" href="https://github.com/sponsors/{{ site.gh_sponsor }}">

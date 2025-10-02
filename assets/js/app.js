@@ -43,8 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // DARK MODE TOGGLE
     // ===================================
 
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-    const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
+    const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
 
     // Check for saved theme preference or default to 'dark'
@@ -53,22 +52,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to toggle theme
     function toggleTheme(e) {
-        // Prevent default link behavior and stop propagation
         if (e) {
             e.preventDefault();
             e.stopPropagation();
-            e.stopImmediatePropagation();
         }
 
         const currentTheme = html.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-        console.log('Toggle clicked! Switching from', currentTheme, 'to', newTheme);
-
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
 
-        // Update meta theme-color for mobile browser chrome
+        // Update meta theme-color
         const metaThemeColor = document.querySelector('meta[name="theme-color"]');
         if (metaThemeColor) {
             metaThemeColor.setAttribute('content', newTheme === 'dark' ? '#000000' : '#ffffff');
@@ -81,47 +76,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 'event_label': newTheme
             });
         }
-
-        console.log('Theme toggled successfully to:', newTheme);
-        return false;
     }
 
-    // Attach toggle to mobile button
-    if (themeToggleMobile) {
-        console.log('Theme toggle mobile button found');
-        themeToggleMobile.addEventListener('click', toggleTheme, true);
-        themeToggleMobile.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleTheme(e);
-        }, true);
-        themeToggleMobile.addEventListener('keydown', function(e) {
+    // Attach toggle handlers
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggle.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 toggleTheme(e);
             }
         });
-    }
-
-    // Attach toggle to desktop button
-    if (themeToggleDesktop) {
-        console.log('Theme toggle desktop button found');
-        themeToggleDesktop.addEventListener('click', toggleTheme, true);
-        themeToggleDesktop.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleTheme(e);
-        }, true);
-        themeToggleDesktop.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleTheme(e);
-            }
-        });
-    }
-
-    if (!themeToggleMobile && !themeToggleDesktop) {
-        console.error('No theme toggle buttons found!');
     }
 
     // ===================================

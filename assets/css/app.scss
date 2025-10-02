@@ -186,154 +186,50 @@ html[data-theme="dark"] .navbar {
   }
 }
 
-/* Theme toggle - Professional subtle design matching navbar items */
+/* Theme toggle - Simple icon button matching navbar style */
 .theme-toggle-item {
   cursor: pointer !important;
   user-select: none;
 
-  /* Match other navbar items - same pill design */
-  position: relative;
-  margin: 0.25rem 0.35rem;
-  padding: 0.5rem 1rem !important;
-  border-radius: 20px !important;
-
-  color: #FFFEF5 !important;
-  font-weight: 500;
-  font-size: 0.95rem;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-
-  /* Same glassmorphic background as other items */
-  background: rgba(255, 255, 255, 0.05) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow:
-    inset 0 0 0 0.5px rgba(255, 255, 255, 0.15),
-    0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 250ms ease;
-
   .icon {
+    position: relative;
     transition: all 0.3s ease;
-    display: inline-block;
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
-  /* Show current mode icon with subtle color */
-  .theme-icon-light,
-  .theme-toggle-text-light {
+  /* Show current mode icon */
+  .theme-icon-light {
+    position: absolute;
     opacity: 0;
-    display: none;
-    transition: all 0.3s ease;
-  }
-
-  .theme-icon-dark,
-  .theme-toggle-text-dark {
-    opacity: 1;
-    display: inline-block;
-    transition: all 0.3s ease;
-    color: #FFFEF5 !important;
+    transform: scale(0) rotate(90deg);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .theme-icon-dark {
-    transform: rotate(0deg) scale(1);
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
-  .theme-icon-light {
-    transform: rotate(90deg) scale(0);
-  }
-
-  /* Same hover effect as other navbar items */
   &:hover {
-    background: rgba(255, 255, 255, 0.15) !important;
-    box-shadow:
-      inset 0 0 0 0.5px rgba(255, 255, 255, 0.3),
-      0 4px 20px rgba(0, 0, 0, 0.2),
-      0 0 20px 2px rgba(255, 254, 245, 0.12);
-    color: #FFFEF5 !important;
-    text-shadow:
-      0 0 8px rgba(255, 255, 255, 0.9),
-      0 0 16px rgba(255, 255, 255, 0.6),
-      0 0 24px rgba(255, 254, 245, 0.4),
-      0 1px 4px rgba(0, 0, 0, 0.3);
-    transform: scale(1.02) translateY(-1px) !important;
-
-    .theme-icon-dark,
-    .theme-icon-light {
-      transform: rotate(0deg) scale(1.1);
+    .icon {
+      transform: scale(1.15);
     }
   }
-
-  &:active {
-    transform: scale(0.98) !important;
-  }
 }
 
-/* Make navbar-brand use flexbox for proper alignment */
-.navbar-brand {
-  display: flex !important;
-  align-items: center;
-  width: 100%;
-}
+/* Standard Bulma navbar structure - no custom overrides needed */
 
-/* Theme toggle visibility control */
-.theme-toggle-mobile {
-  /* Show only on mobile (max-width: 1023px) */
-  display: flex !important;
-  align-items: center;
-  font-size: 0.9rem;
-  padding: 0.5rem 0.75rem !important;
-  margin-right: 0.5rem;
-
-  @media screen and (min-width: 1024px) {
-    display: none !important;
-  }
-}
-
-.theme-toggle-desktop {
-  /* Show only on desktop/tablet (min-width: 1024px) */
-  display: none !important;
-
-  @media screen and (min-width: 1024px) {
-    display: flex !important;
-    align-items: center;
-  }
-}
-
-/* Light mode - show sun icon for current state */
+/* Light mode - show sun icon */
 html[data-theme="light"] .theme-toggle-item {
-  .theme-icon-light,
-  .theme-toggle-text-light {
-    opacity: 1;
-    display: inline-block;
-    color: #FFFEF5 !important;
-  }
-
-  .theme-icon-dark,
-  .theme-toggle-text-dark {
-    opacity: 0;
-    display: none;
-  }
-
   .theme-icon-light {
-    transform: rotate(0deg) scale(1);
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
   }
 
   .theme-icon-dark {
-    transform: rotate(-90deg) scale(0);
-  }
-}
-
-/* Dark mode - already styled above with moon icon */
-html[data-theme="dark"] .theme-toggle-item {
-  /* Professional dark mode styling - matches navbar */
-  background: rgba(255, 255, 255, 0.03) !important;
-
-  &:hover {
-    background: rgba(45, 212, 191, 0.15) !important;
-    color: var(--primary-color) !important;
-    box-shadow:
-      inset 0 0 0 0.5px rgba(45, 212, 191, 0.3),
-      0 4px 20px rgba(0, 0, 0, 0.3),
-      0 0 16px 2px rgba(45, 212, 191, 0.2) !important;
+    opacity: 0;
+    transform: scale(0) rotate(-90deg);
   }
 }
 
