@@ -238,8 +238,8 @@ html {
 
   /* Subtle hover state - simple centered zoom */
   &:hover {
-    transform: scale(1.02);
-    box-shadow: var(--shadow-lg);
+    transform: scale(1.02) !important;
+    box-shadow: var(--shadow-lg) !important;
 
     .card-image img,
     .card-image picture img {
@@ -318,8 +318,8 @@ html {
   }
 
   &:hover {
-    transform: scale(1.02);
-    box-shadow: var(--shadow-lg);
+    transform: scale(1.02) !important;
+    box-shadow: var(--shadow-lg) !important;
 
     .compact-card-image img,
     .compact-card-image picture img {
