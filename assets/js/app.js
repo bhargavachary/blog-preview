@@ -84,27 +84,31 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Theme toggle complete');
     }
 
-    // Attach toggle handlers
+    // Attach toggle handlers - Simple and direct
     if (themeToggle) {
-        console.log('Theme toggle button found and attaching listeners');
+        console.log('Theme toggle button found');
 
-        // Use capture phase to ensure we catch the event first
-        themeToggle.addEventListener('click', toggleTheme, true);
-
-        // Also add regular phase as backup
-        themeToggle.addEventListener('click', function(e) {
+        // Direct onclick for maximum reliability
+        themeToggle.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
-            e.stopImmediatePropagation();
             toggleTheme(e);
-        });
+            return false;
+        };
 
+        // Keyboard support
         themeToggle.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 toggleTheme(e);
             }
         });
+
+        // Touch support for mobile
+        themeToggle.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            toggleTheme(e);
+        }, { passive: false });
     } else {
         console.error('Theme toggle button NOT found!');
     }
@@ -113,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // iOS-STYLE NAVBAR - SIMPLE ZOOM ON CLICK
     // ===================================
 
+    // EXCLUDE theme toggle from zoom effect
     document.querySelectorAll('.navbar-item:not(.theme-toggle-item), .navbar-link').forEach(el => {
         // Click: Subtle zoom in
         el.addEventListener('mousedown', function(e) {
