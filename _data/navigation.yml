@@ -1,7 +1,5 @@
 - name: About
   link: /about/
-- name: Favorites
-  link: /favorites/
 - name: Blog
   link: /
 - name: Categories
