@@ -606,41 +606,39 @@ if ('serviceWorker' in navigator) {
 (function() {
     'use strict';
 
-    // Add loading class immediately
-    document.body.classList.add('page-loading');
-
     // Trigger fade-in animation when page is ready
     function fadeInPage() {
         document.body.classList.remove('page-loading');
         document.body.classList.add('page-loaded');
     }
 
-    // Fade in when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', fadeInPage);
-    } else {
-        fadeInPage();
-    }
+    // Fade in immediately when script runs
+    fadeInPage();
 
     // Fade out when clicking internal links
     document.addEventListener('click', function(e) {
         const link = e.target.closest('a');
 
         if (link && link.href && !link.target && !link.hasAttribute('download')) {
-            const url = new URL(link.href);
-            const currentUrl = new URL(window.location.href);
+            try {
+                const url = new URL(link.href);
+                const currentUrl = new URL(window.location.href);
 
-            // Only fade out for internal navigation (same origin)
-            if (url.origin === currentUrl.origin && url.pathname !== currentUrl.pathname) {
-                e.preventDefault();
+                // Only fade out for internal navigation (same origin, different path)
+                if (url.origin === currentUrl.origin && url.pathname !== currentUrl.pathname) {
+                    e.preventDefault();
 
-                document.body.classList.remove('page-loaded');
-                document.body.classList.add('page-unloading');
+                    document.body.classList.remove('page-loaded');
+                    document.body.classList.add('page-unloading');
 
-                // Navigate after fade out
-                setTimeout(function() {
-                    window.location.href = link.href;
-                }, 200);
+                    // Navigate after fade out
+                    setTimeout(function() {
+                        window.location.href = link.href;
+                    }, 200);
+                }
+            } catch (err) {
+                // If URL parsing fails, just let the link work normally
+                console.log('Link navigation error:', err);
             }
         }
     });
