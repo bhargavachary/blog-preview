@@ -47,14 +47,17 @@
     html.setAttribute('data-theme', savedTheme);
 })();
 
-// Function to initialize theme toggle - can be called multiple times
-function initThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
+// Function to initialize theme toggle - can be called multiple times safely
+// This uses event delegation on the document to ensure it always works
+(function() {
+    'use strict';
 
-    // Function to toggle theme
+    const html = document.documentElement;
+    let isInitialized = false;
+
+    // Toggle theme function
     function toggleTheme(e) {
-        console.log('toggleTheme called!', e);
+        console.log('toggleTheme called via delegation!', e);
 
         if (e) {
             e.preventDefault();
@@ -84,47 +87,87 @@ function initThemeToggle() {
         }
 
         console.log('Theme toggle complete');
+        return false;
     }
 
-    // Attach toggle handlers - Simple and direct
-    if (themeToggle) {
-        console.log('Theme toggle button found, attaching listeners');
+    // Use event delegation at document level - this ALWAYS works regardless of DOM changes
+    function initThemeToggleWithDelegation() {
+        if (isInitialized) {
+            console.log('Theme toggle already initialized via delegation');
+            return;
+        }
 
-        // Remove any existing listeners by cloning the element
-        const newToggle = themeToggle.cloneNode(true);
-        themeToggle.parentNode.replaceChild(newToggle, themeToggle);
+        console.log('Initializing theme toggle with event delegation');
 
-        // Direct onclick for maximum reliability
-        newToggle.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleTheme(e);
-            return false;
-        };
-
-        // Keyboard support
-        newToggle.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
+        // Click handler with delegation
+        document.addEventListener('click', function(e) {
+            const toggle = e.target.closest('#theme-toggle');
+            if (toggle) {
                 e.preventDefault();
+                e.stopPropagation();
                 toggleTheme(e);
+                return false;
             }
-        });
+        }, true); // Use capture phase
 
-        // Touch support for mobile
-        newToggle.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            toggleTheme(e);
-        }, { passive: false });
-    } else {
-        console.error('Theme toggle button NOT found!');
+        // Keyboard handler with delegation
+        document.addEventListener('keydown', function(e) {
+            const toggle = e.target.closest('#theme-toggle');
+            if (toggle && (e.key === 'Enter' || e.key === ' ')) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleTheme(e);
+                return false;
+            }
+        }, true);
+
+        // Touch handler with delegation
+        document.addEventListener('touchend', function(e) {
+            const toggle = e.target.closest('#theme-toggle');
+            if (toggle) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleTheme(e);
+                return false;
+            }
+        }, { capture: true, passive: false });
+
+        isInitialized = true;
+        console.log('Theme toggle initialized successfully with delegation');
     }
-}
+
+    // Initialize immediately if DOM is ready, otherwise wait
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initThemeToggleWithDelegation);
+    } else {
+        initThemeToggleWithDelegation();
+    }
+
+    // Also re-initialize on any page visibility change (handles all navigation scenarios)
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            console.log('Page became visible, ensuring theme toggle works');
+            // Just verify button exists, delegation handles the rest
+            const toggle = document.getElementById('theme-toggle');
+            if (toggle) {
+                console.log('Theme toggle button found');
+            } else {
+                console.warn('Theme toggle button not found on this page');
+            }
+        }
+    });
+})();
 
 document.addEventListener('DOMContentLoaded', function() {
     // ===================================
-    // Initialize theme toggle on page load
+    // Verify theme toggle is ready
     // ===================================
-    initThemeToggle();
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        console.log('Theme toggle button present on page');
+    } else {
+        console.warn('Theme toggle button not found on this page layout');
+    }
 
     // ===================================
     // iOS-STYLE NAVBAR - SIMPLE ZOOM ON CLICK
@@ -701,13 +744,6 @@ if ('serviceWorker' in navigator) {
         // Fade in when arriving from another page
         document.body.classList.add('page-arrived');
         sessionStorage.removeItem('pageTransition');
-
-        // Re-initialize theme toggle after page transition
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initThemeToggle);
-        } else {
-            initThemeToggle();
-        }
 
         // Remove class after animation completes
         setTimeout(function() {
