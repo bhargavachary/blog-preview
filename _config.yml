@@ -10,7 +10,7 @@ url: "https://bhargavachary.github.io"
 permalink: /:year/:month/:day/:title.html
 favicon: /images/avatar.jpg
 
-paginate: 4
+paginate: 3
 paginate_path: /page:num/
 
 # Disqus Comments
