@@ -406,17 +406,48 @@ img, picture img {
    ============================================================================ */
 
 .navbar {
-  /* Ultra-light glassmorphism background */
+  /* Enhanced 3D glassmorphism background with depth */
   background: linear-gradient(
     to bottom,
-    rgba(20, 184, 166, 0.85),
-    rgba(20, 184, 166, 0.75)
+    rgba(20, 184, 166, 0.95),
+    rgba(13, 148, 136, 0.85),
+    rgba(15, 118, 110, 0.90)
   );
   backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
   -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
 
-  /* Subtle border like iOS */
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+  /* 3D depth with multiple shadow layers */
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    0 4px 8px rgba(0, 0, 0, 0.06),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+
+  /* Subtle borders for depth */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+
+  /* Add highlight glow on top edge */
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3) 25%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.3) 75%,
+      transparent
+    );
+    pointer-events: none;
+  }
 
   transition:
     background var(--duration-medium) var(--ease-ios),
@@ -426,12 +457,21 @@ img, picture img {
   &.navbar-scrolled {
     background: linear-gradient(
       to bottom,
-      rgba(20, 184, 166, 0.95),
-      rgba(20, 184, 166, 0.90)
+      rgba(20, 184, 166, 1),
+      rgba(13, 148, 136, 0.95),
+      rgba(15, 118, 110, 0.98)
     );
     backdrop-filter: blur(25px) saturate(200%) brightness(1.15);
     -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(1.15);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
+
+    /* Enhanced depth when scrolled */
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.1),
+      0 8px 12px rgba(0, 0, 0, 0.08),
+      0 12px 24px rgba(0, 0, 0, 0.06),
+      0 16px 32px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   }
 
   /* Navbar items - iOS pill design */
