@@ -7,6 +7,16 @@
             <a href="{{ site.baseurl }}/" class="navbar-item">
                 {{ site.title }}
             </a>
+            <a id="theme-toggle" class="navbar-item theme-toggle-item theme-toggle-persistent" role="button" tabindex="0">
+                <span class="icon theme-icon-light">
+                    <i class="fas fa-sun"></i>
+                </span>
+                <span class="icon theme-icon-dark">
+                    <i class="fas fa-moon"></i>
+                </span>
+                <span class="theme-toggle-text-light">Light</span>
+                <span class="theme-toggle-text-dark">Dark</span>
+            </a>
             <a
                 role="button"
                 class="navbar-burger burger"
@@ -68,16 +78,6 @@
             </div>
 
             <div class="navbar-end">
-                <a id="theme-toggle" class="navbar-item theme-toggle-item" role="button" tabindex="0">
-                    <span class="icon theme-icon-light">
-                        <i class="fas fa-sun"></i>
-                    </span>
-                    <span class="icon theme-icon-dark">
-                        <i class="fas fa-moon"></i>
-                    </span>
-                    <span class="theme-toggle-text-light">Light Mode</span>
-                    <span class="theme-toggle-text-dark">Dark Mode</span>
-                </a>
                 {% if site.gh_sponsor %}
                     <a class="navbar-item" href="https://github.com/sponsors/{{ site.gh_sponsor }}">
                         <span class="icon gh-sponsor"><i class="fas fa-heart"></i></span>

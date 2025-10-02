@@ -162,6 +162,15 @@ html[data-theme="dark"] .navbar {
         0 0 14px 2px rgba(45, 212, 191, 0.25) !important;
     }
   }
+
+  /* Dark mode mobile menu styling */
+  @media screen and (max-width: 1023px) {
+    .navbar-menu {
+      background: rgba(10, 10, 10, 0.98) !important;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    }
+  }
 }
 
 /* Theme toggle styling - matching navbar items */
@@ -206,6 +215,20 @@ html[data-theme="dark"] .navbar {
     .theme-icon-dark {
       animation: moon-wiggle 0.6s ease-in-out;
     }
+  }
+}
+
+/* Persistent theme toggle in navbar-brand (always visible) */
+.theme-toggle-persistent {
+  /* Shorter text labels for navbar-brand */
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem !important;
+  margin-right: 0.5rem;
+
+  /* Show on all screen sizes */
+  @media screen and (max-width: 1023px) {
+    display: flex !important;
+    align-items: center;
   }
 }
 
@@ -878,6 +901,11 @@ img, picture img {
       border-radius: 12px;
       margin-top: 0.5rem;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+      /* Keep theme toggle visible in mobile */
+      .theme-toggle-item {
+        display: flex !important;
+      }
 
       /* Change from absolute to relative positioning to push content */
       position: relative !important;
