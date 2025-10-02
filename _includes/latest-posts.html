@@ -2,10 +2,10 @@
 
 {% comment %}
   If we're on a paginated blog page, show posts NOT on current page
+  If on individual post page, exclude the current post
   Otherwise, show latest posts
 {% endcomment %}
 {% if paginator %}
-  {% assign offset = paginator.posts.size %}
   {% assign shown_urls = paginator.posts | map: "url" %}
   {% assign count = 0 %}
   {% for post in site.posts %}
@@ -17,7 +17,13 @@
     {% endunless %}
   {% endfor %}
 {% else %}
-  {% for post in site.posts limit: 3 %}
-    {% include compact-post-card.html %}
+  {% assign count = 0 %}
+  {% for post in site.posts %}
+    {% unless post.url == page.url %}
+      {% if count < 3 %}
+        {% include compact-post-card.html %}
+        {% assign count = count | plus: 1 %}
+      {% endif %}
+    {% endunless %}
   {% endfor %}
 {% endif %}
