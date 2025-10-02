@@ -101,9 +101,15 @@ hero_darken: true
 
 .system-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin: 30px 0;
+}
+
+@media (max-width: 768px) {
+  .system-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .boot-complete {
