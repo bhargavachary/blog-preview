@@ -1,12 +1,12 @@
 {% comment %}
   Compact post card for sidebars - bigger square blocks with image (40%) and content (60%)
 {% endcomment %}
-<div class="box mb-4 compact-card" style="padding: 0; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+<div class="box mb-4 compact-card" style="padding: 0; transition: transform 500ms ease, box-shadow 500ms ease;">
   <a href="{{ site.baseurl }}{{ post.url }}" style="display: block; text-decoration: none; color: inherit;">
     {% if post.image %}
     <div class="compact-card-image" style="width: 100%; height: 140px; overflow: hidden;">
       <picture>
-        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy" style="width: 100%; height: 140px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy" style="width: 100%; height: 140px; object-fit: cover; display: block; transition: transform 600ms ease;">
       </picture>
     </div>
     {% endif %}

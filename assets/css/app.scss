@@ -213,8 +213,8 @@ html {
   position: relative;
   transform: translate3d(0, 0, 0);
   transition:
-    transform var(--duration-medium) var(--ease-ios),
-    box-shadow var(--duration-medium) var(--ease-ios),
+    transform 500ms var(--ease-ios),
+    box-shadow 500ms var(--ease-ios),
     background-color var(--duration-fast) var(--ease-smooth);
   box-shadow: var(--shadow-sm);
   backface-visibility: hidden;
@@ -288,7 +288,7 @@ html {
       width: 100%;
       object-fit: cover;
       transition:
-        transform var(--duration-slow) var(--ease-emphasized),
+        transform 600ms var(--ease-emphasized),
         opacity var(--duration-medium) var(--ease-smooth),
         filter var(--duration-medium) var(--ease-smooth);
     }
