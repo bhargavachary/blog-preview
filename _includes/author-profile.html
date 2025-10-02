@@ -1,11 +1,11 @@
 <div class="box author-profile">
     <div class="has-text-centered">
-        <figure class="image is-128x128" style="margin: 0 auto 1rem;">
-            <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="is-rounded">
+        <figure class="image is-160x160" style="margin: 0 auto 1rem;">
+            <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="squircle-avatar">
         </figure>
         <h3 class="title is-4">{{ site.author.name }}</h3>
         <p class="subtitle is-6">{{ site.author.bio }}</p>
-        <p class="has-text-grey">
+        <p class="has-text-grey location-text">
             <span class="icon">
                 <i class="fas fa-map-marker-alt"></i>
             </span>
@@ -89,8 +89,20 @@
     top: 20px;
 }
 
-.author-profile .image img {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.author-profile .squircle-avatar {
+    border-radius: 20%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.author-profile .squircle-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.author-profile .location-text {
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
 .author-profile .social-links {
