@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to toggle theme
     function toggleTheme(e) {
+        console.log('toggleTheme called!', e);
+
         if (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -59,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const currentTheme = html.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        console.log('Switching from', currentTheme, 'to', newTheme);
 
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
@@ -76,17 +80,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 'event_label': newTheme
             });
         }
+
+        console.log('Theme toggle complete');
     }
 
     // Attach toggle handlers
     if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
+        console.log('Theme toggle button found and attaching listeners');
+
+        // Use capture phase to ensure we catch the event first
+        themeToggle.addEventListener('click', toggleTheme, true);
+
+        // Also add regular phase as backup
+        themeToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            toggleTheme(e);
+        });
+
         themeToggle.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 toggleTheme(e);
             }
         });
+    } else {
+        console.error('Theme toggle button NOT found!');
     }
 
     // ===================================
