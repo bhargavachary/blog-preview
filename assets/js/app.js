@@ -99,38 +99,53 @@
 
         console.log('Initializing theme toggle with event delegation');
 
-        // Click handler with delegation
+        // Click handler with delegation - HIGHEST PRIORITY
         document.addEventListener('click', function(e) {
-            const toggle = e.target.closest('#theme-toggle');
+            // Multiple ways to identify theme toggle for maximum reliability
+            const toggle = e.target.closest('#theme-toggle') ||
+                          e.target.closest('[data-theme-toggle]') ||
+                          e.target.closest('.theme-toggle-item');
             if (toggle) {
+                console.log('Theme toggle click captured!');
                 e.preventDefault();
                 e.stopPropagation();
+                e.stopImmediatePropagation(); // CRITICAL: Stop ALL other listeners
                 toggleTheme(e);
                 return false;
             }
-        }, true); // Use capture phase
+        }, true); // Use capture phase - fires BEFORE bubble phase
 
-        // Keyboard handler with delegation
+        // Keyboard handler with delegation - HIGHEST PRIORITY
         document.addEventListener('keydown', function(e) {
-            const toggle = e.target.closest('#theme-toggle');
+            // Multiple ways to identify theme toggle for maximum reliability
+            const toggle = e.target.closest('#theme-toggle') ||
+                          e.target.closest('[data-theme-toggle]') ||
+                          e.target.closest('.theme-toggle-item');
             if (toggle && (e.key === 'Enter' || e.key === ' ')) {
+                console.log('Theme toggle keyboard captured!');
                 e.preventDefault();
                 e.stopPropagation();
+                e.stopImmediatePropagation(); // CRITICAL: Stop ALL other listeners
                 toggleTheme(e);
                 return false;
             }
-        }, true);
+        }, true); // Capture phase
 
-        // Touch handler with delegation
+        // Touch handler with delegation - HIGHEST PRIORITY
         document.addEventListener('touchend', function(e) {
-            const toggle = e.target.closest('#theme-toggle');
+            // Multiple ways to identify theme toggle for maximum reliability
+            const toggle = e.target.closest('#theme-toggle') ||
+                          e.target.closest('[data-theme-toggle]') ||
+                          e.target.closest('.theme-toggle-item');
             if (toggle) {
+                console.log('Theme toggle touch captured!');
                 e.preventDefault();
                 e.stopPropagation();
+                e.stopImmediatePropagation(); // CRITICAL: Stop ALL other listeners
                 toggleTheme(e);
                 return false;
             }
-        }, { capture: true, passive: false });
+        }, { capture: true, passive: false }); // Capture phase, not passive
 
         isInitialized = true;
         console.log('Theme toggle initialized successfully with delegation');
@@ -754,6 +769,18 @@ if ('serviceWorker' in navigator) {
     // Fade out when clicking internal links
     document.addEventListener('click', function(e) {
         const link = e.target.closest('a');
+
+        // CRITICAL: Skip theme toggle button to prevent interference
+        if (link && link.id === 'theme-toggle') {
+            console.log('Page transition handler: skipping theme toggle');
+            return;
+        }
+
+        // ALSO: Skip any element with theme-toggle class
+        if (link && (link.classList.contains('theme-toggle') || link.classList.contains('theme-toggle-item'))) {
+            console.log('Page transition handler: skipping theme toggle item');
+            return;
+        }
 
         if (link && link.href && !link.target && !link.hasAttribute('download')) {
             try {
