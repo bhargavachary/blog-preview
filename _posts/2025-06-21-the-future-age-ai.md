@@ -1,19 +1,19 @@
 ---
-title: "The Future of Life, Work, and Wealth in the Age of AI"
+title: "2050 AD: When AI Runs Your Job, Home & Money"
 image: /images/posts/ai-future.jpg
-categories:  
-  - Society  
-  - Technology  
-  - Economics  
+categories:
+  - Technology
+  - Culture & Society
+
+tags:
+  - AI
+  - Future of Work
+  - Society
+  - Automation
   - Education
-tags:  
-  - AI  
-  - Automation  
-  - Future of Work  
-  - Universal Basic Income  
-  - India  
-  - Ethics
-excerpt: "As artificial intelligence evolves from a niche discipline to a global force shaping every industry, community, and household, the next 25 years promise a profound transformation. From AI copilots in everyday life to brain-machine interfaces, quantum leaps in health and energy, and radical shifts in how we work and create value-this blog unpacks the milestones, mindsets, and dilemmas awaiting us between 2025 and 2050. Grounded in real stories, millennial sages, and India’s street-level wisdom, it offers both warning and hope: adapt, collaborate, and create-not just for survival, but for meaning."
+  - Economics
+  - India
+excerpt: "As artificial intelligence evolves from a niche discipline to a global force shaping every industry, community, and household, the next 25 years promise a profound transformation. From AI copilots in everyday life to brain-machine interfaces, quantum leaps in health and energy, and radical shifts in how we work and create value-this blog unpacks the milestones, mindsets, and dilemmas awaiting us between 2025 and 2050. Grounded in real stories, millennial sages, and India's street-level wisdom, it offers both warning and hope: adapt, collaborate, and create-not just for survival, but for meaning."
 ---
 ### Ceiling Fan, Masala Chai, aur Algorithm Wali Duniya
 

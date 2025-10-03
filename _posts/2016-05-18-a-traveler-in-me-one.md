@@ -1,17 +1,18 @@
 ---
 title: "A Traveler in Me - The Inception"
 image: /images/posts/life/a-traveler-one.jpg
-categories: 
-  - Society
-  - Personal
-  - Experience
-  - Travel
+categories:
+  - Travel & Exploration
+  - Personal Growth
+
 tags:
-  - biker
-  - life
-  - kolkata
-  - bangalore
-  - hyderabad
+  - Travel
+  - India
+  - Kolkata
+  - Bengaluru
+  - Hyderabad
+  - Personal Journey
+  - Adventure
 ---
 
 I consider myself blessed to experience the amount of travel I have been doing for the last few years, ever since I am off college. It seems like I am becoming a travel addict. Hours and days long journeys don’t seem long anymore. Now, I enjoy the moments in my travel. I am no more just desperate to arrive at my destination. In the last few years I have travelled across India (sailing across more than a dozen of the dynamic Indian states), whereas until 2013, I was just restricted to the Odisha and Andhra Pradesh border and their coastline.

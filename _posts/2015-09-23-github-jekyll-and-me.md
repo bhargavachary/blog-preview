@@ -1,15 +1,16 @@
 ---
 title: "GitHub, Jekyll, and Me!"
 image: /images/posts/github-jekyll.jpg
-categories: 
+categories:
   - Technology
-  - Personal
+  - Personal Growth
+
 tags:
-  - update
-  - jekyll
-  - engineering
-  - research
-  - opensource
+  - Technology
+  - Blogging
+  - Open Source
+  - Web Development
+  - Personal Reflection
 ---
 
 After exploring various blogging platforms like WordPress, Drupal, and Blogger, I initially thought WordPress would be ideal for its flexibility and ease of use. Hosting with a reputed provider seemed like the obvious plan.

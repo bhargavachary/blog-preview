@@ -1,12 +1,18 @@
 ---
 title: "Odisha - The Land Slightly Unknown!"
 image: /images/posts/odisha-temple.jpg
-categories: 
-  - Society
-  - Personal
+categories:
+  - Culture & Society
+  - Travel & Exploration
+
 tags:
-  - odisha
-  - life
+  - Culture
+  - Odisha
+  - India
+  - Heritage
+  - Tradition
+  - Food
+  - Language
 ---
 It’s quite an obvious phenomenon to encounter questions from people on something that they don’t know or they know quite a little about! And, this is probably why I encounter these questions; “how is Odisha? how’s its culture like? what’s special over there?” and on. And, this ultimately triggered me to write this post, Odisha - The land slightly unknown! So, if you are interested to know about my state Odisha, go on. I believe, you would find it interesting while you get to learn about this wonderful state and its people.
 

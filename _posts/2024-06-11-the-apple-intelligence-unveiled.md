@@ -1,28 +1,17 @@
 ---
 title: "Apple Intelligence: The Seamless AI in Apple's Ecosystem"
 image: /images/posts/apple-intelligence.jpg
-categories: 
+categories:
+  - Technology
+
+tags:
+  - Apple
+  - AI
   - Technology
   - Innovation
-  - Apple
-tags:
-  - AppleIntelligence
-  - ChatGPT
-  - WWDC2024
-  - AppleEcosystem
-  - HardwareSoftwareCodesign
-  - AIFeatures
-  - iOS18
-  - iPadOS18
-  - macOS15
-  - TechInnovation
-  - AIIntegration
-  - SiriEnhancements
-  - Personalization
-  - TechNews
-  - AppleEvent
-  - ArtificialIntelligence
-  - SeamlessIntegration
+  - WWDC
+  - iOS
+  - Ecosystem
 ---
 
 Today, at the much-anticipated WWDC 2024, Apple unveiled its latest marvel—Apple Intelligence. While AI integration isn't a novel concept, Apple's execution and integration across its ecosystem are truly remarkable.

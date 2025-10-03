@@ -1,20 +1,18 @@
 ---
-title: "One Nation, Many Languages: Can Tech and a Three-Language Policy Bridge India’s Divide?"
+title: "22 Languages, One India: Can Technology Bridge the Divide?"
 image: /images/posts/language-diversity.jpg
-categories: 
-  - Language
-  - Technology
-  - Society
+categories:
+  - Culture & Society
+  - Current Affairs & Opinion
+
 tags:
+  - Language
   - India
-  - Languages
+  - Diversity
+  - Policy
   - Technology
-  - Multilingualism
-  - Three-Language Policy
-  - Cultural Diversity
-  - Tourism
-  - Kannada
-  - Language Barriers
+  - Social Issues
+  - Unity
 excerpt: "India's linguistic diversity is both a strength and a challenge. Could a three-language policy, supported by technology, bridge the divide while preserving regional identities? This post explores the potential of language policies and tech in uniting the country."
 ---
 

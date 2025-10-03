@@ -3,21 +3,15 @@ title: "Microsoft's Outage: The Day the Cloud Wept"
 image: /images/posts/cloud-outage.jpg
 categories:
   - Technology
-  - Cloud Computing
-  - Cybersecurity
+  - Current Affairs & Opinion
+
 tags:
-  - MicrosoftOutage
-  - CloudReliability
-  - CyberSecurity
-  - TechNews
-  - Azure
-  - Microsoft365
-  - CrowdStrike
-  - BusinessContinuity
-  - DisasterRecovery
-  - ITInfrastructure
-  - TechInsights
-  - CloudComputing
+  - Technology
+  - Cloud Computing
+  - Microsoft
+  - Cybersecurity
+  - Infrastructure
+  - Crisis
   - DataSecurity
   - TechIndustry
   - ITStrategy

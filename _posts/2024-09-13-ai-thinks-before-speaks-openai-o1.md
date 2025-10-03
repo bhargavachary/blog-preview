@@ -1,22 +1,18 @@
 ---
 title: "OpenAI o1: The AI That Thinks Before It Speaks"
 image: /images/posts/openai-thinking.jpg
-categories: 
-  - Artificial Intelligence
+categories:
+  - Technology
+  - Education & Academia
+
+tags:
+  - AI
+  - OpenAI
   - Technology
   - Machine Learning
-  - Programming
-tags: 
-  - OpenAI
-  - o1 Series
-  - AI Reasoning
-  - ClaudeAI
-  - Google Gemini
-  - AI Safety
-  - STEM
-  - Coding
-  - AI for Developers
-excerpt: "The world of AI is evolving, and OpenAI’s o1 series isn’t just about speed—it’s about thinking before answering. This revolutionary AI goes beyond quick fixes, offering deep reasoning, step-by-step debugging, and human-like guidance. In this post, we explore how OpenAI o1 transforms the developer experience, stacks up against competitors like ClaudeAI and Google Gemini, and what it means for the future of learning and reskilling. It’s not just about what we teach the next generation—but how we teach them to think."
+  - Innovation
+  - Future of Work
+excerpt: "The world of AI is evolving, and OpenAI's o1 series isn't just about speed—it's about thinking before answering. This revolutionary AI goes beyond quick fixes, offering deep reasoning, step-by-step debugging, and human-like guidance. In this post, we explore how OpenAI o1 transforms the developer experience, stacks up against competitors like ClaudeAI and Google Gemini, and what it means for the future of learning and reskilling. It's not just about what we teach the next generation—but how we teach them to think."
 ---
 
 ## Introduction: The Next-Level AI We’ve Been Waiting For

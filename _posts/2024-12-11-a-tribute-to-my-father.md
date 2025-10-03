@@ -2,14 +2,15 @@
 title: "A Tribute to Nana: A Legacy of Love, Sacrifice, & Inspiration"
 image: /images/posts/father-tribute.jpg
 categories:
-  - Personal
-  - Family
-  - Inspiration
+  - Personal Growth
+
 tags:
-  - Resilience
-  - Love
-  - Teaching
+  - Family
+  - Personal Reflection
   - Legacy
+  - Love
+  - Life Lessons
+  - Tribute
 excerpt: "My father, whom I lovingly call Nana, was more than a parent; he was the cornerstone of who I am today. This is a heartfelt tribute to his extraordinary life of sacrifice, inspiration, and unwavering love."
 ---
 

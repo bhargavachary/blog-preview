@@ -1,20 +1,17 @@
 ---
 title: "Winds of The Dark!"
 image: /images/posts/dark-night.jpg
-categories: 
-  - Society
-  - Nature
-  - Personal
-  - Motivation
-  - Experience
+categories:
+  - Culture & Society
+  - Sustainability & Environment
+
 tags:
-  - update
-  - odisha
-  - andhrapradesh
-  - ganjam
-  - cyclone
-  - life
-  - sustainability
+  - Natural Disasters
+  - Cyclones
+  - Odisha
+  - Resilience
+  - Climate
+  - Society
 ---
 
 I belong to the border region of Andhra Pradesh–Odisha on the coastline. It’s a wonderful zone. The ambience is fantastic. Hills, jungles, the national highway, the cool sea beaches, the wonderful Chilika lake, the cross cultured Odia and Telugu families, the numerous wonderful temples, and small yet beautiful towns with real simple people and what not... However, this zone is a real struggler when it comes to having a stable life. Every other year there hits a cyclone, sometimes severe and sometimes mild.

@@ -1,15 +1,17 @@
 ---
 title: "Bengaluru - from C++ to Discrimination++"
 image: /images/posts/bengaluru-discrimination.jpg
-categories: 
-  - Society
-  - Culture
-  - Personal
+categories:
+  - Culture & Society
+  - Current Affairs & Opinion
+
 tags:
-  - bangalore
-  - inclusion
-  - diversity
-  - community
+  - Social Issues
+  - Discrimination
+  - Language
+  - Bengaluru
+  - Diversity
+  - Inclusion
 ---
 
 Today I want to share a concerning observation that has been deeply troubling me. Living in Bangalore, a city known for its vibrant culture and thriving tech industry, I've come to appreciate its unique blend of tradition and modernity. However, recent incidents have left me disheartened and questioning the values of the community we are building here.

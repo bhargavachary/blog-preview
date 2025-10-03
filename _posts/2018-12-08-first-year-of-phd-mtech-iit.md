@@ -1,16 +1,17 @@
 ---
-title: "First year of my PG (MS / MTech / PhD) at IIT is ~over!"
+title: "Year One at IIT: Surviving Courses, Research & Self-Doubt"
 image: /images/posts/phd-research.jpg
-categories: 
-  - Society
-  - Motivation
-  - Experience
-  - Personal
+categories:
+  - Education & Academia
+  - Personal Growth
+
 tags:
-  - update
-  - engineering
-  - research
-  - life
+  - PhD
+  - IIT
+  - Academia
+  - Research
+  - Learning Journey
+  - Graduate Studies
 ---
 
 Hello friends, welcome back to my blog. I did promise I would be regular, but I could not for the last 4 months and there are reasons for that. I was heavily loaded with the first two semesters of coursework. I went through 7 advanced postgraduate level courses in the last 11 months and it was truly a heavy learning experience. Though there was not much of personal space, but I still enjoyed this upgradation of my skills and exposure in computer science.

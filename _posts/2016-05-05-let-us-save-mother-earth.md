@@ -1,17 +1,17 @@
 ---
 title: "Let us save our Mother Earth!"
 image: /images/posts/mother-earth.jpg
-categories: 
-  - Society
-  - Nature
-  - Personal
-  - Motivation
-  - Experience
+categories:
+  - Sustainability & Environment
+  - Current Affairs & Opinion
+
 tags:
-  - update
-  - energy
-  - life
-  - sustainability
+  - Environment
+  - Sustainability
+  - Climate
+  - Energy
+  - Conservation
+  - Social Responsibility
 ---
 
 It’s been decently long since I have blogged. There are stuff happening in the background, I have had some new experiences, new twists and turns in my life, lately. But, this is not about the changes I am undergoing.  Rather, it’s about something of prime importance, something that can change our lives completely. It won't be an exaggeration, if I term it as a probable solution to several problems that we are experiencing in the early 21st century.

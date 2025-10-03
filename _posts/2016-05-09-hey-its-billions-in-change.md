@@ -1,18 +1,17 @@
 ---
 title: "Hey, its Billions in Change!"
 image: /images/posts/billions-change.jpg
-categories: 
+categories:
+  - Sustainability & Environment
   - Technology
-  - Society
-  - Nature
-  - Motivation
+
 tags:
-  - update
-  - engineering
-  - research
-  - energy
-  - life
-  - sustainability
+  - Innovation
+  - Sustainability
+  - Technology
+  - Social Impact
+  - Environment
+  - Solutions
 ---
 
 Hi, my dear wonderful reader! I am once again up with a new post in quick time. And, would make it small and precise. Thanks to the suggestion from one of the coolest persons, I have ever met, <a href="https://www.facebook.com/amrit.lenka" target="_blank">Amrit Kamal</a>, I am writing this post! Thank you so much dude, for letting me experince this wonderful film and know about these super cool people and their super cool efforts. I am completely thrilled and moved. Let us make this video reach as many as it can.

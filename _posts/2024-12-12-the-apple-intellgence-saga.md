@@ -1,20 +1,17 @@
 ---
 title: "The Apple Intelligence Saga: From Hype to Disappointment"
 image: /images/posts/apple-disappointment.jpg
-categories: 
+categories:
   - Technology
-  - AI
-  - Personal Reflections
+  - Personal Growth
+
 tags:
-  - AppleIntelligence
-  - ArtificialIntelligence
-  - iPhone16Plus
-  - TechDisappointment
-  - AIIntegration
-  - SiriEnhancements
-  - iOS18
-  - BetaTesting
-  - WWDC2024
+  - Apple
+  - AI
+  - Technology
+  - Product Review
+  - Personal Reflection
+  - Consumer Experience
 ---
 
 In my recent blog, ["Apple Intelligence: The Seamless AI in Apple’s Ecosystem"](https://bhargavachary.in/2024/06/11/the-apple-intelligence-unveiled.html), I was brimming with optimism. Apple had unveiled its latest marvel, Apple Intelligence, and the potential for seamless integration, enhanced productivity, and smarter devices felt like a turning point. The promise of a future where AI wasn’t just an add-on but a cornerstone of the Apple ecosystem had me captivated.

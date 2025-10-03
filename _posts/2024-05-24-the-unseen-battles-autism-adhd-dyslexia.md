@@ -1,17 +1,16 @@
 ---
 title: "Unseen Battles: Embracing Neurodiversity in India"
 image: /images/posts/neurodiversity.jpg
-categories: 
-  - Society
-  - Awareness
-  - Health
-  - Personal
+categories:
+  - Culture & Society
+
 tags:
-  - neurodiversity
-  - ADHD
-  - autism
-  - dyslexia
-  - mental health
+  - Mental Health
+  - Neurodiversity
+  - Social Issues
+  - India
+  - Awareness
+  - Empathy
 ---
 
 In our society, physical disabilities like blindness or losing a limb are often more easily recognized and accommodated. But it's important to remember that neurodiversity-based challenges like ADHD, Autism, Dyslexia, Dyspraxia, OCD, and Bipolar Disorder are just as significant and impactful. These conditions can seriously affect someone's ability to function and thrive, even if you can't see it.

@@ -1,12 +1,15 @@
 ---
 title: "The One and Only"
 image: /images/posts/personal-reflection.jpg
-categories: 
-  - Society
-  - Personal
-  - Experience
+categories:
+  - Personal Growth
+
 tags:
-  - life
+  - Personal Reflection
+  - Life Lessons
+  - Family
+  - Growth
+  - Loneliness
 ---
 
 I am the only child of my parents. Being "The One and Only" is quite a tough job, sometimes it's the best thing that can ever happen. When you are the only child, you grab all the attention of your parents. You be the center of their lives, their world revolves around you. You are the one they think of the moment they wake up, till the day ends. They always want the best for you in life, and go out of the way to fulfill your wishes and desires. As long as your demand is reasonable, you're sure to get it almost every time. You don't even have to share your things with anyone. Everything you have is only yours, including your parents. No fighting, no tattling, no hassle.

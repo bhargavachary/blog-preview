@@ -1,20 +1,18 @@
 ---
 title: "Berhampur to Vizianagaram - A Special Trip!"
 image: /images/posts/train-journey.jpg
-categories: 
-  - Society
-  - Personal
-  - Motivation
-  - Experience
-  - Travel
+categories:
+  - Travel & Exploration
+  - Personal Growth
+
 tags:
-  - update
-  - odisha
-  - andhrapradesh
-  - ganjam
-  - biker
-  - life
-  - berhampur
+  - Travel
+  - Bike Journey
+  - Andhra Pradesh
+  - Odisha
+  - Family
+  - Adventure
+  - Life Lessons
 ---
 
 I had a much awaited visit left pending in my account to Vizianagaram (Vijayanagaram) on some personal work, some meetings and some fun. I thought of making this trip a bit different and special. I have always loved the life of free birds. They stop wherever they want; they enjoy whichever place comes in their way. They at times halt and at times just keep flying. It is all at their will. Well, I do not have wings, I cannot fly. But, I can just ride a bike or a horse or a car etc. Yes, I have a dream to ride a horse someday. For the time being, I had to settle with a bike.

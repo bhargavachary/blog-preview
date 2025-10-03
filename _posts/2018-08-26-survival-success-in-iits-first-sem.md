@@ -1,16 +1,17 @@
 ---
-title: "Survive and Succeed in IITs in the 1st semester of post-graduate studies."
+title: "First Semester at IIT: A Survival Guide for Grad Students"
 image: /images/posts/iit-student.jpg
-categories: 
-  - Society
-  - Motivation
-  - Experience
-  - Personal
+categories:
+  - Education & Academia
+  - Professional Development
+
 tags:
-  - update
-  - engineering
-  - research
-  - life
+  - Education
+  - IIT
+  - Academia
+  - Study Tips
+  - Graduate Studies
+  - Success
 ---
 
 Hello friends! In this blog post, I am going to share you some simple tips for doing well in the first semester of an IIT level postgraduate program. This might apply to many other universities, but since the load in IITs is a notch higher than most universities, I strongly recommend these at least in the IITs and IISc. Also, these tips are specific to postgraduate students i.e. M.S., M.Tech. and Ph.D. students.

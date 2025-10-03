@@ -1,12 +1,16 @@
 ---
 title: "The Open Source Movement: The Collaborative Future"
 image: /images/posts/open-source.jpg
-categories: 
+categories:
   - Technology
+  - Professional Development
+
 tags:
-  - engineering
-  - research
-  - opensource
+  - Open Source
+  - Technology
+  - Collaboration
+  - Software Development
+  - Innovation
 ---
 
 The open-source movement has revolutionized the computing landscape, reshaping the way we think about technology and collaboration. From dominating server markets to powering development tools, open source is no longer a niche philosophy—it’s a paradigm shift. Yet, as with all revolutions, the journey is complex and uneven.

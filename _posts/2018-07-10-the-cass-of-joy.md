@@ -1,17 +1,17 @@
 ---
 title: "The CASS of Joy - A Research Fellow's Perspective"
 image: /images/posts/research-iit.jpg
-categories: 
+categories:
+  - Education & Academia
   - Technology
-  - Society
-  - Motivation
-  - Experience
-  - Personal
+
 tags:
-  - update
-  - engineering
-  - research
-  - life
+  - Academia
+  - Research
+  - Computer Architecture
+  - Learning
+  - IIT
+  - Conference
 ---
 
 A note of caution before you start. This post is about my personal experiences in the <a href="https://www.cse.iitk.ac.in/users/biswap/CASS18/cass.html" target="_blank">CASS-2018</a> (Computer Architecture Summer School) organized in IITK during the first week of July, 2018. This post is really long and detailed, so you need have a lot of patience to complete it. Any type of feedback / comment / query is always welcome and the <a href="https://disqus.com/home/forums/bhargavacharyin/" target="_blank"> disqus </a> comment section is the best space to go about it. Of course, you can do mail me or message me if needed. Typos/errors if found, please let me know. Let’s start.

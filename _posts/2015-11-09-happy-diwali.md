@@ -1,16 +1,18 @@
 ---
 title: "Happy Diwali!"
 image: /images/posts/life/diwali.jpg
-categories: 
-  - Society
-  - Personal
-  - Experience
-  - Travel
+categories:
+  - Culture & Society
+  - Sustainability & Environment
+
 tags:
-  - update
-  - festival
-  - life
-  - sustainability
+  - Culture
+  - Festival
+  - Tradition
+  - Diwali
+  - India
+  - Sustainability
+  - Personal Reflection
 ---
 At this juncture of life away home, I am missing my childhood a bit too much. Yes, the festival of lights has finally arrived and I am not home. Okay, never mind, let it be fun this time over here in the north-east. This time the Diwali falls on 10th or 11th November, depending on where you stay in India. Just like mine, Diwali might be one of your most favorite festivals and why would it not be? After all it’s the festival of lights, festival of sweets, probably the brightest night of the year (even without the moon). Let me have the privilege of writing some words on this awesome Diwali that we are about to experience.
 

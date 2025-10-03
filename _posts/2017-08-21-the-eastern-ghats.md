@@ -1,22 +1,18 @@
 ---
 title: "A tale of Jeerango in the Eastern Ghats"
 image: /images/posts/life/a-traveler-one.jpg
-categories: 
-  - Nature
-  - Personal
-  - Motivation
-  - Experience
-  - Travel
-  - Photography
+categories:
+  - Travel & Exploration
+  - Culture & Society
+
 tags:
-  - update
-  - odisha
-  - andhrapradesh
-  - ganjam
-  - gajapati
-  - biker
-  - life
-  - berhampur
+  - Travel
+  - Adventure
+  - Eastern Ghats
+  - Odisha
+  - Nature
+  - Photography
+  - Exploration
 ---
 Being a Traveler, an Adventurer, a Nature Lover leads me into exploration. After roaming across a number of beautiful, historical, naturally astounding places around the country in the recent years, I just took a break, and to a great extent this break happened as a set of situations, than a non-execution. I still traveled, but that was just mechanical, Hyderabad to Berhampur and vice-versa. Well, in the recent months, this loop has ended, and I am back in form. And, this is a very long post, be cautioned before proceeding.
 

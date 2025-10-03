@@ -1,20 +1,18 @@
 ---
 title: "Odisha - The Land of Jagannatha Sanskruti"
 image: /images/posts/odisha-culture.jpg
-categories: 
-  - Culture
-  - Travel
-  - Society
+categories:
+  - Culture & Society
+  - Travel & Exploration
+
 tags:
-  - Odisha
-  - Jagannatha
   - Culture
-  - Puri
-  - Rath Yatra
-  - Kartika Purnima
-  - Boita Bandana
-  - Food
+  - Odisha
+  - Tradition
   - Spirituality
+  - Heritage
+  - Food
+  - Festivals
 excerpt: "Odisha, a state rich in spiritual and cultural heritage, is deeply intertwined with the Jagannatha tradition. This post dives into the essence of Jagannatha Sanskruti, exploring the devotion, rituals, traditions, and food that define the soul of Odisha."
 ---
 

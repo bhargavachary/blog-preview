@@ -1,19 +1,17 @@
 ---
 title: "Traffic Hack: Can E-Cycles Outrun Cars, EVs & Metro?"
 image: /images/posts/ecycle-traffic.jpg
-categories:  
-  - Commuting  
-  - Sustainability  
-  - Technology  
-tags:  
-  - E-Cycles  
-  - Bengaluru Traffic  
-  - EVs  
-  - Public Transport  
-  - WeR EV  
-  - Urban Mobility  
-  - Sustainable Transport  
-  - Last-Mile Connectivity  
+categories:
+  - Sustainability & Environment
+  - Technology
+
+tags:
+  - Sustainability
+  - Urban Mobility
+  - E-Cycles
+  - Bengaluru
+  - Transportation
+  - Environment
 excerpt: "Bengaluru's infamous traffic jams test everyone's patience. But what if there's a way to bypass them altogether? This post explores why e-cycles are emerging as the ultimate commuting hack, beating cars, EVs, and even public transport."
 ---
 

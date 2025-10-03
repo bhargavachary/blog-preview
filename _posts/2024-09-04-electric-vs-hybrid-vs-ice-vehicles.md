@@ -1,8 +1,18 @@
 ---
-title: "Hybrid vs. Electric: Why EVs Aren’t Ready for Prime Time, and Won’t Be Anytime Soon"
+title: "The Hybrid Advantage: Why EVs Still Can't Beat Petrol in India"
 image: /images/posts/ev-vs-hybrid.jpg
 date: "2024-09-01"
-tags: ["Automotive", "Electric Vehicles", "Hybrids", "Sustainability"]
+categories:
+  - Sustainability & Environment
+  - Technology
+
+tags:
+  - Electric Vehicles
+  - Sustainability
+  - Environment
+  - Technology
+  - Transportation
+  - India
 excerpt: "A comprehensive guide to understanding the real-world challenges of electric vehicles and why hybrids may be the better choice for now."
 ---
 

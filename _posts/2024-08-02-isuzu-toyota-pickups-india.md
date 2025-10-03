@@ -3,8 +3,17 @@ title: "The Rise of Pickup Trucks in India: V-Cross and Hilux"
 image: /images/posts/pickup-trucks.jpg
 author: Bhargav
 date: 2024-08-02
-categories: [Automobile, Pickup Trucks, Lifestyle]
-tags: [PickupTrucks, Adventure, IsuzuDMax, ToyotaHilux, OutdoorLifestyle, Versatility, OffRoad, Travel, Exploration, VehicleInnovation, RuggedVehicles, FamilyAdventures, HybridLiving, PortableHousing, RentalFlexibility, RemoteWork, BusinessApplications]
+categories:
+  - Culture & Society
+  - Technology
+
+tags:
+  - Automobiles
+  - India
+  - Lifestyle
+  - Transportation
+  - Personal Choice
+  - Adventure
 summary: "Explore the appeal and practicality of pickup trucks like the Isuzu D-Max V-Cross and Toyota Hilux in India, from urban settings to rural adventures."
 ---
 

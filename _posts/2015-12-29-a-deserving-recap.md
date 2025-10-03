@@ -1,13 +1,15 @@
 ---
 title: "A Deserving Recap"
 image: /images/posts/year-recap.jpg
-categories: 
-  - Personal
-  - Motivation
-  - Experience
+categories:
+  - Personal Growth
+
 tags:
-  - update
-  - life
+  - Personal Reflection
+  - Life Lessons
+  - Perseverance
+  - Decision Making
+  - Motivation
 ---
 This post is more of an abstract recap of the last couple of years. Many of my friends and close people know the year 2014, was not quite mine. There were too many issues with my interests, the conflicting results and probably I needed a little more strength to stand to my decisions. May be in the last few years, I had somehow been captured by a fear which I never had earlier, that was the fear of failure. But, by the end of 2014, I had decided to come over it, thanks to the motivations and comments by some of my mentors and best friends (includes Bhanu Bawa, Venky Anna, my Dad, Prabhakar, Bishnu, Rushi, Madhusmita and some more special people).
 

@@ -1,23 +1,19 @@
 ---
-title: "Trump’s 2025 Tariffs: Tech Disrupted, Trade Rewired"
+title: "Trump's 2025 Tariffs: Tech Disrupted, Trade Rewired"
 image: /images/posts/trump-tariffs.jpg
-categories:  
-  - Geopolitics  
-  - Economics  
-  - Technology  
-  - System Engineering
-tags:  
-  - Trump  
-  - Tariffs  
-  - Semiconductors  
-  - U.S.-China  
-  - India  
-  - Apple  
-  - Nvidia  
-  - Qualcomm  
-  - Supply Chain  
-  - Trade War  
-excerpt: "Trump's spring 2025 tariff blitz hammered global tech stocks and shattered supply chains. But in the rubble, India rose, and semiconductor power plays began. Here’s how trade war reshaped the global tech map."
+categories:
+  - Current Affairs & Opinion
+  - Technology
+
+tags:
+  - Politics
+  - Trade
+  - Technology
+  - Economics
+  - India
+  - Geopolitics
+  - Semiconductors
+excerpt: "Trump's spring 2025 tariff blitz hammered global tech stocks and shattered supply chains. But in the rubble, India rose, and semiconductor power plays began. Here's how trade war reshaped the global tech map."
 ---
 
 *"When a butterfly flaps its wings in Washington, a tech typhoon hits Silicon Valley, Shenzhen, and Sanand alike."*

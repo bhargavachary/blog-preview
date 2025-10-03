@@ -2,13 +2,15 @@
 title: "The Social Network Outage"
 image: /images/posts/social-network.jpg
 categories:
-  - Society
-  - Personal
-  - Experience
+  - Personal Growth
+  - Technology
+
 tags:
-  - update
-  - research
-  - life
+  - Personal Reflection
+  - Social Media
+  - Technology
+  - Digital Detox
+  - Life Balance
 ---
 Just a month back, I made the decision to stay away from social media for a month. Well, here I am, typing on my netbook, that I'm still happily alive and that the past month has been life changing – one of the most successful month of my existence.
 
